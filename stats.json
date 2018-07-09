@@ -1,20 +1,24 @@
 {
   "assetsByChunkName": {
+    "path---tags-blog": [
+      "path---tags-blog-18f1806697ce32f2b879.js",
+      "path---tags-blog-18f1806697ce32f2b879.js.map"
+    ],
     "path---tags-理论": [
-      "path---tags-理论-ee8ce3f434350dbbb5c1.js",
-      "path---tags-理论-ee8ce3f434350dbbb5c1.js.map"
+      "path---tags-理论-85e0fd6d5675112786f9.js",
+      "path---tags-理论-85e0fd6d5675112786f9.js.map"
     ],
     "component---src-pages-index-js": [
-      "component---src-pages-index-js-920cda349078c6846e1e.js",
-      "component---src-pages-index-js-920cda349078c6846e1e.js.map"
+      "component---src-pages-index-js-03e50f098db5e3898b34.js",
+      "component---src-pages-index-js-03e50f098db5e3898b34.js.map"
     ],
     "component---src-templates-tags-js": [
-      "component---src-templates-tags-js-5a33cc1c242464672fa8.js",
-      "component---src-templates-tags-js-5a33cc1c242464672fa8.js.map"
+      "component---src-templates-tags-js-c1ab2101d66911197b25.js",
+      "component---src-templates-tags-js-c1ab2101d66911197b25.js.map"
     ],
     "path---tags": [
-      "path---tags-3040a3b04040e24f57d1.js",
-      "path---tags-3040a3b04040e24f57d1.js.map"
+      "path---tags-5e9c6e07a1afad75b8b7.js",
+      "path---tags-5e9c6e07a1afad75b8b7.js.map"
     ],
     "path---": [
       "path----cac63ff5c1b42581353c.js",
@@ -25,28 +29,32 @@
       "component---src-layouts-index-js-682e18e9b7d9a7c753bd.js.map"
     ],
     "component---src-templates-blog-template-js": [
-      "component---src-templates-blog-template-js-e1e2af34cd200ff27a25.js",
-      "component---src-templates-blog-template-js-e1e2af34cd200ff27a25.js.map"
+      "component---src-templates-blog-template-js-f3dc95c764ab40d94bd2.js",
+      "component---src-templates-blog-template-js-f3dc95c764ab40d94bd2.js.map"
     ],
     "path---page-2": [
       "path---page-2-a0e39f21c11f6a62c5ab.js",
       "path---page-2-a0e39f21c11f6a62c5ab.js.map"
     ],
     "path---index": [
-      "path---index-9ba37bb0d2cae75814e6.js",
-      "path---index-9ba37bb0d2cae75814e6.js.map"
+      "path---index-1e933d5782fbcf62bf5e.js",
+      "path---index-1e933d5782fbcf62bf5e.js.map"
     ],
     "component---src-pages-404-js": [
       "component---src-pages-404-js-4503918ea3a16cfcdb75.js",
       "component---src-pages-404-js-4503918ea3a16cfcdb75.js.map"
     ],
     "commons": [
-      "commons-2656e4e8841291db7d65.js",
-      "commons-2656e4e8841291db7d65.js.map"
+      "commons-7de72f4f10ee80f8ea2f.js",
+      "commons-7de72f4f10ee80f8ea2f.js.map"
     ],
-    "path---eth-2": [
-      "path---eth-2-f230da38a50ebaf4dd87.js",
-      "path---eth-2-f230da38a50ebaf4dd87.js.map"
+    "path---blog-3": [
+      "path---blog-3-bae5d4eacbada8498db9.js",
+      "path---blog-3-bae5d4eacbada8498db9.js.map"
+    ],
+    "path---blog-1": [
+      "path---blog-1-a54491bd3d43853b2f67.js",
+      "path---blog-1-a54491bd3d43853b2f67.js.map"
     ],
     "path---404-html": [
       "path---404-html-a0e39f21c11f6a62c5ab.js",
@@ -56,19 +64,39 @@
       "component---src-pages-tags-js-fa28353953f839c77222.js",
       "component---src-pages-tags-js-fa28353953f839c77222.js.map"
     ],
+    "path---new-1": [
+      "path---new-1-f98a19310be4df64c1b4.js",
+      "path---new-1-f98a19310be4df64c1b4.js.map"
+    ],
+    "path---tags-新闻": [
+      "path---tags-新闻-ec10d0ed5a38acfb43df.js",
+      "path---tags-新闻-ec10d0ed5a38acfb43df.js.map"
+    ],
     "component---src-pages-page-2-js": [
       "component---src-pages-page-2-js-075954cd9c4544c7dcd8.js",
       "component---src-pages-page-2-js-075954cd9c4544c7dcd8.js.map"
     ],
+    "path---blog-2": [
+      "path---blog-2-ddfe9654f73984bd9f20.js",
+      "path---blog-2-ddfe9654f73984bd9f20.js.map"
+    ],
     "app": [
-      "app-3be4ef29a8d8f981edb6.js",
+      "app-0218d121e30060fbfb92.js",
       "build-js-styles.css",
-      "app-3be4ef29a8d8f981edb6.js.map",
+      "app-0218d121e30060fbfb92.js.map",
       "build-js-styles.css.map"
     ],
     "path---tags-比特币": [
-      "path---tags-比特币-1334c5980fee17db103f.js",
-      "path---tags-比特币-1334c5980fee17db103f.js.map"
+      "path---tags-比特币-83a9dbdc9988f0adae1d.js",
+      "path---tags-比特币-83a9dbdc9988f0adae1d.js.map"
+    ],
+    "path---blog-4": [
+      "path---blog-4-3789b1c54c7bda16b847.js",
+      "path---blog-4-3789b1c54c7bda16b847.js.map"
+    ],
+    "path---new-2": [
+      "path---new-2-8fab807524f85c409e2f.js",
+      "path---new-2-8fab807524f85c409e2f.js.map"
     ],
     "path---eth": [
       "path---eth-25f5303b7fa2519d4476.js",
@@ -77,10 +105,6 @@
     "path---404": [
       "path---404-a0e39f21c11f6a62c5ab.js",
       "path---404-a0e39f21c11f6a62c5ab.js.map"
-    ],
-    "path---tags-区块链": [
-      "path---tags-区块链-418e86bfcfd3ffa1d837.js",
-      "path---tags-区块链-418e86bfcfd3ffa1d837.js.map"
     ]
   }
 }
