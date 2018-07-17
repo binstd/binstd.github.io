@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'binstd-区块链云服务平台',
   },
   plugins: [
     'gatsby-plugin-catch-links',
@@ -8,12 +8,18 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/content`,
+        path: `${__dirname}/markdown`,
         name: 'content',
       },
     },
     'gatsby-transformer-remark',
-    'gatsby-plugin-sass'
+    // 'gatsby-plugin-sass',
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        precision: 8,
+      },
+    }
   ],
-  pathPrefix: "/website"
+  pathPrefix: "/binstdsite"
 }

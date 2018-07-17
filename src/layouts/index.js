@@ -8,7 +8,7 @@ import Helmet from 'react-helmet'
 import './grommet.min.css'
 
 import './common.css'
-
+// import './scss/index-grommet.scss'
 
 const Layout = ({ children, data }) => (
   <div>
@@ -21,10 +21,10 @@ const Layout = ({ children, data }) => (
     />
    
     {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
-    <div>
- 
-      {children()}
-    </div>
+    
+      <div className="grommet">
+        {children()}
+      </div>
   </div>
 )
 

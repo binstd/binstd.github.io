@@ -6,7 +6,6 @@ const PostLink = ({ post }) => (
     
     <Link to={post.frontmatter.path}>
       {post.frontmatter.title} ({post.frontmatter.date})
-
       ({post.html.replace(/<[^>]+>/g,"").substr(0, 200)})
       ({post.frontmatter.img})
     </Link>

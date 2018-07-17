@@ -7,6 +7,7 @@
     "gatsby": "^1.9.247",
     "gatsby-link": "^1.6.40",
     "gatsby-plugin-catch-links": "^1.0.24",
+    "gatsby-plugin-postcss-sass": "^1.0.22",
     "gatsby-plugin-react-helmet": "^2.0.10",
     "gatsby-plugin-sass": "^1.0.26",
     "gatsby-source-filesystem": "^1.5.39",
@@ -20,7 +21,8 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build --prefix-paths && gh-pages -d public",
+    "build": "gatsby build",
+    "b": "gatsby build --prefix-paths && gh-pages -d public",
     "develop": "gatsby develop",
     "format": "prettier --write 'src/**/*.js'",
     "test": "echo \"Error: no test specified\" && exit 1"

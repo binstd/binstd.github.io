@@ -5,15 +5,15 @@ import Header from 'grommet/components/Header';
 import Menu from 'grommet/components/Menu';
 import Image from 'grommet/components/Image';
 import Button from 'grommet/components/Button';
-// import '../layouts/common.css'
+
 export default function AppHeader (props) {
   return (
-    // neutral-1
-    // 
+ 
     <Header 
       justify="center" 
       fixed={true}
-      style={{backgroundColor:'rgb(7, 174, 255)'}}
+      // colorIndex='brand'
+      // style={{backgroundColor:'rgb(7, 174, 255)'}}
      >
       <Box size={{width: {max: 'xxlarge'}}} direction="row"
         responsive={false} justify="start" align="center" 
@@ -24,15 +24,17 @@ export default function AppHeader (props) {
            />
         {/* <HpiIcon colorIndex="brand" size="large" /> */}
         <Box pad="small" />
-          <Menu label="导航" inline={true} direction="row">
-            <Anchor href="#" style={{color: 'white'}} >首页</Anchor>
-            <Anchor href="#" style={{color: 'white'}} > 服务</Anchor>
-            <Anchor href="#" style={{color: 'white'}} >关于</Anchor>
+          <Menu label="导航" inline={true} direction="row" >
+
+            <Anchor path="/"   >首页</Anchor>
+            <Anchor href="/tags/服务"  > 服务</Anchor>
+            <Anchor href="https://github.com/binstd/tplan" target="_blank" > 翻译计划</Anchor>
+            <Anchor href="/info"  >关于</Anchor>
           </Menu>
           
         <Box flex="grow" align="end">
-        <Button label='帮助中心'
-          style={{ color:'#f5f5f5'}} 
+        <Button label='登录/注册'
+          // style={{ color:'#f5f5f5'}} 
           href='http://doc.binstd.com/' />
         
         </Box>

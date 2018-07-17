@@ -2,6 +2,10 @@ import React from "react";
 import PostLink from "../components/post-link";
 import PrimaryPage from '../components/PrimaryPage';
 import Header from '../components/Header';
+import Article from 'grommet/components/Article';
+import NarraTive from '../components/demo/NarraTive';
+import Home from '../components/Home';
+
 const IndexPage = ({
   data: {
     allMarkdownRemark: { edges },
@@ -12,14 +16,12 @@ const IndexPage = ({
     .map(edge => <PostLink key={edge.node.id} post={edge.node} />);
 
   return (
-    <div>
-      <Header style="" />
-      <PrimaryPage/>
-      {/* {Posts} */}
-    </div>
+      <div>
+         <Header />
+          <Home />
+      </div>
   );
 };
-
 export default IndexPage;
 
 export const pageQuery = graphql`

@@ -8,21 +8,17 @@ import Section from 'grommet/components/Section';
 import Article from 'grommet/components/Article';
 import Button from 'grommet/components/Button';
 import Animate from 'grommet/components/Animate';
-import Image from 'grommet/components/Image';
-import Anchor from 'grommet/components/Anchor';
+
 import Header from 'grommet/components/Header';
-import Footer from 'grommet/components/Footer';
+
 import Tiles from 'grommet/components/Tiles';
 import Tile from 'grommet/components/Tile';
-import Menu from 'grommet/components/Menu';
+
 
 import ResourcesIcon from 'grommet/components/icons/base/Resources';
-import AccessibleIcon from 'grommet/components/icons/base/Accessible';
 import ConfigureIcon from 'grommet/components/icons/base/Configure';
 import RunIcon from 'grommet/components/icons/base/Run';
-
 import Headline from 'grommet/components/Headline';
-
 import CubesIcon from 'grommet/components/icons/base/Cubes';
 import ComplianceIcon from 'grommet/components/icons/base/Compliance';
 
@@ -31,7 +27,7 @@ class HomeSection extends Component {
     const { animate, children, ...props } = this.props;
     let contents = (
       <Section justify='center' align='center'
-        pad={{ vertical: 'large' }} {...props}>
+        pad={{ vertical: 'large' }} {...props} >
         {children}
       </Section>
     );
@@ -63,7 +59,7 @@ const WhyGrommetItem = (props) => (
             </Heading>
           </Header>
           <Box pad={{ horizontal: 'medium' }}>
-            {props.children}
+              {props.children}
           </Box>
         </Box>
       </Button>
@@ -74,14 +70,8 @@ const WhyGrommetItem = (props) => (
 
 export default class PrimaryPage extends Component {
   render() {
-
-
     return (
-
-      <Article
-    	align='center'
-      >
-      
+     <div>
 		<Section full={true} 
 			style={{backgroundColor:'#07AEFF', color:'white'}} 
           // style={{backgroundColor:'#00DEFF', color:'white'}}
@@ -107,32 +97,45 @@ export default class PrimaryPage extends Component {
               size='large' />}
               heading='数字通证发行' path='/docs/components' delay={100}>
               <Paragraph align='center' margin='none'>
-			  发行平台独有数字通证：积分、票卷、虚拟商品
+			          发行平台独有数字通证：积分、票卷、虚拟商品
               </Paragraph>
             </WhyGrommetItem>
             <WhyGrommetItem icon={<RunIcon colorIndex='brand'
               size='large' />}
               heading='智能钱包' href='http://slackin.grommet.io' delay={300}>
               <Paragraph align='center' margin='none'>
-			  存储交易独有数字通证：积分、票卷、虚拟商品
+			        存储交易独有数字通证：积分、票卷、虚拟商品
               </Paragraph>
             </WhyGrommetItem>
             <WhyGrommetItem icon={<ConfigureIcon colorIndex='brand'
               size='large' />}
               heading='跨链云服务' path='/docs/learn' delay={500}>
               <Paragraph align='center' margin='none'>
-			  BIN自行跨链云服务支持 免手续费，交易加速
+			         BIN自行跨链云服务支持 免手续费，交易加速
               </Paragraph>
             </WhyGrommetItem>
-            <WhyGrommetItem icon={<AccessibleIcon colorIndex='brand'
+            <WhyGrommetItem icon={<ResourcesIcon colorIndex='brand'
               size='large' />}
-              heading='Accessible' href='https://vimeo.com/187068246'
-              delay={700}>
+              heading='数字通证发行' path='/docs/components' delay={100}>
               <Paragraph align='center' margin='none'>
-                All users matter. Grommet provides a robust foundation
-                of accessibility features to meet web standards.
+			        发行平台独有数字通证：积分、票卷、虚拟商品
               </Paragraph>
             </WhyGrommetItem>
+            <WhyGrommetItem icon={<RunIcon colorIndex='brand'
+              size='large' />}
+              heading='智能钱包' href='http://slackin.grommet.io' delay={300}>
+              <Paragraph align='center' margin='none'>
+			          存储交易独有数字通证：积分、票卷、虚拟商品
+              </Paragraph>
+            </WhyGrommetItem>
+            <WhyGrommetItem icon={<ConfigureIcon colorIndex='brand'
+              size='large' />}
+              heading='跨链云服务' path='/docs/learn' delay={500}>
+              <Paragraph align='center' margin='none'>
+			            BIN自行跨链云服务支持 免手续费，交易加速
+              </Paragraph>
+            </WhyGrommetItem>
+           
           </Tiles>
 
 				<Box 
@@ -209,15 +212,11 @@ export default class PrimaryPage extends Component {
         <Section full={true}
           pad="large" justify="center" align="center">
           {/* <Logo size="large" /> */}
-          <Heading tag="h1">Shape your future with 2222.</Heading>
-          <Paragraph>Maecenas faucibus mollis interdum. Praesent commodo cursus
-            magna, vel scelerisque nisl consectetur et. Donec sed odio dui.
-            Etiam porta sem malesuada magna mollis euismod.</Paragraph>
+          <Heading tag="h1">BinSTD</Heading>
+          <Paragraph>xxxxxx....</Paragraph>
         </Section>
      
-		
-      </Article>
-
+        </div>
     );
   }
 };
