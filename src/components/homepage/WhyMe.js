@@ -26,14 +26,18 @@ const WhyGrommetItem = (props) => (
         delay: (props.delay || 100)
       }}>
       <Button href={props.href} path={props.path} style={{ color: 'white' }} >
-        <Box pad={{ between: 'small', vertical: 'small' }}>
+        <Box 
+            pad={{ between: 'small', vertical: 'small' }}
+        >
           <Header direction='column' pad={{ between: 'medium' }}>
             {props.icon}
             <Heading tag='h3' margin='none'>
               {props.heading}
             </Heading>
           </Header>
-          <Box pad={{ horizontal: 'medium' }}>
+          <Box 
+            pad={{ horizontal: 'medium' }}
+          >
             {props.children}
           </Box>
         </Box>
@@ -46,20 +50,26 @@ export default class WhyMe extends Component {
   render() {
     return (
        <div>
-         <Box primary={true} pad={{ vertical: 'large' }} direction='column'
-            justify='center' align='center' flex='grow'>
+         <Box
+             primary={true} 
+            // pad={{ vertical: 'large' }} 
+            pad='medium'
+            direction='column'
+            justify='center' 
+            align='center' 
+            flex='grow'>
           <Heading  tag='h2' strong={true}>为什么选择我们?</Heading>
          
           <Paragraph 
             align='center'
             style={{ color: 'white' }}
           >
-        
             我们为你提供零成本的：从传统互联网应用开发到面向区块链的开发的云服务。
           </Paragraph>
           </Box>
           <Tiles justify='center'
-            pad={{ vertical: 'medium' }}>
+            // pad={{ vertical: 'medium' }}
+            >
             <WhyGrommetItem icon={<ResourcesIcon colorIndex='light-1'
               size='large' />}
               heading='支持多个公链网络' path='/' delay={100}
@@ -95,11 +105,11 @@ export default class WhyMe extends Component {
               size='large' />}
               heading='安全&去中心化' href='https://vimeo.com/187068246'
               delay={700}>
-              <Paragraph align='center' margin='none'
-               style={{ color: 'white' }}
-              >
-                我们帮助您连接区块链网络，为您提供易用性，零成本的区块链迁移，但我们不作为您的服务端，您的服务端是您选择的区块链网络。
-              </Paragraph>
+                <Paragraph align='center' margin='none'
+                style={{ color: 'white' }}
+                 >
+                    我们帮助您连接区块链网络，为您提供易用性，零成本的区块链迁移，但我们不作为您的服务端，您的服务端是您选择的区块链网络。
+                </Paragraph>
             </WhyGrommetItem>
           </Tiles>
       </div> 

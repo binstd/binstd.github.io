@@ -14,7 +14,11 @@ export default class HomeHeader extends Component {
   render() {
     return (
       <div>
-        <Box primary={true} pad={{ vertical: 'large' }} direction='column'
+        <Box 
+        primary={true} 
+        pad='medium'
+        // pad={{ vertical: 'large' }} 
+        direction='column'
           justify='center' align='center' flex='grow'>
           <Heading align='center' tag="h1" style={{ color: '#07AEFF' }}  >通证云 </Heading>
           <Paragraph align='center' style={{ color: '#07AEFF' }}  >BINSTD（BINARY DIGIT STANDARD）零开发成本的，区块链云服务平台</Paragraph>

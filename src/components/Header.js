@@ -25,7 +25,6 @@ export default function AppHeader (props) {
         {/* <HpiIcon colorIndex="brand" size="large" /> */}
         <Box pad="small" />
           <Menu label="导航" inline={true} direction="row" >
-
             <Anchor path="/"   >首页</Anchor>
             <Anchor href="/tags/服务"  > 服务</Anchor>
             <Anchor href="https://github.com/binstd/tplan" target="_blank" > 翻译计划</Anchor>

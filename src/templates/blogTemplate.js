@@ -13,25 +13,21 @@ export default function Template({
   return (
     <div>
     <Header style="" />
-    <Article  
-      justify='center'
-      align='center'
-    >
-    
-    {/* <PrimaryPage/> */}
-    <Section 
-      align='center'
-      pad='medium'
-      margin='small'
-      size={{width:'xxlarge'}} 
+      <Article  
+        justify='center'
+        align='center'
       >
-    {/* <Logo size="large" /> */}
-    <Heading tag="h1">{frontmatter.title}</Heading>
-      
-    <Markdown content={html} className='blog-content'  />
-   
   
-    </Section>  
+        <Section 
+        align='center'
+        pad='medium'
+        margin='small'
+        size={{width:'xxlarge'}} 
+        >
+
+        <Heading tag="h1">{frontmatter.title}</Heading>
+        <Markdown content={html} className='blog-content'  />
+      </Section>  
     </Article>
   </div>
 
