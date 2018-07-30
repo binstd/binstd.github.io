@@ -12,25 +12,25 @@ export default function Template({
   const { frontmatter, html } = markdownRemark;
   return (
     <div>
-    <Header style="" />
-      <Article  
-        justify='center'
-        align='center'
-      >
-  
+        <Header style="" />
+
+        <Article  
+            justify='center'
+            align='center'
+        >
         <Section 
-        align='center'
-        pad='medium'
-        margin='small'
-        size={{width:'xxlarge'}} 
+            align='center'
+            pad='medium'
+            margin='small'
+            size={{width:'xxlarge'}} 
         >
 
         <Heading tag="h1">{frontmatter.title}</Heading>
         <Markdown content={html} className='blog-content'  />
-      </Section>  
-    </Article>
-  </div>
+        </Section>  
 
+        </Article>
+  </div>
   );
 }
 

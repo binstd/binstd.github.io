@@ -16,8 +16,6 @@ import Tile from 'grommet/components/Tile';
 import Animate from 'grommet/components/Animate';
 
 import GithubIcon from 'grommet/components/icons/base/SocialGithub';
-import FacebookIcon from 'grommet/components/icons/base/SocialFacebook';
-import TwitterIcon from 'grommet/components/icons/base/SocialTwitter';
 
 import AccessibleIcon from
     'grommet/components/icons/base/Accessible';
@@ -270,9 +268,8 @@ export default class Home extends Component {
                     </Heading>
 
                     <Box pad='medium' >
-                    
                         <Paragraph
-                            pad='large'
+                            // pad='large'
                             align='center' 
                             // margin='none'
                             style={{ color: '#07AEFF' }}

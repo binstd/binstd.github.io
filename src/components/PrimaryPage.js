@@ -81,8 +81,6 @@ export default class PrimaryPage extends Component {
           <Heading tag="h1"  style={{ color:'#f5f5f5'}}  >通证云 </Heading>
           <Paragraph style={{ color:'#f5f5f5'}}  >BINSTD（BINARY DIGIT STANDARD）区块链云服务平台</Paragraph>
           <Button label='了解更多' style={{ color:'#f5f5f5',border: '2px solid #f5f5f5'}}   href='http://doc.binstd.com/'   primary={true}/>
-		
-    
         </Section>
 
       
@@ -139,10 +137,9 @@ export default class PrimaryPage extends Component {
           </Tiles>
 
 				<Box 
-				align="center"
-				size={{ "width": "xxlarge" }} 
-				pad={{ horizontal: "large" }}
-				
+				    align="center"
+				    size={{ "width": "xxlarge" }} 
+				    pad={{ horizontal: "large" }}
 				>
 					<Heading tag="h2" strong={true}>
 					官方Blog

@@ -3,7 +3,7 @@ import PostLink from "../components/post-link";
 import PrimaryPage from '../components/PrimaryPage';
 import Header from '../components/Header';
 import Article from 'grommet/components/Article';
-import NarraTive from '../components/demo/NarraTive';
+// import NarraTive from '../components/demo/NarraTive';
 import Home from '../components/Home';
 
 const IndexPage = ({
@@ -26,17 +26,15 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query IndexQuery {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+    allMarkdownRemark {
       edges {
         node {
           id
           html
           excerpt(pruneLength: 250)
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
             path
             title
-            img
           }
         }
       }
