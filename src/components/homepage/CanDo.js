@@ -51,7 +51,11 @@ export default class Cando extends Component {
               </Anchor>
             </Paragraph>
 
-            <Button style={{ color: '#07AEFF', border: '2px solid #07AEFF' }} path='/docs/start' label='点我开始' />
+            <Button 
+                style={{ color: '#07AEFF', border: '2px solid #07AEFF' }} 
+                path='/docs/start' 
+                label='点我开始' 
+            />
           </Box>
       </div> 
     );

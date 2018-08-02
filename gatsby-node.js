@@ -10,7 +10,6 @@ exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
         getNode,
         basePath: `content`,
     });
-
     // slug starts and ends with '/' so parts[0] and parts[-1] will be empty
     const parts = slug.split('/').filter(p => !!p);
 
@@ -106,69 +105,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             });
         });
         resolve();
-
-        
       });
     });
   };
   
 
-//   const _ = require('lodash');
-//   const path = require("path");
-  
-//   exports.createPages = ({ boundActionCreators, graphql }) => {
-//     const { createPage } = boundActionCreators;
-  
-//     const blogPostTemplate = path.resolve("src/templates/blogTemplate.js");
-//     const tagTemplate = path.resolve("src/templates/tags.js");
-  
-//     return graphql(`
-//       {
-//         allMarkdownRemark(
-//           sort: { order: DESC, fields: [frontmatter___date] }
-//           limit: 2000
-//         ) {
-//           edges {
-//               node {
-//                   frontmatter {
-//                   path
-//                   tags
-//                   }
-//               }
-//           }
-//         }
-//       }
-//     `).then(result => {
-//       if (result.errors) {
-//         return Promise.reject(result.errors);
-//       }
-  
-//       const posts = result.data.allMarkdownRemark.edges;
-  
-//       posts.forEach(({ node }) => {
-//         createPage({
-//           path: node.frontmatter.path,
-//           component: blogPostTemplate,
-//         });
-//       });
-  
-//       let tags = [];
-//       _.each(posts, edge => {
-//         if (_.get(edge, "node.frontmatter.tags")) {
-//           tags = tags.concat(edge.node.frontmatter.tags);
-//         }
-//       });
-  
-//       tags = _.uniq(tags);
-//       tags.forEach(tag => {
-//         createPage({
-//           path: `/tags/${_.kebabCase(tag)}/`,
-//           component: tagTemplate,
-//           context: {
-//             tag,
-//           },
-//         });
-//       });
-
-//     });
-//   };

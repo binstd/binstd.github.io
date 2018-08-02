@@ -1,6 +1,5 @@
 import React from "react";
 import PostLink from "../components/post-link";
-import PrimaryPage from '../components/PrimaryPage';
 import Header from '../components/Header';
 import Article from 'grommet/components/Article';
 // import NarraTive from '../components/demo/NarraTive';

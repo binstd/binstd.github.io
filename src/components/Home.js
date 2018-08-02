@@ -26,12 +26,9 @@ import DXCIcon from 'grommet/components/icons/base/PlatformDxc';
 import HPEIcon from 'grommet/components/icons/base/BrandHpeStack';
 import HPIcon from 'grommet/components/icons/base/PlatformHpi';
 
-import ResourcesIcon from 'grommet/components/icons/base/Resources';
-import ConfigureIcon from 'grommet/components/icons/base/Configure';
-import RunIcon from 'grommet/components/icons/base/Run';
 
 import Image from 'grommet/components/Image';
-// import Contents from './docs/Contents';
+
 import Hands from './img/Hands.js';
 
 
@@ -193,7 +190,8 @@ export default class Home extends Component {
 
         return (
             <Article
-                className='home' style={articleStyle}
+                className='home' 
+                style={articleStyle}
             >
 
                 <HomeSection
@@ -204,7 +202,6 @@ export default class Home extends Component {
                 // animate={true}
                 >
                     <HomeHeader />
-
                 </HomeSection>
 
 
@@ -286,23 +283,6 @@ export default class Home extends Component {
                     </Tiles>
                 </HomeSection>
 
-                {
-                /* <HomeSection ref={(ref) => this._mobileRef = ref}
-                backgroundImage={'url(/img/mobile_first.png)'} justify='start'
-                style={mobileStyle} animate={true}>
-                <Box className='home__mobile' align='center'>
-                    <Heading tag='h2' align='center' strong={true}>
-                    What will you create
-                    </Heading>
-                    <Paragraph align='center'>
-                    Grommet is used by a variety of companies.
-                    Check out some examples that we think you’ll love.
-                    </Paragraph>
-                    <Button path='/docs/showcase' label='Showcase' />
-                </Box>
-                </HomeSection> */
-                }
-
                 <Animate visible='scroll' keep={true}
                     enter={{ animation: 'fade', duration: 1000, delay: 100 }}>
                     <Footer align='stretch' primary={true} direction='column'
@@ -325,23 +305,19 @@ export default class Home extends Component {
                                 <Anchor target="_blank" href='https://github.com/binstd'
                                     icon={<GithubIcon
                                         a11yTitle='Grommet Github' />} />
-                                {/* <Anchor href='#'
-                  icon={<TwitterIcon a11yTitle='Grommet Twitter' />} />
-                <Anchor href='#'
-                  icon={<FacebookIcon a11yTitle='Grommet Facebook' />} /> */}
+                              
                             </Box>
                         </Box>
                         <Box direction='row'
                             pad={{ horizontal: 'medium', vertical: 'large' }}>
                             <span>
-                                <Anchor
-                                    href='binstd.com'>
+                                <Anchor href='binstd.com'>
                                     BinSTD官方
-                </Anchor>
+                                </Anchor>
                             </span>
                             <span>
                                 ©  2018 BinSTD All Rights Reserved.
-              </span>
+                            </span>
                         </Box>
                     </Footer>
                 </Animate>

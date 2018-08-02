@@ -12,8 +12,6 @@ export default function AppHeader (props) {
     <Header 
       justify="center" 
       fixed={true}
-      // colorIndex='brand'
-      // style={{backgroundColor:'rgb(7, 174, 255)'}}
      >
       <Box size={{width: {max: 'xxlarge'}}} direction="row"
         responsive={false} justify="start" align="center" 
@@ -25,12 +23,11 @@ export default function AppHeader (props) {
         {/* <HpiIcon colorIndex="brand" size="large" /> */}
         <Box pad="small" />
           <Menu label="导航" inline={true} direction="row" >
-            <Anchor path="/"   >首页</Anchor>
+            <Anchor path="/"> 首页</Anchor>
             <Anchor href="/tags/服务"  > 服务</Anchor>
-            <Anchor href="/docs/zh/get-started/"  >文档</Anchor>
+            <Anchor href="/docs/zh/get-started/"> 文档</Anchor>
             <Anchor href="https://github.com/binstd/tplan" target="_blank" > 翻译计划</Anchor>
-
-            <Anchor href="/info"  >关于</Anchor>
+            <Anchor href="/info" > 关于 </Anchor>
           </Menu>
           
         <Box flex="grow" align="end">
