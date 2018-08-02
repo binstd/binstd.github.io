@@ -1,0 +1,5 @@
+!.gitignore
+.cache/
+node_modules/
+.git
+public/
