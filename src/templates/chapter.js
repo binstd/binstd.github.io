@@ -251,15 +251,6 @@ export default ({
           <Highlight>{currentPage.html}</Highlight>
         </Markdown>
 
-        {/* {commit && (
-          <CTAWrapper target="_blank" href={`${codeGithubUrl}/commit/${commit}`}>
-            <IconCommit />
-            <CTAMessage>
-              Keep your code in sync with this chapter. View {commit} on GitHub.
-            </CTAMessage>
-          </CTAWrapper>
-        )} */}
-
         {nextEntry && (
           <Pagination
             text={

@@ -28,8 +28,6 @@ export default class HomeHeader extends Component {
         <Footer appCentered={true} justify='center'>
           <Anchor style={{ color: '#f5f5f5' }} href='https://github.com/binstd'  target="_blank" 
             icon={<GithubIcon />} />
-         
-      
         </Footer>
       </div>
     );

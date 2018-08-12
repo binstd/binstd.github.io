@@ -1,6 +1,6 @@
 ---
 title: "组装复合组件"
-tocTitle: "合成组件"
+tocTitle: "token余额"
 description: "使用更简单的组件 组装复合组件"
 commit: '5776042'
 ---

@@ -5,15 +5,11 @@ module.exports = {
         'binstd区块链云平台',
         permalink: 'https://binstd.com',
         toc: [
-            'get-started',
-            'simple-component',
-            'composite-component',
-            'data',
-            'screen',
-            'test',
-            'deploy',
-            'conclusion',
-            'contribute',
+            'started',
+            'ui-pay',
+            'balance',
+            'tokeninfo', 
+            'gas_price'
         ],
         languages: ['en', 'zh'],
         defaultTranslation: 'react/zh',
@@ -32,7 +28,7 @@ module.exports = {
       },
     },
     'gatsby-transformer-remark',
-    // 'gatsby-plugin-sass',
+
     {
       resolve: `gatsby-plugin-sass`,
       options: {
@@ -40,5 +36,4 @@ module.exports = {
       },
     }
   ],
-//   pathPrefix: "/binstdsite"
 }

@@ -1,6 +1,6 @@
 ---
 title: "构建一个简单的组件"
-tocTitle: "简单 组件"
+tocTitle: "支付网关"
 description: "单独构建一个简单的组件"
 commit: 131aade
 ---

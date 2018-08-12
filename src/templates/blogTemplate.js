@@ -5,6 +5,7 @@ import Heading from 'grommet/components/Heading';
 import Markdown from 'grommet/components/Markdown';
 import Article from 'grommet/components/Article';
 import Header from '../components/Header';
+import Foot from '../components/Foot';
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
 }) {
@@ -18,6 +19,7 @@ export default function Template({
             justify='center'
             align='center'
         >
+        
         <Section 
             align='center'
             pad='medium'
@@ -30,6 +32,7 @@ export default function Template({
         </Section>  
 
         </Article>
+        <Foot style="" />
   </div>
   );
 }

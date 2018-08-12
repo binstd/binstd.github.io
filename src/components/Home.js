@@ -1,6 +1,7 @@
 // (C) Copyright 2014-2017 Hewlett Packard Enterprise Development LP
 import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
+
 import Article from 'grommet/components/Article';
 import Header from 'grommet/components/Header';
 import Heading from 'grommet/components/Heading';
@@ -32,9 +33,9 @@ import Image from 'grommet/components/Image';
 import Hands from './img/Hands.js';
 
 
-import WhyMe from './homepage/WhyMe';
-import HomeHeader from './homepage/HomeHeader';
-import CanDo from './homepage/CanDo';
+import WhyMe from './homepage/WhyMe.js';
+import HomeHeader from './homepage/HomeHeader.js';
+import CanDo from './homepage/CanDo.js';
 //合作方
 const THEMES = [
     {
@@ -83,9 +84,9 @@ export default class Home extends Component {
 
     componentDidMount() {
 
-        if (document) {
-            document.title = 'Grommet';
-        }
+        // if (document) {
+        //     // document.title = 'Grommet';
+        // }
         this._layout();
     }
 
@@ -124,7 +125,7 @@ export default class Home extends Component {
             footerStyle = { marginBottom: `-${mobileNavHeight}px` };
         }
 
-        const mobileStyle = { backgroundPosition: `50% ${50 - mobileOffset}%` };
+        // const mobileStyle = { backgroundPosition: `50% ${50 - mobileOffset}%` };
 
         const codePen = (
             <iframe height='400' scrolling='no' title='Hello World'
@@ -133,8 +134,6 @@ export default class Home extends Component {
                 frameBorder='no' allowTransparency='true' allowFullScreen='true'
                 style={{ width: '100%' }} />
         );
-
-
 
         const themes = THEMES.map((theme, index) => {
             let labelNode;
@@ -191,15 +190,15 @@ export default class Home extends Component {
         return (
             <Article
                 className='home' 
-                style={articleStyle}
+                // style={articleStyle}
             >
 
                 <HomeSection
                     pad={{ vertical: 'medium' }} align='stretch'
-                // basis='large'
-                // style={{ backgroundColor: '#07AEFF', color: '#07AEFF' }}
-                // full={true}
-                // animate={true}
+                    basis='large'
+                    // style={{ backgroundColor: '#07AEFF', color: '#07AEFF' }}
+                    full={true}
+                    // animate={true}
                 >
                     <HomeHeader />
                 </HomeSection>
@@ -302,10 +301,11 @@ export default class Home extends Component {
                             </Box>
                             <Box direction='row' responsive={false}
                                 pad={{ vertical: 'small' }}>
-                                <Anchor target="_blank" href='https://github.com/binstd'
+                                <Anchor 
+                                    target="_blank" 
+                                    href='https://github.com/binstd'
                                     icon={<GithubIcon
-                                        a11yTitle='Grommet Github' />} />
-                              
+                                    a11yTitle='Grommet Github' />} />
                             </Box>
                         </Box>
                         <Box direction='row'

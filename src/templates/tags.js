@@ -11,6 +11,7 @@ import Columns from 'grommet/components/Columns';
 import Box from 'grommet/components/Box';
 // Components
 import Header from '../components/Header';
+import Foot from '../components/Foot';
 import Article from 'grommet/components/Article';
 import Section from 'grommet/components/Section';
 
@@ -29,8 +30,6 @@ const Tags = ({ pathContext, data }) => {
                 justify='center'
                 align='center'
             >
-
-
                 <Box justify='center' margin='medium' >
                     {edges.map(({ node }) => {
                         const { path, title, keynote } = node.frontmatter;
@@ -56,10 +55,9 @@ const Tags = ({ pathContext, data }) => {
                             </Link>
                         );
                     })}
-
                 </Box>
             </Article>
-
+            <Foot style="" />
         </div>
     );
 };

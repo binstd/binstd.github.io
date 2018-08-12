@@ -1,6 +1,6 @@
 ---
 title: "构建一个页面"
-tocTitle: "页面"
+tocTitle: "gas价格"
 description: "用组件构建一个页面"
 commit: 9ead5d8
 ---
