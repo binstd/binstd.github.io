@@ -11,7 +11,7 @@ module.exports = {
             'tokeninfo', 
             'gas_price'
         ],
-        languages: ['en', 'zh'],
+        languages: ['zh'],
         defaultTranslation: 'react/zh',
         siteUrl: 'https://binstd.com',
         githubUrl: 'https://github.com/hichroma/learnstorybook.com',

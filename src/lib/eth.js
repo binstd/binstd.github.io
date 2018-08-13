@@ -1,4 +1,5 @@
-export let web3 = window.Web3 ? new window.Web3(window.web3.currentProvider) : undefined;
+const windowGlobal = typeof window !== 'undefined' && window;
+export let web3 = windowGlobal.Web3 ? new windowGlobal.Web3(windowGlobal.web3.currentProvider) : undefined;
 
 export const isAddress = (hash) => {
     if (typeof hash === 'string') {

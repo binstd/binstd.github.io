@@ -96,7 +96,7 @@ const AppHeader =  observer(class AppHeader extends Component {
                             <Anchor path="/"> 首页</Anchor>
                             <Anchor href="/tags/服务"  > 服务</Anchor>
                             {user_model.address ? 
-                            <Anchor href="/docs/zh/started/"> 文档</Anchor> 
+                            <Anchor href="/docs/zh/started"> 文档</Anchor> 
                             : ''
                             }
                             
