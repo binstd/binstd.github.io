@@ -30,7 +30,7 @@ const AppHeader =  observer(class AppHeader extends Component {
         console.log('userinfo:',user_model.getAllData);
  
         if(!user_model.address&&!user_model.logintype){
-            console.log('没有登陆');
+            console.log('没有登录');
         }
             // console.log(this.state.redirect_url);
         switch (getMetamaskStatus()) {
@@ -45,7 +45,7 @@ const AppHeader =  observer(class AppHeader extends Component {
                 console.log(web3.eth.accounts[0].slice(0,12));
                 console.log(web3.toHex("Hello world"),);
                 // web3.personal.sign();
-                web3.personal.sign(web3.fromAscii('测试登陆'), web3.eth.accounts[0], "2222", (error, signedMsg) => {
+                web3.personal.sign(web3.fromAscii('测试登录'), web3.eth.accounts[0], "2222", (error, signedMsg) => {
                     if (error) {
                         console.log('::::');
                         console.warn(error);
@@ -82,31 +82,31 @@ const AppHeader =  observer(class AppHeader extends Component {
             <Header
                 justify="center"
                 fixed={true}
+                style={{backgroundColor: '#07AEFF'}}
             >
-                <Box size={{ width: { max: 'xxlarge' } }} direction="row"
+                <Box size={{ width: { max: 'xxlarge'}}} direction="row"
                     responsive={false} justify="start" align="center"
                     pad={{ horizontal: 'medium' }} flex="grow"  >
                     <Image
-                        src='https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/Icon500.png'
-                        style={{ height: 50, width: 50 }}
+                        src='https://programmerinnfile.b0.upaiyun.com/community/10001/20180814/yzdXjjAI4g.png'
+                        style={{ height: 30, width: 108, margin: '0 35px 5px 0' }}
                     />
                     {/* <HpiIcon colorIndex="brand" size="large" /> */}
                     <Box pad="small" />
-                        <Menu label="导航" inline={true} direction="row" >
-                            <Anchor path="/"> 首页</Anchor>
-                            <Anchor href="/tags/服务"  > 服务</Anchor>
+                        <Menu label="导航" inline={true} direction="row">
+                            <Anchor path="/">首页</Anchor>
+                            <Anchor href="/tags/服务">服务</Anchor>
                             {user_model.address ? 
-                            <Anchor href="/docs/zh/started"> 文档</Anchor> 
+                            <Anchor href="/docs/zh/started">文档</Anchor> 
                             : ''
                             }
-                            
-                            <Anchor href="https://github.com/binstd/tplan" target="_blank" > 翻译计划</Anchor>
-                            <Anchor href="/info" > 关于 </Anchor>
+                            <Anchor href="https://github.com/binstd/tplan" target="_blank" >文档计划</Anchor>
+                            <Anchor href="/info">关于</Anchor>
                         </Menu>
 
                         <Box flex="grow" align="end">
                             <Button label={user_label}
-                                // style={{ color:'#f5f5f5'}} 
+                                style={{ color:'#FFFFFF', borderColor: '#FFFFFF'}}
                                 onClick={() => this.payToken()}
                             />
                         </Box>

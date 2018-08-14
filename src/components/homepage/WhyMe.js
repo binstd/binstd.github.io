@@ -101,16 +101,7 @@ export default class WhyMe extends Component {
                 你可以方便的使用自己熟悉的编程语言，和我们提供的开发工具，开发去中心化的区块链应用，甚至免开发，直接部署。
               </Paragraph>
             </WhyGrommetItem>
-            <WhyGrommetItem icon={<AccessibleIcon colorIndex='light-1'
-              size='large' />}
-              heading='安全&去中心化' href='https://vimeo.com/187068246'
-              delay={700}>
-                <Paragraph align='center' margin='none'
-                style={{ color: 'white' }}
-                 >
-                    我们帮助您连接区块链网络，为您提供易用性，零成本的区块链迁移，但我们不作为您的服务端，您的服务端是您选择的区块链网络。
-                </Paragraph>
-            </WhyGrommetItem>
+
           </Tiles>
       </div> 
     );

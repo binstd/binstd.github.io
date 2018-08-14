@@ -17,21 +17,16 @@ import Tile from 'grommet/components/Tile';
 import Animate from 'grommet/components/Animate';
 
 import GithubIcon from 'grommet/components/icons/base/SocialGithub';
-
-import AccessibleIcon from
-    'grommet/components/icons/base/Accessible';
-
+import AccessibleIcon from 'grommet/components/icons/base/Accessible';
 import GrommetIcon from 'grommet/components/icons/base/BrandGrommetOutline';
 import ArubaIcon from 'grommet/components/icons/base/PlatformAruba';
 import DXCIcon from 'grommet/components/icons/base/PlatformDxc';
 import HPEIcon from 'grommet/components/icons/base/BrandHpeStack';
 import HPIcon from 'grommet/components/icons/base/PlatformHpi';
 
-
 import Image from 'grommet/components/Image';
 
 import Hands from './img/Hands.js';
-
 
 import WhyMe from './homepage/WhyMe.js';
 import HomeHeader from './homepage/HomeHeader.js';
@@ -69,8 +64,6 @@ class HomeSection extends Component {
     }
 };
 
-
-
 export default class Home extends Component {
 
     constructor() {
@@ -83,7 +76,6 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
-
         // if (document) {
         //     // document.title = 'Grommet';
         // }
@@ -203,7 +195,6 @@ export default class Home extends Component {
                     <HomeHeader />
                 </HomeSection>
 
-
                 <HomeSection animate={true}
                     style={{ backgroundColor: '#07AEFF', color: 'white' }}
                 //  full={true}
@@ -232,13 +223,13 @@ export default class Home extends Component {
                     </Box>
 
                     <Box pad='medium' align='center'>
-                        <Heading tag='h3' strong={true}>与我们携手,壮大区块链生态</Heading>
+                        <Heading tag='h3' strong={true}>文档计划</Heading>
                         <Paragraph 
                             align='center' 
                             margin='none'
                             style={{ color: 'white' }}
                         >
-                            我们有开发者社群,文档翻译计划(已翻译多个业内有影响力的开发文档和知名项目白皮书)。
+                            前沿区块链技术布道，优质海量开发者社群
                         </Paragraph>
                         <Footer 
                             pad='medium' 
@@ -260,7 +251,7 @@ export default class Home extends Component {
                         strong={true}
                         style={{ color: '#07AEFF' }}
                     >
-                        binstd生态
+                        BinSTD生态
                     </Heading>
 
                     <Box pad='medium' >
@@ -270,9 +261,8 @@ export default class Home extends Component {
                             // margin='none'
                             style={{ color: '#07AEFF' }}
                         >
-                            binstd通证云,帮助许多传统企业区块链化.我们也拥有多个合作伙伴：
+                        BinSTD帮助企业区块链化，我们也拥有多个合作伙伴：
                         </Paragraph>
-
                     </Box>
                     <Tiles align='center' justify='center' responsive={false}
                         pad='large'
@@ -281,7 +271,6 @@ export default class Home extends Component {
                         {themes}
                     </Tiles>
                 </HomeSection>
-
                 <Animate visible='scroll' keep={true}
                     enter={{ animation: 'fade', duration: 1000, delay: 100 }}>
                     <Footer align='stretch' primary={true} direction='column'
@@ -291,11 +280,10 @@ export default class Home extends Component {
                                 responsive={false}>
                                 {/* <GrommetLogo /> */}
                                 <Image
-                                    src='https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/Icon500.png'
+                                    src='https://programmerinnfile.b0.upaiyun.com/community/10001/20180814/69sDk199wJ.png'
                                     style={{ height: 50, width: 50 }}
                                 />
-                                <Anchor path='tags/blog'>官方Blog</Anchor>
-                                <Anchor href='https://github.com/binstd' target="_blank" >github</Anchor>
+                                <Anchor href='https://github.com/binstd' target="_blank" >GitHub</Anchor>
                                 <Anchor href='https://www.proginn.com/' target="_blank" >程序员客栈</Anchor>
                                 <Anchor href='/info'>关于</Anchor>
                             </Box>
@@ -311,19 +299,12 @@ export default class Home extends Component {
                         <Box direction='row'
                             pad={{ horizontal: 'medium', vertical: 'large' }}>
                             <span>
-                                <Anchor href='binstd.com'>
-                                    BinSTD官方
-                                </Anchor>
-                            </span>
-                            <span>
-                                ©  2018 BinSTD All Rights Reserved.
+                              BinSTD进制 ©2018 All Rights Reserved.
                             </span>
                         </Box>
                     </Footer>
                 </Animate>
-
             </Article>
         );
     }
-
 };

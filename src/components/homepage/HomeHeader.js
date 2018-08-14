@@ -9,7 +9,6 @@ import Button from 'grommet/components/Button';
 import Box from 'grommet/components/Box';
 import GithubIcon from 'grommet/components/icons/base/SocialGithub';
 
-
 export default class HomeHeader extends Component {
   render() {
     return (
@@ -20,9 +19,9 @@ export default class HomeHeader extends Component {
         // pad={{ vertical: 'large' }} 
           direction='column'
           justify='center' align='center' flex='grow'>
-          <Heading align='center' tag="h1" style={{ color: '#07AEFF' }}  >通证云 </Heading>
-          <Paragraph align='center' style={{ color: '#07AEFF' }}  >BINSTD（BINARY DIGIT STANDARD）零开发成本的，区块链云服务平台</Paragraph>
-          <Button label='了解更多' align='center' style={{ color: '#07AEFF',  background:'#fff', border: '2px solid #07AEFF' }} href='http://doc.binstd.com/' primary={true} />
+          <Heading align='center' tag="h1" style={{ color: '#07AEFF' }}>进制</Heading>
+          <Paragraph align='center' style={{ color: '#07AEFF' }}  >Binary Standard Foundation – BinSTD 标准技术开发者生态，区块链云服务平台</Paragraph>
+          <Button label='了解更多' align='center' style={{ color: '#07AEFF',  background:'#fff', border: '2px solid #07AEFF' }} href='https://www.binstd.com/' primary={true} />
         
         </Box>
         <Footer appCentered={true} justify='center'>
