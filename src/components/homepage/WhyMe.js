@@ -58,7 +58,7 @@ export default class WhyMe extends Component {
             justify='center' 
             align='center' 
             flex='grow'>
-          <Heading  tag='h2' strong={true}>为什么选择我们?</Heading>
+          <Heading tag='h2' strong={true} style={{ color: 'white' }}>为什么选择我们?</Heading>
          
           <Paragraph 
             align='center'

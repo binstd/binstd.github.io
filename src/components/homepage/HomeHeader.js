@@ -19,8 +19,8 @@ export default class HomeHeader extends Component {
         // pad={{ vertical: 'large' }} 
           direction='column'
           justify='center' align='center' flex='grow'>
-          <Heading align='center' tag="h1" style={{ color: '#07AEFF' }}>进制</Heading>
-          <Paragraph align='center' style={{ color: '#07AEFF' }}  >Binary Standard Foundation – BinSTD 标准技术开发者生态，区块链云服务平台</Paragraph>
+          <Heading align='center' tag="h1" style={{ color: '#07AEFF' }}  strong={true}>进制</Heading>
+          <Paragraph align='center' style={{ color: '#1D2A3A' }}  >Binary Standard Foundation – BinSTD 标准技术开发者生态，区块链云服务平台</Paragraph>
           <Button label='了解更多' align='center' style={{ color: '#07AEFF',  background:'#fff', border: '2px solid #07AEFF' }} href='https://www.binstd.com/' primary={true} />
         </Box>
       </div>

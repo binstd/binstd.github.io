@@ -286,6 +286,7 @@ export default class Home extends Component {
                                 <Anchor href='https://github.com/binstd' target="_blank" >GitHub</Anchor>
                                 <Anchor href='https://www.proginn.com/' target="_blank" >程序员客栈</Anchor>
                                 <Anchor href='/info'>关于</Anchor>
+                                <Anchor href='/info'>Logo下载</Anchor>
                             </Box>
                             <Box direction='row' responsive={false}
                                 pad={{ vertical: 'small' }}>

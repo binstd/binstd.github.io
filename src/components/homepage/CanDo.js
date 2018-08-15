@@ -29,17 +29,15 @@ export default class Cando extends Component {
           </Box>
           <Box align='center' pad='large'>
             <Heading tag='h2' align='center' strong={true}
-              style={{ color: '#07AEFF' }}
+              style={{ color: '#00AFFF' }}
             >
               我们提供
             </Heading>
 
             <Paragraph align='center'
-              style={{ color: '#07AEFF' }}
+              style={{ color: '#1D2A3A' }}
             >
-               <Anchor path='/docs/learn'>
-                一键式的合约部署；多种公链支持；提供功能丰富的API，为开发者封装熟悉语言的SDK；无需学习区块链合约编程，急速上手开发
-              </Anchor>
+            一键式的合约部署；多种公链支持；提供功能丰富的API，为开发者封装熟悉语言的SDK；无需学习区块链合约编程，急速上手开发
             </Paragraph>
 
             <Button 
