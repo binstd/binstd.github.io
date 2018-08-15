@@ -223,7 +223,7 @@ export default class Home extends Component {
                     </Box>
 
                     <Box pad='medium' align='center'>
-                        <Heading tag='h3' strong={true}>文档计划</Heading>
+                        <Heading tag='h2' strong={true}  style={{ color: 'white' }}>文档计划</Heading>
                         <Paragraph 
                             align='center' 
                             margin='none'
@@ -286,7 +286,7 @@ export default class Home extends Component {
                                 <Anchor href='https://github.com/binstd' target="_blank" >GitHub</Anchor>
                                 <Anchor href='https://www.proginn.com/' target="_blank" >程序员客栈</Anchor>
                                 <Anchor href='/info'>关于</Anchor>
-                                <Anchor href='/info'>Logo下载</Anchor>
+                                <Anchor href='https://github.com/binstd/binstd.github.io/blob/site-code/logo.pdf'>Logo下载</Anchor>
                             </Box>
                             <Box direction='row' responsive={false}
                                 pad={{ vertical: 'small' }}>
