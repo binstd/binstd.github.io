@@ -64,7 +64,13 @@ h3.grommetux-heading {
 }
 
 
-
+.grommetux-menu__drop{
+    background-color: #00AFFF;
+}
+.grommetux-button{
+    font-size: 16px;
+    color: #FFFFFF;
+}
 
 .logo 
 {
