@@ -1,8 +1,8 @@
 module.exports = {
     siteMetadata: {
-        title: 'binstd-区块链云服务平台',
+        title: 'BinSTD进制 - 区块链云服务平台',
         description:
-        'binstd区块链云平台',
+        'Binary Standard Foundation – BinSTD',
         permalink: 'https://binstd.com',
         toc: [
             'started',

@@ -13,7 +13,6 @@ import AccessibleIcon from
 import Image from 'grommet/components/Image';
 
 
-
 export default class Foot extends Component {
     constructor () {
         super();
@@ -58,13 +57,12 @@ export default class Foot extends Component {
                             responsive={false}>
                             {/* <GrommetLogo /> */}
                             <Image
-                                src='https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/Icon500.png'
+                                src='https://programmerinnfile.b0.upaiyun.com/community/10001/20180814/69sDk199wJ.png'
                                 style={{ height: 50, width: 50 }}
                             />
-                            <Anchor path='tags/blog'>官方Blog</Anchor>
-                            <Anchor href='https://github.com/binstd' target="_blank" >github</Anchor>
+                            <Anchor href='https://github.com/binstd' target="_blank" >GitHub</Anchor>
                             <Anchor href='https://www.proginn.com/' target="_blank" >程序员客栈</Anchor>
-                            <Anchor href='/info'>关于</Anchor>
+                            <Anchor href='/info'>关于我们</Anchor>
                         </Box>
                         <Box direction='row' responsive={false}
                             pad={{ vertical: 'small' }}>
@@ -77,13 +75,9 @@ export default class Foot extends Component {
                     </Box>
                     <Box direction='row'
                         pad={{ horizontal: 'medium', vertical: 'large' }}>
+
                         <span>
-                            <Anchor href='binstd.com'>
-                                BinSTD官方
-                            </Anchor>
-                        </span>
-                        <span>
-                            ©  2018 BinSTD All Rights Reserved.
+                           BinSTD进制 © 2018 All Rights Reserved.
                         </span>
                     </Box>
                 </Footer>
@@ -91,6 +85,3 @@ export default class Foot extends Component {
         );
     }
 };
-
-
-

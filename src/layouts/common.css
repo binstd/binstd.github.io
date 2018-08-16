@@ -1,31 +1,76 @@
 .headerAnchor{
-    color: #000000 !important;
+    color: #1D2A3A!important;
+}
+.grommetux-anchor{
+    color: #FFFFFF!important;
+    font-size: 16px;
 }
 
 .grommetux-anchor:hover, .grommetux-anchor:active, .grommetux-anchor:focus {
-    color: #000000!important;
+    color: #1D2A3A!important;
     outline: none!important;
     text-decoration: none!important;
 }
 
 a:hover, a:active, a:focus {
-    color: #07AEFF!important;
+    color: #00AFFF!important;
     outline: none!important;
     text-decoration: none!important;
 }
 
 .blog{
-    color: #000000!important;
-    outline: none!important;
-    text-decoration: none!important;
+    color: #1D2A3A!important;
+    font-size: 36px;
+    line-height: 1.5;
+    font-weight: 500;
+    margin: 25px 0 10px;
 }
 
-.blog .grommetux-section{
-  color: #666 !important;
+.grommetux-section{
+    color: #1D2A3A;
+    margin: 15px 0;
+    line-height: 1.5;
+    font-weight: 300;
 }
 
 .grommetux-section .grommetux-paragraph{
   max-width: 100% !important;
+}
+
+.grommetux-paragraph{
+    color: #1D2A3A;
+    margin: 15px 0;
+    line-height: 1.5;
+    font-weight: 300;
+}
+.grommetux-heading{
+    color: #1D2A3A;
+    margin: 15px 0;
+    line-height: 1.5;
+}
+h1.grommetux-heading {
+    font-size: 36px;
+    line-height: 1.5;
+    font-weight: 500;
+    margin: 25px 0;
+}
+h3.grommetux-heading {
+    font-size: 20px;
+    color: #1D2A3A;
+    margin: 15px 0;
+    line-height: 1.5;
+}
+.grommetux-title{
+  margin: 0;
+}
+
+
+.grommetux-menu__drop{
+    background-color: #00AFFF;
+}
+.grommetux-button{
+    font-size: 16px;
+    color: #FFFFFF;
 }
 
 .logo 
@@ -150,8 +195,7 @@ a:hover, a:active, a:focus {
         padding-top: 12px;
         padding-bottom: 12px; }
       .grommetux-box--pad-vertical-medium {
-        padding-top: 24px;
-        padding-bottom: 24px; }
+        padding:0; }
       .grommetux-box--pad-vertical-large {
         padding-top: 48px;
         padding-bottom: 48px; }
@@ -457,7 +501,3 @@ a:hover, a:active, a:focus {
 .grommet * {
     box-sizing: inherit; 
 }
-
-/* .grommetux-paragraph{
-    color: white;
-} */

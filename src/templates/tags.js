@@ -34,25 +34,22 @@ const Tags = ({ pathContext, data }) => {
                     {edges.map(({ node }) => {
                         const { path, title, keynote } = node.frontmatter;
                         return (
-                            <Link key={path} to={path} className="blog" >
-                            
                                 <Box
                                     size={{ width: { max: 'xxlarge' }}}
                                     margin='small'
                                     responsive={false} justify="start" align="center"
                                     pad={{ horizontal: 'medium' }} flex="grow"
                                 >
-
-                                <Title >
-                                    {title}
-                                </Title>
-                        
-                                <Section >
-                                    {keynote}
-                                </Section>
+                                    <Title >
+                                        <Link key={path} to={path} className="blog">{title}</Link>
+                                    </Title>
+                          
+                                    <Section >
+                                        {keynote}
+                                    </Section>
 
                                 </Box>
-                            </Link>
+                            
                         );
                     })}
                 </Box>
