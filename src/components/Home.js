@@ -83,10 +83,6 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
-
-        // if (document) {
-        //     // document.title = 'Grommet';
-        // }
         this._layout();
     }
 
@@ -206,8 +202,6 @@ export default class Home extends Component {
 
                 <HomeSection animate={true}
                     style={{ backgroundColor: '#07AEFF', color: 'white' }}
-                //  full={true}
-                // align='center'
                 >
                     <WhyMe />
                 </HomeSection>
@@ -250,7 +244,6 @@ export default class Home extends Component {
                             label='申请加入' />
                         </Footer>
                     </Box>
-
                 </HomeSection>
 
                 <HomeSection colorIndex='light-2' animate={true}>

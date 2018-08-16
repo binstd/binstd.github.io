@@ -1,11 +1,13 @@
 .headerAnchor{
     color: #000000 !important;
 }
+
 .grommetux-anchor:hover, .grommetux-anchor:active, .grommetux-anchor:focus {
     color: #000000!important;
     outline: none!important;
     text-decoration: none!important;
 }
+
 a:hover, a:active, a:focus {
     color: #07AEFF!important;
     outline: none!important;
@@ -22,16 +24,9 @@ a:hover, a:active, a:focus {
   color: #666 !important;
 }
 
-
 .grommetux-section .grommetux-paragraph{
   max-width: 100% !important;
 }
-/* #00DEFF */
-
-/*     */
-
-
-
 
 .logo 
 {
@@ -43,6 +38,7 @@ a:hover, a:active, a:focus {
     background-size: cover;
     background-repeat: no-repeat; 
 }
+
 
 .grommetux-box--pad-none {
     padding: 0px; 
