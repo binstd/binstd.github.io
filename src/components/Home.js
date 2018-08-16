@@ -285,6 +285,7 @@ export default class Home extends Component {
                                 />
                                 <Anchor href='https://github.com/binstd' target="_blank" >GitHub</Anchor>
                                 <Anchor href='https://www.zhihu.com/people/intech-porter' target="_blank" >知乎</Anchor>
+                                <Anchor href='#' target="_blank" title="binstd">微信公众号</Anchor>
                                 <Anchor href='https://www.proginn.com/' target="_blank" >程序员客栈</Anchor>
                                 <Anchor href='/info'>关于</Anchor>
                                 <Anchor href='https://github.com/binstd/binstd.github.io/blob/site-code/logo.pdf'>Logo下载</Anchor>
