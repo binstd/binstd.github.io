@@ -85,6 +85,3 @@ export default class Foot extends Component {
         );
     }
 };
-
-
-

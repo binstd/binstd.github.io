@@ -34,10 +34,10 @@ import CanDo from './homepage/CanDo.js';
 //合作方
 const THEMES = [
     {
-        Icon: HPEIcon, url: '/hpe',
+        Icon: HPEIcon, url: '/info',
         size: 'xlarge'
     },
-    { label: 'grommet', Icon: GrommetIcon, url: '/', size: 'large' },
+    { Icon: GrommetIcon, url: '/', size: 'large' },
     { Icon: ArubaIcon, url: '/aruba', size: 'xlarge' },
     { Icon: HPIcon, url: '/hpinc', size: 'large' },
     { Icon: DXCIcon, url: '/dxc', size: 'large' }
@@ -236,7 +236,7 @@ export default class Home extends Component {
                             justify='center'
                         >
                         <Button
-                            path='/'
+                            path='https://github.com/binstd/tplan'
                             style={{ color: '#f5f5f5', border: '2px solid #f5f5f5' }}
                             label='申请加入' />
                         </Footer>
@@ -284,6 +284,7 @@ export default class Home extends Component {
                                     style={{ height: 50, width: 50 }}
                                 />
                                 <Anchor href='https://github.com/binstd' target="_blank" >GitHub</Anchor>
+                                <Anchor href='https://www.zhihu.com/people/intech-porter' target="_blank" >知乎</Anchor>
                                 <Anchor href='https://www.proginn.com/' target="_blank" >程序员客栈</Anchor>
                                 <Anchor href='/info'>关于</Anchor>
                                 <Anchor href='https://github.com/binstd/binstd.github.io/blob/site-code/logo.pdf'>Logo下载</Anchor>
