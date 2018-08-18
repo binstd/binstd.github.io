@@ -1,60 +1,36 @@
 {
   "assetsByChunkName": {
-    "path---docs-en-deploy": [
-      "path---docs-en-deploy-242f49cb066024404597.js",
-      "path---docs-en-deploy-242f49cb066024404597.js.map"
+    "path---docs-zh-balance": [
+      "path---docs-zh-balance-3054b6f424451cdb8ee1.js",
+      "path---docs-zh-balance-3054b6f424451cdb8ee1.js.map"
     ],
     "path---tags-blog": [
-      "path---tags-blog-111807a658bc24d3d279.js",
-      "path---tags-blog-111807a658bc24d3d279.js.map"
+      "path---tags-blog-29c9f91d39e41118a9c7.js",
+      "path---tags-blog-29c9f91d39e41118a9c7.js.map"
     ],
     "path---tags-理论": [
-      "path---tags-理论-481f6bf55fd6369aaba5.js",
-      "path---tags-理论-481f6bf55fd6369aaba5.js.map"
+      "path---tags-理论-b810efa21f9c05cdafe9.js",
+      "path---tags-理论-b810efa21f9c05cdafe9.js.map"
     ],
-    "path---docs-es-contribute": [
-      "path---docs-es-contribute-a02608eac3a361767e4c.js",
-      "path---docs-es-contribute-a02608eac3a361767e4c.js.map"
-    ],
-    "path---docs-zh-simple-component": [
-      "path---docs-zh-simple-component-116e34d6f7018503d3d4.js",
-      "path---docs-zh-simple-component-116e34d6f7018503d3d4.js.map"
-    ],
-    "path---docs-es-data": [
-      "path---docs-es-data-a3004e865eb56764fd71.js",
-      "path---docs-es-data-a3004e865eb56764fd71.js.map"
-    ],
-    "path---docs-en-get-started": [
-      "path---docs-en-get-started-8bd47134e63676747e5c.js",
-      "path---docs-en-get-started-8bd47134e63676747e5c.js.map"
+    "path---docs-zh-txhash": [
+      "path---docs-zh-txhash-56e6ab3431370387fa12.js",
+      "path---docs-zh-txhash-56e6ab3431370387fa12.js.map"
     ],
     "path---docs-zh-conclusion": [
-      "path---docs-zh-conclusion-b0d1582d0f4542d107d6.js",
-      "path---docs-zh-conclusion-b0d1582d0f4542d107d6.js.map"
+      "path---docs-zh-conclusion-8ea0e2c83823ee4623f0.js",
+      "path---docs-zh-conclusion-8ea0e2c83823ee4623f0.js.map"
     ],
-    "path---docs-es-deploy": [
-      "path---docs-es-deploy-ebe8ca7f616392bbeb20.js",
-      "path---docs-es-deploy-ebe8ca7f616392bbeb20.js.map"
+    "path---docs-zh-tokeninfo": [
+      "path---docs-zh-tokeninfo-d0e3d444c3ed23793120.js",
+      "path---docs-zh-tokeninfo-d0e3d444c3ed23793120.js.map"
     ],
     "component---src-pages-index-js": [
-      "component---src-pages-index-js-562a47c026533a311ac9.js",
-      "component---src-pages-index-js-562a47c026533a311ac9.js.map"
-    ],
-    "path---docs-en-data": [
-      "path---docs-en-data-f0c87abb5a00e119227a.js",
-      "path---docs-en-data-f0c87abb5a00e119227a.js.map"
-    ],
-    "path---docs-en-simple-component": [
-      "path---docs-en-simple-component-d6b44ef07a0e9fde6f8e.js",
-      "path---docs-en-simple-component-d6b44ef07a0e9fde6f8e.js.map"
-    ],
-    "path---blog": [
-      "path---blog-f869a93c0c57a379d3a1.js",
-      "path---blog-f869a93c0c57a379d3a1.js.map"
+      "component---src-pages-index-js-5543304379513c1b9f10.js",
+      "component---src-pages-index-js-5543304379513c1b9f10.js.map"
     ],
     "component---src-templates-tags-js": [
-      "component---src-templates-tags-js-96a186d452cb07154c2e.js",
-      "component---src-templates-tags-js-96a186d452cb07154c2e.js.map"
+      "component---src-templates-tags-js-291d48f525555422284c.js",
+      "component---src-templates-tags-js-291d48f525555422284c.js.map"
     ],
     "path---tags": [
       "path---tags-db87d59fee8980ac012a.js",
@@ -68,33 +44,17 @@
       "path---info-651d731324624ab1ca58.js",
       "path---info-651d731324624ab1ca58.js.map"
     ],
-    "path---docs-zh-test": [
-      "path---docs-zh-test-85395bdb6a86ffade4e5.js",
-      "path---docs-zh-test-85395bdb6a86ffade4e5.js.map"
-    ],
     "component---src-layouts-index-js": [
-      "component---src-layouts-index-js-301e276bd5a94a7d50b4.js",
-      "component---src-layouts-index-js-301e276bd5a94a7d50b4.js.map"
+      "component---src-layouts-index-js-a64d613a72a861ad4fc6.js",
+      "component---src-layouts-index-js-a64d613a72a861ad4fc6.js.map"
     ],
     "component---src-templates-blog-template-js": [
-      "component---src-templates-blog-template-js-9bbf2b313543a935fccf.js",
-      "component---src-templates-blog-template-js-9bbf2b313543a935fccf.js.map"
-    ],
-    "path---docs-es-screen": [
-      "path---docs-es-screen-97d38e5497a7ec875082.js",
-      "path---docs-es-screen-97d38e5497a7ec875082.js.map"
-    ],
-    "path---docs-es-composite-component": [
-      "path---docs-es-composite-component-a7a5b8f4db15c39fb2c6.js",
-      "path---docs-es-composite-component-a7a5b8f4db15c39fb2c6.js.map"
-    ],
-    "path---docs-en-test": [
-      "path---docs-en-test-615906993f20becbb59e.js",
-      "path---docs-en-test-615906993f20becbb59e.js.map"
+      "component---src-templates-blog-template-js-fdb0dde6c9aaac5a56f2.js",
+      "component---src-templates-blog-template-js-fdb0dde6c9aaac5a56f2.js.map"
     ],
     "path---index": [
-      "path---index-cbfb748ba7b6881303ab.js",
-      "path---index-cbfb748ba7b6881303ab.js.map"
+      "path---index-07159db88478c90a3eec.js",
+      "path---index-07159db88478c90a3eec.js.map"
     ],
     "component---src-pages-404-js": [
       "component---src-pages-404-js-af605838838f1684c1fd.js",
@@ -104,19 +64,23 @@
       "component---src-templates-chapter-js-3b67f79f15554454ed64.js",
       "component---src-templates-chapter-js-3b67f79f15554454ed64.js.map"
     ],
-    "path---docs-zh-composite-component": [
-      "path---docs-zh-composite-component-5cf09c557d077740832c.js",
-      "path---docs-zh-composite-component-5cf09c557d077740832c.js.map"
+    "path---docs-zh-started": [
+      "path---docs-zh-started-94a459e86a21e5465695.js",
+      "path---docs-zh-started-94a459e86a21e5465695.js.map"
     ],
     "commons": [
-      "commons-17114fb7dfa16b2967cd.js",
+      "commons-990450e07d225aad3448.js",
       "build-js-styles.css",
-      "commons-17114fb7dfa16b2967cd.js.map",
+      "commons-990450e07d225aad3448.js.map",
       "build-js-styles.css.map"
     ],
     "path---docs-zh-data": [
-      "path---docs-zh-data-b3147743d54948039958.js",
-      "path---docs-zh-data-b3147743d54948039958.js.map"
+      "path---docs-zh-data-b09cd8e250b7018693eb.js",
+      "path---docs-zh-data-b09cd8e250b7018693eb.js.map"
+    ],
+    "path---docs-zh-gas-price": [
+      "path---docs-zh-gas-price-4d3a39f041ebdfab921f.js",
+      "path---docs-zh-gas-price-4d3a39f041ebdfab921f.js.map"
     ],
     "path---blog-3": [
       "path---blog-3-bae5d4eacbada8498db9.js",
@@ -126,25 +90,9 @@
       "path---blog-1-a54491bd3d43853b2f67.js",
       "path---blog-1-a54491bd3d43853b2f67.js.map"
     ],
-    "path---eth-2": [
-      "path---eth-2-4b0d9a659c4e7ef6b989.js",
-      "path---eth-2-4b0d9a659c4e7ef6b989.js.map"
-    ],
     "path---404-html": [
       "path---404-html-a0e39f21c11f6a62c5ab.js",
       "path---404-html-a0e39f21c11f6a62c5ab.js.map"
-    ],
-    "path---docs-zh-get-started": [
-      "path---docs-zh-get-started-c82206b74d8df807cc9c.js",
-      "path---docs-zh-get-started-c82206b74d8df807cc9c.js.map"
-    ],
-    "path---docs-es-simple-component": [
-      "path---docs-es-simple-component-a633015926d480a31560.js",
-      "path---docs-es-simple-component-a633015926d480a31560.js.map"
-    ],
-    "path---docs-zh-deploy": [
-      "path---docs-zh-deploy-be63e27c6b189e56a21a.js",
-      "path---docs-zh-deploy-be63e27c6b189e56a21a.js.map"
     ],
     "component---src-pages-tags-js": [
       "component---src-pages-tags-js-fa28353953f839c77222.js",
@@ -154,22 +102,18 @@
       "path---tags-新闻-bcbbd923220d933389a9.js",
       "path---tags-新闻-bcbbd923220d933389a9.js.map"
     ],
-    "path---docs-en-composite-component": [
-      "path---docs-en-composite-component-60a2012f00bc1c4854f0.js",
-      "path---docs-en-composite-component-60a2012f00bc1c4854f0.js.map"
-    ],
     "path---docs-zh-contribute": [
-      "path---docs-zh-contribute-a6fd9edc6ef275086918.js",
-      "path---docs-zh-contribute-a6fd9edc6ef275086918.js.map"
+      "path---docs-zh-contribute-a4f984a85f55a6e60a5f.js",
+      "path---docs-zh-contribute-a4f984a85f55a6e60a5f.js.map"
     ],
     "path---blog-2": [
       "path---blog-2-ddfe9654f73984bd9f20.js",
       "path---blog-2-ddfe9654f73984bd9f20.js.map"
     ],
     "app": [
-      "app-7408827b196d0ad6235e.js",
+      "app-be92649892fc9d125709.js",
       "build-js-styles.css",
-      "app-7408827b196d0ad6235e.js.map",
+      "app-be92649892fc9d125709.js.map",
       "build-js-styles.css.map"
     ],
     "path---tags-比特币": [
@@ -184,14 +128,6 @@
       "path---tags-服务-83adaed80e6f10d8b641.js",
       "path---tags-服务-83adaed80e6f10d8b641.js.map"
     ],
-    "path---docs-es-conclusion": [
-      "path---docs-es-conclusion-72ee20212d1a9b7255ae.js",
-      "path---docs-es-conclusion-72ee20212d1a9b7255ae.js.map"
-    ],
-    "path---docs-en-screen": [
-      "path---docs-en-screen-17eca890262f6d9edd8d.js",
-      "path---docs-en-screen-17eca890262f6d9edd8d.js.map"
-    ],
     "path---eth": [
       "path---eth-25f5303b7fa2519d4476.js",
       "path---eth-25f5303b7fa2519d4476.js.map"
@@ -200,17 +136,9 @@
       "path---404-a0e39f21c11f6a62c5ab.js",
       "path---404-a0e39f21c11f6a62c5ab.js.map"
     ],
-    "path---docs-zh-screen": [
-      "path---docs-zh-screen-f532cbcc84ebf624a4f9.js",
-      "path---docs-zh-screen-f532cbcc84ebf624a4f9.js.map"
-    ],
-    "path---docs-es-test": [
-      "path---docs-es-test-9e496dcd02dd8388d82e.js",
-      "path---docs-es-test-9e496dcd02dd8388d82e.js.map"
-    ],
-    "path---docs-es-get-started": [
-      "path---docs-es-get-started-dbb0440f44b0db046949.js",
-      "path---docs-es-get-started-dbb0440f44b0db046949.js.map"
+    "path---docs-zh-ui-pay": [
+      "path---docs-zh-ui-pay-b6983629ff2983ddb2c3.js",
+      "path---docs-zh-ui-pay-b6983629ff2983ddb2c3.js.map"
     ]
   }
 }

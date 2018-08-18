@@ -35,11 +35,10 @@ const Tags = ({ pathContext, data }) => {
                         const { path, title, keynote } = node.frontmatter;
                         return (
                                 <Box
-                                    size={{ width: { max: 'xxlarge' } }}
+                                    size={{ width: { max: 'xxlarge' }}}
                                     margin='small'
                                     responsive={false} justify="start" align="center"
                                     pad={{ horizontal: 'medium' }} flex="grow"
-                                // size={{width:'xlarge'}} 
                                 >
                                     <Title >
                                         <Link key={path} to={path} className="blog">{title}</Link>

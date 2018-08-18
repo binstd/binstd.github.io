@@ -11,6 +11,7 @@
     outline: none!important;
     text-decoration: none!important;
 }
+
 a:hover, a:active, a:focus {
     color: #00AFFF!important;
     outline: none!important;
@@ -82,6 +83,7 @@ h3.grommetux-heading {
     background-size: cover;
     background-repeat: no-repeat; 
 }
+
 
 .grommetux-box--pad-none {
     padding: 0px; 
