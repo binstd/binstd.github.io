@@ -8,6 +8,7 @@ class userModel {
     address;
     logintype;
     verifyed;
+    auth;
 
     get getAllData() {
         const data = {
@@ -16,13 +17,13 @@ class userModel {
             telephone: this.telephone,
             address: this.address,
             verifyed:this.verifyed,
-            logintype:this.logintype
+            logintype:this.logintype,
+            auth:this.auth
         };
         return data;
     }
 
     allSet(jsonData) {
-       
         if (jsonData['uid']) {
             this.uid = jsonData['uid'];
         }
@@ -47,6 +48,10 @@ class userModel {
         if (jsonData['logintype']) {
             this.logintype = jsonData['logintype'];
         }
+
+        if (jsonData['auth']) {
+            this.auth = jsonData['auth'];
+        } 
     }
 
     uidSet(uid) {
@@ -73,12 +78,18 @@ class userModel {
         this.verifyed = verifyed;
     }
 
+    authSet(auth) {
+        this.auth = auth;
+    }
+
     clearAll() {
         this.uid = '';
         this.username = '';
         this.telephone = '';
         this.address = '';
         this.logintype = '';
+        this.verifyed =  '';
+        this.auth = '';
     }
 }
 
@@ -89,6 +100,7 @@ decorate(userModel, {
     address: observable,
     verifyed:observable,
     logintype:observable,
+    auth:observable,
 });
 
 export default new userModel();
