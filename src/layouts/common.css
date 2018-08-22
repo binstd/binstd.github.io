@@ -2,10 +2,11 @@
     color: #1D2A3A!important;
 }
 .grommetux-anchor{
-    color: #FFFFFF!important;
     font-size: 16px;
 }
-
+header .grommetux-anchor{
+    color: #FFFFFF!important;
+}
 .grommetux-anchor:hover, .grommetux-anchor:active, .grommetux-anchor:focus {
     color: #1D2A3A!important;
     outline: none!important;
@@ -55,10 +56,14 @@ h1.grommetux-heading {
     margin: 25px 0;
 }
 h3.grommetux-heading {
-    font-size: 20px;
     color: #1D2A3A;
     margin: 15px 0;
     line-height: 1.5;
+    font-weight: 500;
+}
+h4.grommetux-heading {
+    color: #1D2A3A;
+    font-weight: 500;
 }
 .grommetux-title{
   margin: 0;
