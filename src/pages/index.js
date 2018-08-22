@@ -16,7 +16,7 @@ const IndexPage = ({
 
   return (
       <div>
-          <Header />
+           <Header /> 
           <Home />
       </div>
   );

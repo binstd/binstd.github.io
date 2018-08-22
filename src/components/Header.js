@@ -6,29 +6,31 @@ import Menu from 'grommet/components/Menu';
 import Image from 'grommet/components/Image';
 import Button from 'grommet/components/Button';
 import { getMetamaskStatus, web3 } from '../lib/eth';
+import { server_url } from '../lib/config';
 import user_model from '../model/user_model';
 import { observer } from 'mobx-react';
-const AppHeader =  observer(class AppHeader extends Component {
+// import Web3 from 'web3';
+
+// let web3 = null; // Will hold the web3 instance
+
+const AppHeader = observer(class AppHeader extends Component {
+    
     constructor() {
         super();
         this.state = {
             username: '',
+            auth: '',
         };
     }
 
     componentDidMount() {
-        
-        if(localStorage.getItem("userinfo")){
+        if (localStorage.getItem("userinfo")) {
             let userinfo = JSON.parse(localStorage.getItem("userinfo"));
-            console.log(userinfo);
-            user_model.logintypeSet(userinfo.logintype);
-            user_model.addressSet(userinfo.address);
+            user_model.allSet(userinfo);
         }
     }
-    // export default function AppHeader (props) {
+
     payToken() {
-        console.log('userinfo:',user_model.getAllData);
- 
         if(!user_model.address&&!user_model.logintype){
             console.log('没有登录');
         }
@@ -41,50 +43,122 @@ const AppHeader =  observer(class AppHeader extends Component {
                 alert('请在装有metamask的浏览器或trustwallet自带浏览器中打开!');
                 break;
             case 'okMetamask':
-                // alert('login ok!');
-                console.log(web3.eth.accounts[0].slice(0,12));
-                console.log(web3.toHex("Hello world"),);
-                // web3.personal.sign();
-                web3.personal.sign(web3.fromAscii('测试登录'), web3.eth.accounts[0], "2222", (error, signedMsg) => {
-                    if (error) {
-                        console.log('::::');
-                        console.warn(error);
-                    } else {
-                        console.log(web3.toAscii(signedMsg));
-                        user_model.logintypeSet('ETH');
-                        user_model.addressSet(web3.eth.accounts[0]);
-                        localStorage.setItem("userinfo", JSON.stringify({
-                            logintype:'ETH',
-                            address:web3.eth.accounts[0]
-                        }));
-                        console.log(user_model.logintype);
-                       
-                    }
+                const publicAddress = web3.eth.accounts[0].toLowerCase();
+                console.log("\n server_url",server_url);
+                fetch(
+                    `${server_url}/users?publicAddress=${publicAddress}`
+                ).then( response => response.json() ).then (
+                    users => (users.length ? users[0] : this.handleSignup(publicAddress))
+                ).then(this.handleSignMessage)
+                .then(this.handleAuthenticate)
+                .then(this.handleLoggedIn).catch(err => {
+                    window.alert(err);
                 });
             default:
                 break;
-        }     
+        }    
+
+       
     }
+    //web3登陆
+    handleSignMessage = ({ publicAddress, nonce }) => {
+        return new Promise((resolve, reject) =>
+            web3.personal.sign(
+                web3.fromUtf8(`I am signing: ${nonce}`),
+                publicAddress,
+                (err, signature) => {
+                    if (err) return reject(err);
+                    console.log('\n signature:', signature);
+                    return resolve({ publicAddress, signature });
+                }
+            )
+        );
+    };
+
+    // 获取权限
+    handleAuthenticate = ({ publicAddress, signature }) =>
+        fetch(`${server_url}/auth`, {
+            body: JSON.stringify({ publicAddress, signature }),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST'
+        }).then(response => response.json());
+
+     //登陆
+     handleLoggedIn = auth => {
+        let userinfo  = {
+            logintype: 'ETH',
+            address: web3.eth.accounts[0].toLowerCase(),
+            auth: auth
+        };
+        console.log('auth', auth);
+        console.log('\n userinfo:',userinfo);
+        user_model.allSet(userinfo);
+        localStorage.setItem("userinfo", JSON.stringify(userinfo));
+        console.log(user_model.logintype);
+        this.setState({ auth });
+    };
+    
+    // 退出登陆  
+    handleLoggedOut = () => {
+        localStorage.removeItem('userinfo');
+        user_model.clearAll();
+        this.setState({ auth: undefined });
+    };
+
+
+    //提交新地址
+    handleSignup = publicAddress =>
+        fetch(`${server_url}/users`, {
+            body: JSON.stringify({ publicAddress }),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST'
+        }).then(response => response.json());
 
     render() {
         let user_label;
-        if(user_model.address&&user_model.logintype){
+
+        if (user_model.address && user_model.logintype) {
             let adr = user_model.address
-            console.log(typeof user_model.address);
-            console.log(user_model.logintype);
-            user_label = `${user_model.logintype}:${user_model.address.slice(0,12)}...`;
-            console.log(user_label);
-        }else{
-            user_label  = '登录';
+            // console.log(typeof user_model.address);
+            // console.log(user_model.logintype);
+            user_label = <Menu responsive={false}
+                inline={false}
+                label={`${user_model.logintype}:...${user_model.address.slice(0, 8)}`}
+                primary={false}
+                direction='row'
+                closeOnClick={false}>
+                <Anchor
+                    href='/userinfo'
+                    className='active'>
+                    个人中心
+                </Anchor>
+
+                <Anchor
+                    href='#'
+                    onClick={() => this.handleLoggedOut()}
+                >
+                    退出登录
+                </Anchor>
+            </Menu>;
+        } else {
+            user_label = <Button
+                label={'登陆'}
+                style={{ color: '#FFFFFF', borderColor: '#FFFFFF' }}
+                onClick={() => this.payToken()}
+            />;
         }
 
         return (
             <Header
                 justify="center"
                 fixed={true}
-                style={{backgroundColor: '#07AEFF'}}
+                style={{ backgroundColor: '#07AEFF' }}
             >
-                <Box size={{ width: { max: 'xxlarge'}}} direction="row"
+                <Box size={{ width: { max: 'xxlarge' } }} direction="row"
                     responsive={false} justify="start" align="center"
                     pad={{ horizontal: 'medium' }} flex="grow"  >
                     <Image
@@ -93,19 +167,17 @@ const AppHeader =  observer(class AppHeader extends Component {
                     />
                     {/* <HpiIcon colorIndex="brand" size="large" /> */}
                     <Box pad="small" />
-                        <Menu label="导航" inline={true} direction="row">
-                            <Anchor path="/">首页</Anchor>
-                            <Anchor href="/docs/zh/started">API</Anchor> 
-                            <Anchor href="https://github.com/binstd/tplan" target="_blank" >文档计划</Anchor>
-                            <Anchor href="/info">关于</Anchor>
-                        </Menu>
+                    <Menu label="导航" inline={true} direction="row">
+                        <Anchor path="/">首页</Anchor>
+                        <Anchor href="/tags/服务">服务</Anchor>
+                        <Anchor href="/docs/zh/started">API</Anchor>
+                        <Anchor href="https://github.com/binstd/tplan" target="_blank" >文档计划</Anchor>
+                        <Anchor href="/info">关于</Anchor>
+                    </Menu>
 
-                        <Box flex="grow" align="end">
-                            <Button label={user_label}
-                                style={{ color:'#FFFFFF', borderColor: '#FFFFFF'}}
-                                onClick={() => this.payToken()}
-                            />
-                        </Box>
+                    <Box flex="grow" align="end">
+                        {user_label}
+                    </Box>
                 </Box>
 
             </Header>

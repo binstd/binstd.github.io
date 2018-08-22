@@ -60,6 +60,7 @@ export default class Foot extends Component {
                                 src='https://programmerinnfile.b0.upaiyun.com/community/10001/20180814/69sDk199wJ.png'
                                 style={{ height: 50, width: 50 }}
                             />
+                           
                             <Anchor href='https://github.com/binstd' target="_blank" >GitHub</Anchor>
                             <Anchor href='https://www.proginn.com/' target="_blank" >程序员客栈</Anchor>
                             <Anchor href='/info'>关于我们</Anchor>

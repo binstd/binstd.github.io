@@ -32,15 +32,31 @@ import WhyMe from './homepage/WhyMe.js';
 import HomeHeader from './homepage/HomeHeader.js';
 import CanDo from './homepage/CanDo.js';
 //合作方
+// const THEMES = [
+//     {
+//         Icon: HPEIcon, url: '/info',
+//         size: 'xlarge'
+//     },
+//     { Icon: GrommetIcon, url: '/', size: 'large' },
+//     { Icon: ArubaIcon, url: '/aruba', size: 'xlarge' },
+//     { Icon: HPIcon, url: '/hpinc', size: 'large' },
+//     { Icon: DXCIcon, url: '/dxc', size: 'large' }
+// ];
+
 const THEMES = [
     {
-        Icon: HPEIcon, url: '/info',
-        size: 'xlarge'
+        img_url: 'https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/proginn_logo_680x450.png', 
+        url: 'https://www.proginn.com/',
+        size: 'large',
+        label: '程序员客栈'
     },
-    { Icon: GrommetIcon, url: '/', size: 'large' },
-    { Icon: ArubaIcon, url: '/aruba', size: 'xlarge' },
-    { Icon: HPIcon, url: '/hpinc', size: 'large' },
-    { Icon: DXCIcon, url: '/dxc', size: 'large' }
+    { 
+        img_url: 'https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/footer-logo.png', 
+        url: 'http://bytom.io/', 
+        size: 'large',
+        label: '比原链'
+     },
+  
 ];
 
 class HomeSection extends Component {
@@ -126,7 +142,7 @@ export default class Home extends Component {
                 frameBorder='no' allowTransparency='true' allowFullScreen='true'
                 style={{ width: '100%' }} />
         );
-
+       
         const themes = THEMES.map((theme, index) => {
             let labelNode;
             if (theme.label) {
@@ -146,10 +162,16 @@ export default class Home extends Component {
                         <Button href={theme.url}>
                             <Box direction='row' align='center' justify='center'
                                 responsive={false} pad={{ between: 'small' }}>
-                                <theme.Icon size={theme.size} colorIndex='plain' />
-                                {labelNode}
+                                 <Image 
+                                    src={theme.img_url}
+                                    style={{ width: 150 }}
+                                    size={theme.size}
+                                />
+                                {/* <theme.Icon size={theme.size} colorIndex='plain' /> */}
+                                {/* {labelNode} */}
                             </Box>
                         </Button>
+                        
                     </Animate>
                 </Tile>
             );
@@ -261,6 +283,7 @@ export default class Home extends Component {
                         BinSTD帮助企业区块链化，我们也拥有多个合作伙伴：
                         </Paragraph>
                     </Box>
+                  
                     <Tiles align='center' justify='center' responsive={false}
                         pad='large'
                         style={{ color: '#07AEFF' }}
@@ -277,6 +300,8 @@ export default class Home extends Component {
                                 responsive={false}>
                                 {/* <GrommetLogo /> */}
                                 <Image
+                                
+                               
                                     src='https://programmerinnfile.b0.upaiyun.com/community/10001/20180814/69sDk199wJ.png'
                                     style={{ height: 50, width: 50 }}
                                 />
