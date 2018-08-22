@@ -111,26 +111,8 @@ const UserinfoPage = observer(class UserinfoPage extends Component {
                 >
                 <Accordion openMulti={true} > 
                     <AccordionPanel heading='名称 '>
-                    <Paragraph
-                        direction='row'
-                        justify='between'
-                        // align='center'
-                        wrap={false}
-                        reverse={false}
-                        justify='between'
-                        margin='small'
-                        pad='medium'
-                    >
-                        {/* <Box 
-                            direction='row'
-                            justify='between'
-                            // align='center'
-                            wrap={false}
-                            reverse={false}
-                            margin='small'
-                            pad='medium'
-                        // colorIndex='light-2'
-                        > */}
+                   
+                      
                            <Label>
                                 {username ? <pre>{username}</pre> : <pre>'未设置'</pre>}
                             </Label>
@@ -151,22 +133,20 @@ const UserinfoPage = observer(class UserinfoPage extends Component {
                             />       
                            </pre>
                             {/* </Box>  */}
-                        </Paragraph>
+                       
                     </AccordionPanel>
-                    {/* <AccordionPanel heading='我的转账描述'>
-                        <Paragraph>
-                        <pre>记录</pre>
-
-                        </Paragraph>
-                    </AccordionPanel> */}
-                    <AccordionPanel heading='我的公钥'>
-                        <Paragraph>
-                        <Label>  {publicAddress} </Label>
-                        </Paragraph>
-                    </AccordionPanel>
+                  
+                        <AccordionPanel heading='我的公钥'>
+                            <Paragraph>
+                            <Label>  {publicAddress} </Label>
+                            </Paragraph>
+                        </AccordionPanel>
+                        
                     <AccordionPanel heading='我的API-key'>
-                        <Paragraph>
-                            {auth}
+                    {/* <p></p> */}
+                        {/* <Label>   </Label> */}
+                        <Paragraph >
+                            {auth.toString()}
                         </Paragraph>
                     </AccordionPanel>
                     </Accordion>         
@@ -177,5 +157,6 @@ const UserinfoPage = observer(class UserinfoPage extends Component {
         
     }
 });
- 
+
+
 export default UserinfoPage
