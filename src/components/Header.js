@@ -9,9 +9,7 @@ import { getMetamaskStatus, web3 } from '../lib/eth';
 import { server_url } from '../lib/config';
 import user_model from '../model/user_model';
 import { observer } from 'mobx-react';
-// import Web3 from 'web3';
-
-// let web3 = null; // Will hold the web3 instance
+// const windowGlobal = typeof window !== 'undefined' && window;
 
 const AppHeader = observer(class AppHeader extends Component {
     
@@ -20,6 +18,7 @@ const AppHeader = observer(class AppHeader extends Component {
         this.state = {
             username: '',
             auth: '',
+            id: '',
         };
     }
 
@@ -34,10 +33,10 @@ const AppHeader = observer(class AppHeader extends Component {
         if(!user_model.address&&!user_model.logintype){
             console.log('没有登录');
         }
-            // console.log(this.state.redirect_url);
+    
         switch (getMetamaskStatus()) {
             case 'unlockMetamask':
-                alert('Unlock metamask first');
+                alert('请先解锁metamask!');
                 break;
             case 'noMetamask':
                 alert('请在装有metamask的浏览器或trustwallet自带浏览器中打开!');
@@ -61,7 +60,10 @@ const AppHeader = observer(class AppHeader extends Component {
        
     }
     //web3登陆
-    handleSignMessage = ({ publicAddress, nonce }) => {
+    handleSignMessage = ({ publicAddress, nonce, id }) => {
+        this.setState({ 
+            id
+        });
         return new Promise((resolve, reject) =>
             web3.personal.sign(
                 web3.fromUtf8(`I am signing: ${nonce}`),
@@ -90,7 +92,8 @@ const AppHeader = observer(class AppHeader extends Component {
         let userinfo  = {
             logintype: 'ETH',
             address: web3.eth.accounts[0].toLowerCase(),
-            auth: auth
+            auth: auth,
+            id:this.state.id
         };
         console.log('auth', auth);
         console.log('\n userinfo:',userinfo);
@@ -100,6 +103,7 @@ const AppHeader = observer(class AppHeader extends Component {
         this.setState({ auth });
     };
     
+
     // 退出登陆  
     handleLoggedOut = () => {
         localStorage.removeItem('userinfo');
@@ -116,15 +120,12 @@ const AppHeader = observer(class AppHeader extends Component {
                 'Content-Type': 'application/json'
             },
             method: 'POST'
-        }).then(response => response.json());
+    }).then(response => response.json());
 
     render() {
         let user_label;
-
         if (user_model.address && user_model.logintype) {
             let adr = user_model.address
-            // console.log(typeof user_model.address);
-            // console.log(user_model.logintype);
             user_label = <Menu responsive={false}
                 inline={false}
                 label={`${user_model.logintype}:...${user_model.address.slice(0, 8)}`}
@@ -133,12 +134,15 @@ const AppHeader = observer(class AppHeader extends Component {
                 closeOnClick={false}>
                 <Anchor
                     href='/userinfo'
-                    className='active'>
+                    style={{ color: 'aliceblue' }}
+                    // className='active' 
+                >
                     个人中心
                 </Anchor>
 
                 <Anchor
                     href='#'
+                    style={{ color: 'aliceblue' }}
                     onClick={() => this.handleLoggedOut()}
                 >
                     退出登录
@@ -169,7 +173,7 @@ const AppHeader = observer(class AppHeader extends Component {
                     <Box pad="small" />
                     <Menu label="导航" inline={true} direction="row">
                         <Anchor path="/">首页</Anchor>
-                        <Anchor href="/tags/服务">服务</Anchor>
+                        {/* <Anchor href="/tags/服务">服务</Anchor> */}
                         <Anchor href="/docs/zh/started">API</Anchor>
                         <Anchor href="https://github.com/binstd/tplan" target="_blank" >文档计划</Anchor>
                         <Anchor href="/info">关于</Anchor>

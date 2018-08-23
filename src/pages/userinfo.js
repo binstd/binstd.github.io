@@ -26,10 +26,11 @@ import Link from "gatsby-link";
 import Title from 'grommet/components/Title';
 import Label from 'grommet/components/Label';
 
-import jwtDecode from 'jwt-decode';
-import user_model from '../model/user_model';
+// import jwtDecode from 'jwt-decode';
+
 import { observer } from 'mobx-react';
 import { server_url } from '../lib/config';
+
 const UserinfoPage = observer(class UserinfoPage extends Component {
     constructor() {
         super();
@@ -38,20 +39,30 @@ const UserinfoPage = observer(class UserinfoPage extends Component {
             user: null,
             username: '',
             auth:'',
+            uid:'',
+            address:''
         };
       
     }
 
-    componentWillMount() {
-        let auth = '';
+    componentDidMount() {
+        let auth,uid = '';
         if (localStorage.getItem("userinfo")) {
             let userinfo = JSON.parse(localStorage.getItem("userinfo"));
             auth = userinfo.auth.accessToken;
-            this.setState({ auth});
+            uid = userinfo.id;
+            this.setState({ 
+                auth,
+                address:userinfo.address,
+                uid
+            });
+          
             console.log('\n auth: ',auth);
         }
-        const { payload: { id } } = jwtDecode(auth);
-        fetch(`${server_url}/users/${id}`, {
+        // const { payload: { id } } = this.decodeToken(auth);
+        // console.log(nJwt.verify(auth));
+    
+        fetch(`${server_url}/users/${uid}`, {
           headers: {
             Authorization: `Bearer ${auth}`
           }
@@ -63,7 +74,16 @@ const UserinfoPage = observer(class UserinfoPage extends Component {
         }).catch(window.alert);
         
     }
-    
+
+     decodeToken(token){
+        var playload  = {};
+        if(token != null){
+            const windowGlobal = typeof window !== 'undefined' && window;
+            playload = JSON.parse($windowGlobal.atob(token.split('.')[1]));
+        }
+        return playload;
+    };
+
     handleChange = ({ target: { value } }) => {
         this.setState({ username: value });
     };
@@ -87,15 +107,18 @@ const UserinfoPage = observer(class UserinfoPage extends Component {
             this.setState({ loading: false });
             });
     };
+
     render() {
-        const { auth, loading, user } = this.state;
+        const { auth, loading, user,address } = this.state;
         // const username = user && user.username;
-        const { payload: { publicAddress } } = jwtDecode(auth);
-          const username = user && user.username;
+
+        // const { payload: { publicAddress } } = this.decodeToken(auth);
+        const username = user && user.username;
         // console.log('id:',id);
         if(username){
             console.log('username:',username);
         }
+
         return (
             <div>
                 <Header />
@@ -138,7 +161,7 @@ const UserinfoPage = observer(class UserinfoPage extends Component {
                   
                         <AccordionPanel heading='我的公钥'>
                             <Paragraph>
-                            <Label>  {publicAddress} </Label>
+                            <Label>  {address} </Label>
                             </Paragraph>
                         </AccordionPanel>
                         
