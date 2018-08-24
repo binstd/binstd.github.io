@@ -63,6 +63,12 @@ const THEMES = [
         size: 'large',
         label: 'BinSTD'
      },
+     { 
+        img_url: 'https://programmerinnfile.b0.upaiyun.com/community/10001/20180824/5Q5W7eGSBl.png', 
+        url: 'https://cosmos.network/', 
+        size: 'large',
+        label: 'cosmos'
+     },
   
 ];
 
