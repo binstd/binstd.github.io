@@ -17,20 +17,15 @@ import Tile from 'grommet/components/Tile';
 import Animate from 'grommet/components/Animate';
 
 import GithubIcon from 'grommet/components/icons/base/SocialGithub';
-import AccessibleIcon from 'grommet/components/icons/base/Accessible';
-import GrommetIcon from 'grommet/components/icons/base/BrandGrommetOutline';
-import ArubaIcon from 'grommet/components/icons/base/PlatformAruba';
-import DXCIcon from 'grommet/components/icons/base/PlatformDxc';
-import HPEIcon from 'grommet/components/icons/base/BrandHpeStack';
-import HPIcon from 'grommet/components/icons/base/PlatformHpi';
+
 
 import Image from 'grommet/components/Image';
 
 import Hands from './img/Hands.js';
-
 import WhyMe from './homepage/WhyMe.js';
 import HomeHeader from './homepage/HomeHeader.js';
 import CanDo from './homepage/CanDo.js';
+
 //合作方
 // const THEMES = [
 //     {
@@ -104,9 +99,6 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
-        // if (document) {
-        //     // document.title = 'Grommet';
-        // }
         this._layout();
     }
 
@@ -252,10 +244,12 @@ export default class Home extends Component {
                             enter={{ animation: 'jiggle', duration: 2000, delay: 100 }}>
                             <Hands />
                         </Animate>
+
                     </Box>
 
                     <Box pad='medium' align='center'>
                         <Heading tag='h2' strong={true}  style={{ color: 'white' }}>文档计划</Heading>
+                        
                         <Paragraph 
                             align='center' 
                             margin='none'
@@ -263,14 +257,17 @@ export default class Home extends Component {
                         >
                             前沿区块链技术布道，优质海量开发者社群
                         </Paragraph>
+
                         <Footer 
                             pad='medium' 
                             justify='center'
                         >
+
                         <Button
                             path='https://github.com/binstd/tplan'
                             style={{ color: '#f5f5f5', border: '2px solid #f5f5f5' }}
                             label='申请加入' />
+
                         </Footer>
                     </Box>
                 </HomeSection>
@@ -300,8 +297,9 @@ export default class Home extends Component {
                         pad='large'
                         style={{ color: '#07AEFF' }}
                     >
-                        {themes}
+                    {themes}
                     </Tiles>
+                    
                 </HomeSection>
                 <Animate visible='scroll' keep={true}
                     enter={{ animation: 'fade', duration: 1000, delay: 100 }}>
