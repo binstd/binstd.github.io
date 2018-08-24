@@ -52,9 +52,21 @@ const THEMES = [
     },
     { 
         img_url: 'https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/footer-logo.png', 
-        url: 'http://bytom.io/', 
+        url: 'https://bytom.io/', 
         size: 'large',
         label: '比原链'
+     },
+     { 
+        img_url: 'http://ipfs.binstd.org/static/oss_logo.0839805a.png', 
+        url: 'https://ipfs.io/', 
+        size: 'large',
+        label: 'IPFS'
+     },
+     { 
+        img_url: 'https://programmerinnfile.b0.upaiyun.com/community/10001/20180814/gtps22W33s.png', 
+        url: 'https://www.binstd.com/', 
+        size: 'large',
+        label: 'BinSTD'
      },
   
 ];
