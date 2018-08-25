@@ -1,1 +1,1 @@
-export const server_url = 'http://api.binstd.com/api';
+export const server_url = 'https://api.binstd.com/api';

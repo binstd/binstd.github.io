@@ -57,7 +57,6 @@ const AppHeader = observer(class AppHeader extends Component {
                 break;
         }    
 
-       
     }
     //web3登陆
     handleSignMessage = ({ publicAddress, nonce, id }) => {

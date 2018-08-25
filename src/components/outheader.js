@@ -18,13 +18,14 @@ const AppHeader =  observer(class AppHeader extends Component {
 
     componentDidMount() {
         
-        if(localStorage.getItem("userinfo")){
+        if(localStorage.getItem("userinfo")) {
             let userinfo = JSON.parse(localStorage.getItem("userinfo"));
             console.log(userinfo);
             user_model.logintypeSet(userinfo.logintype);
             user_model.addressSet(userinfo.address);
         }
     }
+
     // export default function AppHeader (props) {
     payToken() {
         console.log('userinfo:',user_model.getAllData);
@@ -47,17 +48,15 @@ const AppHeader =  observer(class AppHeader extends Component {
                 // web3.personal.sign();
                 web3.personal.sign(web3.fromAscii('测试登录'), web3.eth.accounts[0], "2222", (error, signedMsg) => {
                     if (error) {
-                        console.log('::::');
-                        console.warn(error);
+                 
                     } else {
-                        console.log(web3.toAscii(signedMsg));
+                       
                         user_model.logintypeSet('ETH');
                         user_model.addressSet(web3.eth.accounts[0]);
                         localStorage.setItem("userinfo", JSON.stringify({
                             logintype:'ETH',
                             address:web3.eth.accounts[0]
                         }));
-                        console.log(user_model.logintype);
                        
                     }
                 });
