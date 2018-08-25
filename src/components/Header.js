@@ -55,10 +55,10 @@ const AppHeader = observer(class AppHeader extends Component {
                 });
             default:
                 break;
-        }    
-
+        } 
     }
-    //web3登陆
+
+    //web3登录
     handleSignMessage = ({ publicAddress, nonce, id }) => {
         this.setState({ 
             id
@@ -86,7 +86,7 @@ const AppHeader = observer(class AppHeader extends Component {
             method: 'POST'
         }).then(response => response.json());
 
-     //登陆
+     //登录
      handleLoggedIn = auth => {
         let userinfo  = {
             logintype: 'ETH',
@@ -102,8 +102,7 @@ const AppHeader = observer(class AppHeader extends Component {
         this.setState({ auth });
     };
     
-
-    // 退出登陆  
+    // 退出登录
     handleLoggedOut = () => {
         localStorage.removeItem('userinfo');
         user_model.clearAll();
@@ -149,7 +148,7 @@ const AppHeader = observer(class AppHeader extends Component {
             </Menu>;
         } else {
             user_label = <Button
-                label={'登陆'}
+                label={'登录'}
                 style={{ color: '#FFFFFF', borderColor: '#FFFFFF' }}
                 onClick={() => this.payToken()}
             />;
@@ -172,7 +171,6 @@ const AppHeader = observer(class AppHeader extends Component {
                     <Box pad="small" />
                     <Menu label="导航" inline={true} direction="row">
                         <Anchor path="/">首页</Anchor>
-                        {/* <Anchor href="/tags/服务">服务</Anchor> */}
                         <Anchor href="/docs/zh/started">API</Anchor>
                         <Anchor href="https://github.com/binstd/tplan" target="_blank" >文档计划</Anchor>
                         <Anchor href="/info">关于</Anchor>
