@@ -10,6 +10,7 @@ import Button from '../components/docs/Button';
 import Subheading from '../components/docs/Subheading';
 
 import tocEntries from '../lib/tocEntries';
+import Foot from '../components/Foot';
 
 import {
   color,
@@ -228,7 +229,6 @@ export default ({
     <div>
     <Header />
     <DocsWrapper>
-    
       <Sidebar>
         {/* <Heading>Table of Contents</Heading> */}
         <DocsList>
@@ -246,9 +246,11 @@ export default ({
           ))}
         </DocsList>
       </Sidebar>
+    
       <Content>
+      {/* <Heading tag="h1">{title}</Heading> */}
         <Markdown>
-          <Highlight>{currentPage.html}</Highlight>
+            <Highlight>{currentPage.html}</Highlight>
         </Markdown>
 
         {nextEntry && (
@@ -261,21 +263,22 @@ export default ({
             }
             action={
               <Link isGatsby to={nextEntry.slug}>
-                <Button primary>Next chapter</Button>
+                <Button primary>查看下一个</Button>
               </Link>
             }
           />
         )}
-        <GithubLinkWrapper>
+        {/* <GithubLinkWrapper>
           <GithubLink className="secondary" href={githubFileUrl} target="_blank">
             <span role="img" aria-label="write">
               ✍️
             </span>{' '}
                 Edit on GitHub
           </GithubLink>
-        </GithubLinkWrapper>
+        </GithubLinkWrapper> */}
       </Content>
     </DocsWrapper>
+    <Foot style="" />
     </div>
   );
 };

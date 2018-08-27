@@ -1,83 +1,58 @@
 ---
-title: "开始吧"
+title: "接口使用介绍"
 tocTitle: "接口使用介绍"
-description: "在你的开发环境下, 设置 React Storybook "
+description: ""
 commit: 30939d5
 ---
-# 基础数据查询
+###简介
+**binstd云平台，帮你连接到去中心化的公链上（ETH，EOS,NEO等）。基于JTW token作为接口使用的认证凭证。**
 
-###1. 指定账户余额
-**1.1 功能描述**
+提供支付接口，自动处理，数据上链等多个接口。
 
-获取指定账户（钱包地址），存在某token的额度。
+###操作步骤
 
-**1.2 请求说明**
-> 请求方式：POST<br>
-请求URL ：[login](#)
+**1. 登陆&API-KEY的软件环境**
 
-**1.3 请求参数**
+需在装有metamask的chrome,firefox，trust钱包等提供web3.js容器的浏览器环境中，打开我们的官网：https://www.binstd.com/ .并登陆：
+![](https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/Jietu20180827-103226-HD.gif)
 
-字段       |字段类型       |字段说明
+
+**2. 获取自己的API-KEY**
+
+点击个人中心，然后在我的API-KEY中可见：
+![](https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/023939.jpg)
+
+
+**3. 使用binstd-API**
+
+在您的http请求的header中加入api-key的信息：
+
+key      |value       |备注
 ------------|-----------|-----------
-address      |string       |指定钱包地址
-contract_address     |string        |币的合约
+Authorization      |Bearer +API_KEY     |Bearer 和API_KEY之间要有空格
 
-**1.4 返回结果**
-```javascript
-{
-  "data": {
-	"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vc2FsZS1hcGkuZGV2L2xvZ2luIiwiaWF0IjoxNDkxNTMyOTI4LCJleHAiOjE0OTIyNTI5MjgsIm5iZiI6MTQ5MTUzMjkyOCwianRpIjoiN1hCUXdwN1FHZmxUdHVVQiIsInV1aWQiOiI1MDZjYWY3MCJ9.FyyXagHtBfDBtMJZPV_hm2q6CVULpY63JPDGDHXc"
-  },
-  "code": "200",
-  "msg": "SUCCESS"
-}
-```
 
-**1.5 返回参数**
 
-字段       |字段类型       |字段说明
+如图：![](https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/025024.png)
+
+
+###接口返回状态编码释意&错误代码
+返回状态码      |状态消息     |备注
 ------------|-----------|-----------
-token       |string        |token值
-
-**1.6 错误状态码**
-状态码       |说明
-------------|-----------
-3001       |其他认证错误信息！
-3002       |用户不存在！
-3003       |用户名或密码有误！
-
-## 2. 刷新Token值
-### 2.1 功能描述
-通过请求刷新Token接口，获取新的Token值。
-
-### 2.2 请求说明
-> 请求方式：PATCH<br>
-请求URL ：[refresh-tokens](#)
-
-### 2.3 请求参数
-无参数
-
-### 2.4 返回结果
-
-```javascript
-{
-  "data": {
-	"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vdm95YWdlLmRldi9hdXRob3JpemF0aW9ucy9yZWZyZXNoLXRva2VucyIsImlhdCI6MTQ4OTk4Nzg0OCwiZXhwIjoxNDg5OTg3OTc3LCJuYmYiOjE0ODk5ODc5MTcsImp0aSI6IlRvNmxzamhwTTNpcmhRQlAiLCJ1dWlkIjoiNWZlYzI0NzAifQ.hgZsQq5rT5VXAwUilEv5P1JIhLrctJPKAkKWBSqwu3c"
-  },
-  "code": "200",
-  "msg": "SUCCESS"
-}
-```
-
-### 2.5 返回参数
-字段       |字段类型       |字段说明
-------------|-----------|-----------
-token       |string        |token值
-
-### 2.6 错误状态码
-参见 [全局响应状态码说明](#124-全局响应状态码说明)
+0      |ok     |正常状态
+1002      |钱包地址不正确     |
+1003      |合约地址不正确    |
+1004      |区块链网络连接异常    |
+ 1005    | 没有账户权限，请重新授权 |
 
 
 
+###去中心化的api接口网关&节点计划
+目前只有一个api网关地址：
+https://api.binstd.com
 
+后期节点增多，将可使用任意节点作为api网关，**且任意连接节点API_KEY都可使用。**
 
+**成为去中心化binstd云服务层的节点：**
+
+成为我们的节点，若节点有收益（后期使用我们的云服务需消耗一定token），您将获得分红。

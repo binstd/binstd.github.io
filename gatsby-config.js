@@ -9,7 +9,9 @@ module.exports = {
             'ui-pay',
             'balance',
             'tokeninfo', 
-            'gas_price'
+            'gas_price',
+            'txall',
+            'txhash'
         ],
         languages: ['zh'],
         defaultTranslation: 'react/zh',
