@@ -59,10 +59,8 @@ const UserinfoPage = observer(class UserinfoPage extends Component {
           
             console.log('\n auth: ',auth);
         }
-        // const { payload: { id } } = this.decodeToken(auth);
-        // console.log(nJwt.verify(auth));
     
-        fetch(`${server_url}/users/${uid}`, {
+        fetch(`${server_url}/api/users/${uid}`, {
           headers: {
             Authorization: `Bearer ${auth}`
           }
@@ -92,7 +90,7 @@ const UserinfoPage = observer(class UserinfoPage extends Component {
         console.log(this.state.user);
         const { auth, user, username } = this.state;
         this.setState({ loading: true });
-        fetch(`${server_url}/users/${user.id}`, {
+        fetch(`${server_url}/api/users/${user.id}`, {
             body: JSON.stringify({ username }),
             headers: {
             Authorization: `Bearer ${auth}`,

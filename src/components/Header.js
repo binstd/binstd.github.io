@@ -45,7 +45,7 @@ const AppHeader = observer(class AppHeader extends Component {
                 const publicAddress = web3.eth.accounts[0].toLowerCase();
                 console.log("\n server_url",server_url);
                 fetch(
-                    `${server_url}/users?publicAddress=${publicAddress}`
+                    `${server_url}/api/users?publicAddress=${publicAddress}`
                 ).then( response => response.json() ).then (
                     users => (users.length ? users[0] : this.handleSignup(publicAddress))
                 ).then(this.handleSignMessage)
@@ -78,7 +78,7 @@ const AppHeader = observer(class AppHeader extends Component {
 
     // 获取权限
     handleAuthenticate = ({ publicAddress, signature }) =>
-        fetch(`${server_url}/auth`, {
+        fetch(`${server_url}/api/auth`, {
             body: JSON.stringify({ publicAddress, signature }),
             headers: {
                 'Content-Type': 'application/json'
@@ -112,7 +112,7 @@ const AppHeader = observer(class AppHeader extends Component {
 
     //提交新地址
     handleSignup = publicAddress =>
-        fetch(`${server_url}/users`, {
+        fetch(`${server_url}/api/users`, {
             body: JSON.stringify({ publicAddress }),
             headers: {
                 'Content-Type': 'application/json'
