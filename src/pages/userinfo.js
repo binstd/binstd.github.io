@@ -1,32 +1,23 @@
 import React, { Component } from 'react';
 
+// import jwtDecode from 'jwt-decode';
+// import {Box, Accordion, AccordionPanel, Paragraph, TextInput, Button, Label} from 'grommet/index-commonjs'
 import Box from 'grommet/components/Box';
-// import PostLink from "../components/post-link";
-import Header from '../components/Header';
-import Value from 'grommet/components/Value';
 
-import Section from 'grommet/components/Section';
-import Article from 'grommet/components/Article';
-import Foot from '../components/Foot';
 
 import Accordion from 'grommet/components/Accordion';
 import AccordionPanel from 'grommet/components/AccordionPanel';
 import Paragraph from 'grommet/components/Paragraph';
 
-import Form from 'grommet/components/Form';
-import FormField from 'grommet/components/FormField';
 import TextInput from 'grommet/components/TextInput';
 import Button from 'grommet/components/Button';
-
-import Footer from 'grommet/components/Footer';
-import Columns from 'grommet/components/Columns';
-
-import Link from "gatsby-link";
-
-import Title from 'grommet/components/Title';
 import Label from 'grommet/components/Label';
 
-// import jwtDecode from 'jwt-decode';
+
+
+
+import Header from '../components/Header';
+import Foot from '../components/Foot';
 
 import { observer } from 'mobx-react';
 import { server_url } from '../lib/config';
@@ -108,11 +99,7 @@ const UserinfoPage = observer(class UserinfoPage extends Component {
 
     render() {
         const { auth, loading, user,address } = this.state;
-        // const username = user && user.username;
-
-        // const { payload: { publicAddress } } = this.decodeToken(auth);
         const username = user && user.username;
-        // console.log('id:',id);
         if(username){
             console.log('username:',username);
         }
@@ -130,32 +117,31 @@ const UserinfoPage = observer(class UserinfoPage extends Component {
                     margin='large'
                     // colorIndex='accent-1'
                 >
-                <Accordion openMulti={true} > 
-                    <AccordionPanel heading='名称 '>
-                   
-                      
-                           <Label>
+                    <Accordion openMulti={true} > 
+                        <AccordionPanel heading='名称 '>
+                    
+                        
+                            <Label>
                                 {username ? <pre>{username}</pre> : <pre>'未设置'</pre>}
-                            </Label>
-                            <pre>  
-                            <TextInput 
-                                // name='item-1'
-                                onDOMChange={this.handleChange}
-                            />
-                            </pre>
-                            <pre>  
-                            <Button 
-                                // icon={<Edit />}
-                                    // accent={false}
-                                    primary={true} 
-                                    label='确认'
-                                    onClick={this.handleSubmit}
-                                    href='#'
-                            />       
-                           </pre>
-                            {/* </Box>  */}
-                       
-                    </AccordionPanel>
+                                </Label>
+                                <pre>  
+                                    <TextInput 
+                                        // name='item-1'
+                                        onDOMChange={this.handleChange}
+                                    />
+                                </pre>
+                                <pre>  
+                                    <Button 
+                                        // icon={<Edit />}
+                                            // accent={false}
+                                        primary={true} 
+                                        label='确认'
+                                        onClick={this.handleSubmit}
+                                        href='#'
+                                    />       
+                             </pre>
+                            
+                        </AccordionPanel>
                   
                         <AccordionPanel heading='我的公钥'>
                             <Paragraph>
@@ -163,13 +149,13 @@ const UserinfoPage = observer(class UserinfoPage extends Component {
                             </Paragraph>
                         </AccordionPanel>
                         
-                    <AccordionPanel heading='我的API-key'>
-                    {/* <p></p> */}
-                        {/* <Label>   </Label> */}
-                        <Paragraph >
-                            {auth.toString()}
-                        </Paragraph>
-                    </AccordionPanel>
+                        <AccordionPanel heading='我的API-key'>
+                        {/* <p></p> */}
+                            {/* <Label>   </Label> */}
+                            <Paragraph >
+                                {auth.toString()}
+                            </Paragraph>
+                        </AccordionPanel>
                     </Accordion>         
                 </Box>
                 <Foot style="" />
@@ -178,6 +164,5 @@ const UserinfoPage = observer(class UserinfoPage extends Component {
         
     }
 });
-
 
 export default UserinfoPage

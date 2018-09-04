@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
+
+import { getMetamaskStatus, web3 } from '../lib/eth';
+import { server_url } from '../lib/config';
+import user_model from '../model/user_model';
+import { observer } from 'mobx-react';
+
+// import {Button, Image, Menu, Header,Box, Anchor} from 'grommet/index-commonjs'
 import Anchor from 'grommet/components/Anchor';
 import Box from 'grommet/components/Box';
 import Header from 'grommet/components/Header';
 import Menu from 'grommet/components/Menu';
 import Image from 'grommet/components/Image';
 import Button from 'grommet/components/Button';
-import { getMetamaskStatus, web3 } from '../lib/eth';
-import { server_url } from '../lib/config';
-import user_model from '../model/user_model';
-import { observer } from 'mobx-react';
-// const windowGlobal = typeof window !== 'undefined' && window;
 
 const AppHeader = observer(class AppHeader extends Component {
     
@@ -135,9 +137,15 @@ const AppHeader = observer(class AppHeader extends Component {
                     style={{ color: 'aliceblue' }}
                     // className='active' 
                 >
-                    个人中心
+                    账户信息&API_KEY
                 </Anchor>
-
+                <Anchor
+                    href='/dappmanage'
+                    style={{ color: 'aliceblue' }}
+                    // onClick={() => this.handleLoggedOut()}
+                >
+                  DAPP管理
+                </Anchor>
                 <Anchor
                     href='#'
                     style={{ color: 'aliceblue' }}
@@ -172,6 +180,7 @@ const AppHeader = observer(class AppHeader extends Component {
                     <Menu label="导航" inline={true} direction="row">
                         <Anchor path="/">首页</Anchor>
                         <Anchor href="/docs/zh/started">API</Anchor>
+                        <Anchor href="/dapp">DAPP</Anchor>
                         <Anchor href="https://github.com/binstd/tplan" target="_blank" >文档计划</Anchor>
                         <Anchor href="/info">关于</Anchor>
                     </Menu>

@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import React from "react";
 import ReactDOM from "react-dom";
 
-// import loadLanguages from "prismjs/components/index";
+
 var loadLanguages = require('prismjs/components/');
-// require("prismjs/components/index.js");
+
 import "prismjs/themes/prism.css";
 
 loadLanguages(["bash"]);
