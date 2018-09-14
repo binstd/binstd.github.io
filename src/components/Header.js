@@ -139,13 +139,12 @@ const AppHeader = observer(class AppHeader extends Component {
                 >
                     账户信息&API_KEY
                 </Anchor>
-                <Anchor
+                {/* <Anchor
                     href='/dappmanage'
                     style={{ color: 'aliceblue' }}
-                    // onClick={() => this.handleLoggedOut()}
                 >
                   DAPP管理
-                </Anchor>
+                </Anchor> */}
                 <Anchor
                     href='#'
                     style={{ color: 'aliceblue' }}

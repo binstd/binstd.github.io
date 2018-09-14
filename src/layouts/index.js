@@ -15,7 +15,7 @@ const Layout = ({ children, data }) => (
             ]}
         />
        
-        <div className="grommet">
+        <div >
             {children()}
         </div>
   </div>

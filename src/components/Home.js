@@ -69,7 +69,6 @@ const THEMES = [
         size: 'large',
         label: 'cosmos'
      },
-  
 ];
 
 class HomeSection extends Component {
@@ -181,7 +180,6 @@ export default class Home extends Component {
                                 {/* {labelNode} */}
                             </Box>
                         </Button>
-                        
                     </Animate>
                 </Tile>
             );

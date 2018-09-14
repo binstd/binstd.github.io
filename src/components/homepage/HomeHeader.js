@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import Heading from 'grommet/components/Heading';
-import Footer from 'grommet/components/Footer';
+
 
 import Paragraph from 'grommet/components/Paragraph';
 
-import Anchor from 'grommet/components/Anchor';
 import Button from 'grommet/components/Button';
 import Box from 'grommet/components/Box';
 import Image from 'grommet/components/Image';
-import GithubIcon from 'grommet/components/icons/base/SocialGithub';
+
 
 export default class HomeHeader extends Component {
   render() {

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-// import jwtDecode from 'jwt-decode';
-// import {Box, Accordion, AccordionPanel, Paragraph, TextInput, Button, Label} from 'grommet/index-commonjs'
 import Box from 'grommet/components/Box';
 
 
@@ -12,8 +10,6 @@ import Paragraph from 'grommet/components/Paragraph';
 import TextInput from 'grommet/components/TextInput';
 import Button from 'grommet/components/Button';
 import Label from 'grommet/components/Label';
-
-
 
 
 import Header from '../components/Header';
@@ -84,17 +80,16 @@ const UserinfoPage = observer(class UserinfoPage extends Component {
         fetch(`${server_url}/api/users/${user.id}`, {
             body: JSON.stringify({ username }),
             headers: {
-            Authorization: `Bearer ${auth}`,
-            'Content-Type': 'application/json'
+                Authorization: `Bearer ${auth}`,
+                'Content-Type': 'application/json'
             },
             method: 'PATCH'
-        })
-            .then(response => response.json())
-            .then(user => this.setState({ loading: false, user }))
-            .catch(err => {
+        }).then(response => response.json())
+        .then(user => this.setState({ loading: false, user }))
+        .catch(err => {
             window.alert(err);
             this.setState({ loading: false });
-            });
+        });
     };
 
     render() {

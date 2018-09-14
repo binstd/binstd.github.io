@@ -35,52 +35,77 @@ const DappList = observer(class DappList extends Component {
         }
     
         return (    
-            <Columns 
-                justify='center'
-                //  align='center'
-                masonry={false}
-                maxCount={3}
-                size = 'small' 
-                // colorIndex='light-2'
-                //  margin='xlarge'
-                className = 'dapp-list-col'
-                // pad='medium'
-            >
-                <Card 
-                    href='/dappmanage'
-                    margin='small'
-                    thumbnail='https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/atomic-swap-erc20.png'
-                    heading='ERC20'
-                    description='将部署一个标准的ERO20toekn,管理转账'
-                    // contentPad='none'
-                    colorIndex='light-1'
-                    onClick={ () => navigateTo('/dappinfo?dapp=erc20')}
-                />
+                <div className="container is-fluid">
+                    <nav className="level">
+                        <div className="level-left">
+                        </div>
 
-                 <Card 
-                    // pad='medium'
-                    margin='small'
-                    thumbnail='https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/085702.jpg'
-                    heading='担保合同合约'
-                    description='可用于租赁，买卖二手等'
-                    // contentPad='none'
-                    colorIndex='light-1'
-                    onClick={() => this.setState({ showtoast: true })} 
-                />
-                
-                 <Card 
-                    // pad='medium'
-                    margin='small'
-                    style=""
-                    thumbnail='https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/085702.jpg'
-                    heading='ERC721合约'
-                    description='确保唯一性的erc721合约'
-                    // contentPad='none'
-                    colorIndex='light-1'
-                    onClick={() => this.setState({ showtoast: true })} 
-                />
-                {toast}
-            </Columns>     
+
+                        <div className="level-right box">
+                                <a 
+                                    className="button is-info is-outlined" 
+                                    href="/dapp/import" 
+                                    // onClick={ () => navigateTo('/dappinfo/')}
+                                >
+                                导入合约
+                                </a>
+                          
+                        </div>
+                    </nav>
+
+                    <div className="columns  is-multiline is-centered has-text-centered">
+                            <div 
+                            className="column is-3 is-narrow has-text-centered"
+                            onClick={ () => navigateTo('/dapp/create')}
+                            // onClick={ () => navigateTo('/dappinfo?dapp=erc20')}
+                            >
+                                 <a  href="#">
+                                    <article className="tile is-child box">
+                                    <figure className="image is-3by3 ">
+                                        <img src="https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/atomic-swap-erc20.png" />
+                                    </figure>
+                                    <p className="title">ERC20</p>
+                                    <p className="subtitle">将部署一个标准的ERO20toekn,管理转账</p>
+                                    </article>
+                                </a>
+                            </div>
+                        
+                        <div className="column is-3 is-narrow has-text-centered">
+                            <article className="tile is-child box">
+                        
+                            <figure className="image is-3by3 ">
+                                <img src="https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/085702.jpg" />
+                            </figure>
+                            <p className="title">ERC20</p>
+                            <p className="subtitle">将部署一个标准的ERO20toekn,管理转账</p>
+                            </article>
+                        </div>
+                        <div className="column is-3 is-narrow has-text-centered">
+                            <article className="tile is-child box">
+    
+                            <figure className="image is-3by3 ">
+                                <img src="https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/085702.jpg" />
+                            </figure>
+                            <p className="title">ERC20</p>
+                            <p className="subtitle">将部署一个标准的ERO20toekn,管理转账</p>
+                            </article>
+                        </div>
+                       
+                        <div className="column is-3 is-narrow has-text-centered">
+                            <article className="tile is-child box">
+                        
+                            <figure className="image is-3by3 ">
+                                <img src="https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/atomic-swap-erc20.png" />
+                            </figure>
+                            <p className="title">ERC20</p>
+                            <p className="subtitle">将部署一个标准的ERO20toekn,管理转账</p>
+                            </article>
+                        </div>
+                    </div>
+
+       
+            {toast}
+            </div>
         )
         
     }

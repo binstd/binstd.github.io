@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
+// import { Box, Label, Toast, TextInput, Button} from 'grommet/index-commonjs'
 
+import Button from 'grommet/components/Button';
 import Box from 'grommet/components/Box';
+import Label from 'grommet/components/Label';
 import Toast from 'grommet/components/Toast';
+import TextInput from 'grommet/components/TextInput';
+
 
 import { observer } from 'mobx-react';
 
 const tokenjson = require('./sol/ERC20Token.json');
-
+// import Web3 from 'web3';
 import { getMetamaskStatus, web3 } from '../../lib/eth';
 const rpc_url = 'https://mainnet.infura.io/v3/0045c2ce288a4e649a8f39f3d19446b4';
 
-const DappErc20 = observer(class DappErc20 extends Component {
+const Importcontract = observer(class Importcontract extends Component {
     constructor() {
         super();
         this.state = {
@@ -20,8 +25,15 @@ const DappErc20 = observer(class DappErc20 extends Component {
             symbol: '',
             total: 1000000
         };
+
     }
-    
+
+    componentDidMount() {
+        // console.log(this.props.location.search);
+        console.log(tokenjson.abi);
+        console.log(tokenjson.bytecode);
+    }
+
     //token name 设置   
     tokennameSet = ({ target: { value } }) => {
         this.setState({ tokenname: value });
@@ -33,17 +45,14 @@ const DappErc20 = observer(class DappErc20 extends Component {
         console.log(this.state.decimal);
     };
 
+
     //  token缩写 设置
     symbolSet = ({ target: { value } }) => {
         this.setState({ symbol: value });
     };
     
+
     delpoyContract() {
-        console.log(' tokenname:', this.state.tokenname);
-        console.log(' symbol:', this.state.symbol);
-        console.log(' decimal:', this.state.decimal);
-        console.log(' total: ', this.state.total);
-        // console.log(httpweb3);
         switch (getMetamaskStatus()) {
             case 'unlockMetamask':
                 alert('请先解锁metamask!');
@@ -81,6 +90,10 @@ const DappErc20 = observer(class DappErc20 extends Component {
 
     }
 
+
+
+
+
     render() {
         const { showtoast } = this.state;
         let toast;
@@ -100,20 +113,6 @@ const DappErc20 = observer(class DappErc20 extends Component {
 
         return (
             <div className="container">
-                <div className="columns  box">
-                    <div className="column is-one-quarter">
-                        <a 
-                            className="button  is-white is-rounded"
-                            href="/dapp/" 
-                        >
-                            <span className="icon">
-                                <i className="fa fa-arrow-left"></i>
-                            </span>
-                            <span>返回</span>
-                        </a>
-                    </div>
-                </div>
-                
                 <div className="columns is-centered box">
                     <div className="column is-3">
                         <div className="field">
@@ -123,7 +122,12 @@ const DappErc20 = observer(class DappErc20 extends Component {
                                     className="input is-info" type="text" placeholder="token名称"  
                                     onChange={this.tokennameSet}
                                 />
-                              
+                                <span className="icon is-small is-left">
+                                    <i className="fas fa-user"></i>
+                                </span>
+                                <span className="icon is-small is-right">
+                                    <i className="fas fa-check"></i>
+                                </span>
                             </div>
                             {/* <p className="help is-danger">token名称得是英文</p> */}
                         </div>
@@ -135,8 +139,14 @@ const DappErc20 = observer(class DappErc20 extends Component {
                                     className="input is-info" type="text" placeholder="oken缩写"  
                                     onChange={this.symbolSet}
                                 />
-                               
+                                <span className="icon is-small is-left">
+                                    <i className="fas fa-user"></i>
+                                </span>
+                                <span className="icon is-small is-right">
+                                    <i className="fas fa-check"></i>
+                                </span>
                             </div>
+                            {/* <p className="help is-danger">token缩写, 而非全称</p> */}
                         </div>
 
                         <div className="field">
@@ -146,14 +156,26 @@ const DappErc20 = observer(class DappErc20 extends Component {
                                     className="input is-info" type="text" placeholder="小数点位数" 
                                     onChange={this.decimalSet} 
                                 />
+                                <span className="icon is-small is-left">
+                                    <i className="fas fa-user"></i>
+                                </span>
+                                <span className="icon is-small is-right">
+                                    <i className="fas fa-check"></i>
+                                </span>
                             </div>
-
+                            {/* <p className="help is-danger">请输入小数点位数（需输入整数）</p> */}
                         </div>
 
                          <div className="field">
                             <label className="label"> 总发行量:</label>
                             <div className="control has-icons-left has-icons-right">
                                 <input className="input is-info" type="text" placeholder="小数点位数"  />
+                                <span className="icon is-small is-left">
+                                    <i className="fas fa-user"></i>
+                                </span>
+                                <span className="icon is-small is-right">
+                                    <i className="fas fa-check"></i>
+                                </span>
                             </div>
                             {/* <p className="help is-danger">请输入整型数字!</p> */}
                         </div> 
@@ -161,7 +183,7 @@ const DappErc20 = observer(class DappErc20 extends Component {
                          <a 
                             className=" button is-info is-rounded is-fullwidth"
                             onClick={() => this.delpoyContract()}
-                        >提交</a>
+                        >导入</a>
                         </div> 
                     </div>
                     
@@ -175,4 +197,4 @@ const DappErc20 = observer(class DappErc20 extends Component {
     }
 });
 
-export default DappErc20
+export default Importcontract

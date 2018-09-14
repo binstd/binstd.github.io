@@ -19,24 +19,24 @@ module.exports = {
         githubUrl: 'https://github.com/hichroma/learnstorybook.com',
         codeGithubUrl: 'https://github.com/hichroma/learnstorybook-code',
     },
-  plugins: [
-    'gatsby-plugin-catch-links',
-    'gatsby-plugin-react-helmet',
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/markdown`,
-        name: 'content',
-      },
-    },
-    'gatsby-transformer-remark',
+    plugins: [
+        'gatsby-plugin-catch-links',
+        'gatsby-plugin-react-helmet',
+        {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+            path: `${__dirname}/markdown`,
+            name: 'content',
+        },
+        },
+        'gatsby-transformer-remark',
 
-    {
-      resolve: `gatsby-plugin-sass`,
-      options: {
-        precision: 8,
-      },
-    }
-  ],
+        {
+        resolve: `gatsby-plugin-sass`,
+        options: {
+            precision: 8,
+        },
+        }
+    ],
   
 }
