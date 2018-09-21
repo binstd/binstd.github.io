@@ -10,15 +10,13 @@ import Paragraph from 'grommet/components/Paragraph';
 import TextInput from 'grommet/components/TextInput';
 import Button from 'grommet/components/Button';
 import Label from 'grommet/components/Label';
-
-
 import Header from '../components/Header';
 import Foot from '../components/Foot';
-
 import { observer } from 'mobx-react';
 import { server_url } from '../lib/config';
 
 const UserinfoPage = observer(class UserinfoPage extends Component {
+
     constructor() {
         super();
         this.state = {
@@ -29,7 +27,6 @@ const UserinfoPage = observer(class UserinfoPage extends Component {
             uid:'',
             address:''
         };
-      
     }
 
     componentDidMount() {
@@ -114,8 +111,6 @@ const UserinfoPage = observer(class UserinfoPage extends Component {
                 >
                     <Accordion openMulti={true} > 
                         <AccordionPanel heading='名称 '>
-                    
-                        
                             <Label>
                                 {username ? <pre>{username}</pre> : <pre>'未设置'</pre>}
                                 </Label>

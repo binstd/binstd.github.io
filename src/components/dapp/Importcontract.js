@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
 // import { Box, Label, Toast, TextInput, Button} from 'grommet/index-commonjs'
 
-import Button from 'grommet/components/Button';
 import Box from 'grommet/components/Box';
-import Label from 'grommet/components/Label';
 import Toast from 'grommet/components/Toast';
-import TextInput from 'grommet/components/TextInput';
-
-
 import { observer } from 'mobx-react';
 
 const tokenjson = require('./sol/ERC20Token.json');
-// import Web3 from 'web3';
 import { getMetamaskStatus, web3 } from '../../lib/eth';
-const rpc_url = 'https://mainnet.infura.io/v3/0045c2ce288a4e649a8f39f3d19446b4';
 
 const Importcontract = observer(class Importcontract extends Component {
+
     constructor() {
         super();
         this.state = {
@@ -25,7 +19,6 @@ const Importcontract = observer(class Importcontract extends Component {
             symbol: '',
             total: 1000000
         };
-
     }
 
     componentDidMount() {
@@ -51,7 +44,6 @@ const Importcontract = observer(class Importcontract extends Component {
         this.setState({ symbol: value });
     };
     
-
     delpoyContract() {
         switch (getMetamaskStatus()) {
             case 'unlockMetamask':
@@ -89,9 +81,6 @@ const Importcontract = observer(class Importcontract extends Component {
         }
 
     }
-
-
-
 
 
     render() {

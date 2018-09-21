@@ -4,9 +4,12 @@ import Helmet from 'react-helmet'
 
 import './grommet.min.css'
 import './common.css'
-
+// import {
+//     BrowserRouter as Router,
+// } from 'react-router-dom'
 const Layout = ({ children, data }) => (
-  <div>
+
+    <div>
         <Helmet
             title={data.site.siteMetadata.title}
             meta={[
@@ -14,11 +17,11 @@ const Layout = ({ children, data }) => (
                 { name: 'keywords', content: 'sample, something' },
             ]}
         />
-       
         <div >
             {children()}
         </div>
-  </div>
+    </div>
+
 )
 
 Layout.propTypes = {

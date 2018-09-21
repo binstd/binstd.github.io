@@ -66,7 +66,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           }
   
             if(node.frontmatter.path) {
-                    // console.log(node.frontmatter.path);
+                console.log(node.frontmatter.path);
                 createPage({
                     path: node.frontmatter.path,
                     component: path.resolve("./src/templates/blogTemplate.js"),
@@ -86,7 +86,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             }
          
         });
-        
+
+       
         let tags = [];
         _.each(edges, edge => {
             if (_.get(edge, "node.frontmatter.tags")) {
@@ -105,8 +106,19 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             });
         });
         resolve();
+
       });
     });
   };
   
-
+// Implement the Gatsby API “onCreatePage”. This is
+// called after every page is created.
+exports.onCreatePage = async ({ page, boundActionCreators }) => {
+    const { createPage } = boundActionCreators;
+    if (page.path.match(/^\/dapp/)) {
+      page.matchPath = "/dapp/*";
+  
+      // Update the page.
+      createPage(page);
+    }
+};

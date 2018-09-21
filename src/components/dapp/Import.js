@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
 import 'font-awesome/css/font-awesome.min.css';
-import Header from '../../components/Header';
-import Foot from '../../components/Foot';
+
 
 import user_model from '../../model/user_model';
 
@@ -12,7 +11,7 @@ import { server_url } from '../../lib/config';
 // import queryString  from 'query-string';
 import {navigateTo}  from "gatsby-link";
 
-const ImportPage = observer(class ImportPage extends Component {
+const Import = observer(class ImportPage extends Component {
 
     constructor() {
         super();
@@ -43,7 +42,7 @@ const ImportPage = observer(class ImportPage extends Component {
         let auth = "";
         let postData = {
             dappName:this.state.dappName,
-            contactAddress:this.state.contactAddress,
+            contractAddress:this.state.contractAddress,
             publicAddress:user_model.address,
         }
 
@@ -86,22 +85,21 @@ const ImportPage = observer(class ImportPage extends Component {
         }
 
         return ( 
-            <div>
-                <Header />
-                <div className="container">
+            <div className="container">
                 <div className="columns  box">
                     <div className="column is-one-quarter">
                         <a 
                             className="button  is-white is-rounded"
-                            href="/dapp/" 
+                            href="/dapp/index/" 
                         >
                             <span className="icon">
                                 <i className="fa fa-arrow-left"></i>
                             </span>
-                            <span>返回</span>
+                            <span>返回</span>                           
                         </a>
                     </div>
                 </div>
+
                 <div className="columns is-centered box">
                     <div className="column is-4">
 
@@ -117,7 +115,6 @@ const ImportPage = observer(class ImportPage extends Component {
                             {/* <p className="help is-danger">token缩写, 而非全称</p> */}
                         </div>
 
-
                         <div className="field">
                             <label className="label">合约地址:</label>
                             <div className="control has-icons-left has-icons-right">
@@ -127,28 +124,23 @@ const ImportPage = observer(class ImportPage extends Component {
                                 />
                                
                             </div>
-                            {/* <p className="help is-danger">token名称得是英文</p> */}
                         </div>
 
-                        
-
                         <div className="field has-text-centered">
-                         <a 
-                            className=" button is-info is-rounded is-fullwidth"
-                            onClick={() => this.importDapp()}
-                        >导入</a>
+                            <a 
+                                className=" button is-info is-rounded is-fullwidth"
+                                onClick={() => this.importDapp()}
+                            >
+                                导入
+                            </a>
                         </div> 
                     </div>
                     
-                </div>
-                       
+                </div>       
                 {toast}
-            </div>
-
-                <Foot style="" />
             </div>
         ) 
     }
 });
 
-export default ImportPage
+export default Import

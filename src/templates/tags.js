@@ -1,13 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import PostLink from "../components/post-link";
 import Link from "gatsby-link";
-import Quote from 'grommet/components/Quote';
-import Card from 'grommet/components/Card';
-import Paragraph from 'grommet/components/Paragraph';
-import Timestamp from 'grommet/components/Timestamp';
 import Title from 'grommet/components/Title';
-import Columns from 'grommet/components/Columns';
+
 import Box from 'grommet/components/Box';
 // Components
 import Header from '../components/Header';

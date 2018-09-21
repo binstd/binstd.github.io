@@ -9,6 +9,7 @@ class userModel {
     logintype;
     verifyed;
     auth;
+    choossedmenu;
 
     get getAllData() {
         const data = {
@@ -52,6 +53,7 @@ class userModel {
         if (jsonData['auth']) {
             this.auth = jsonData['auth'];
         } 
+
     }
 
     uidSet(uid) {
@@ -101,6 +103,7 @@ decorate(userModel, {
     verifyed:observable,
     logintype:observable,
     auth:observable,
+    choossedmenu:observable
 });
 
 export default new userModel();

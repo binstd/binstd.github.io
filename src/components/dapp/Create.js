@@ -10,7 +10,7 @@ const tokenjson = require('./sol/ERC20Token.json');
 import { getMetamaskStatus, web3 } from '../../lib/eth';
 const rpc_url = 'https://mainnet.infura.io/v3/0045c2ce288a4e649a8f39f3d19446b4';
 
-const DappErc20 = observer(class DappErc20 extends Component {
+const Create = observer(class DappErc20 extends Component {
     constructor() {
         super();
         this.state = {
@@ -68,7 +68,6 @@ const DappErc20 = observer(class DappErc20 extends Component {
                             if (!myContract.address) {
                                 console.log(myContract.transactionHash) // The hash of the transaction, which deploys the contract
 
-                                // check address on the second call (contract deployed)
                             } else {
                                 console.log(myContract.address) // the contract address
                             }
@@ -104,7 +103,7 @@ const DappErc20 = observer(class DappErc20 extends Component {
                     <div className="column is-one-quarter">
                         <a 
                             className="button  is-white is-rounded"
-                            href="/dapp/" 
+                            href="/dapp/index" 
                         >
                             <span className="icon">
                                 <i className="fa fa-arrow-left"></i>
@@ -175,4 +174,4 @@ const DappErc20 = observer(class DappErc20 extends Component {
     }
 });
 
-export default DappErc20
+export default Create

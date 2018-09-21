@@ -5,25 +5,25 @@ import { server_url } from '../lib/config';
 import user_model from '../model/user_model';
 import { observer } from 'mobx-react';
 
-// import {Button, Image, Menu, Header,Box, Anchor} from 'grommet/index-commonjs'
 import Anchor from 'grommet/components/Anchor';
 import Box from 'grommet/components/Box';
 import Header from 'grommet/components/Header';
 import Menu from 'grommet/components/Menu';
 import Image from 'grommet/components/Image';
 import Button from 'grommet/components/Button';
+import { navigateTo } from "gatsby-link";
 
 const AppHeader = observer(class AppHeader extends Component {
     
-    constructor() {
-        super();
+    constructor(Props) {
+        super(Props);
         this.state = {
             username: '',
             auth: '',
             id: '',
         };
     }
-
+    
     componentDidMount() {
         if (localStorage.getItem("userinfo")) {
             let userinfo = JSON.parse(localStorage.getItem("userinfo"));
@@ -35,7 +35,6 @@ const AppHeader = observer(class AppHeader extends Component {
         if(!user_model.address&&!user_model.logintype){
             console.log('没有登录');
         }
-    
         switch (getMetamaskStatus()) {
             case 'unlockMetamask':
                 alert('请先解锁metamask!');
@@ -60,7 +59,7 @@ const AppHeader = observer(class AppHeader extends Component {
         } 
     }
 
-    //web3登录
+    // web3登录
     handleSignMessage = ({ publicAddress, nonce, id }) => {
         this.setState({ 
             id
@@ -72,6 +71,7 @@ const AppHeader = observer(class AppHeader extends Component {
                 (err, signature) => {
                     if (err) return reject(err);
                     console.log('\n signature:', signature);
+                  
                     return resolve({ publicAddress, signature });
                 }
             )
@@ -96,21 +96,23 @@ const AppHeader = observer(class AppHeader extends Component {
             auth: auth,
             id:this.state.id
         };
-        console.log('auth', auth);
-        console.log('\n userinfo:',userinfo);
+        
         user_model.allSet(userinfo);
         localStorage.setItem("userinfo", JSON.stringify(userinfo));
         console.log(user_model.logintype);
         this.setState({ auth });
+        window.location.reload(true); 
     };
     
     // 退出登录
     handleLoggedOut = () => {
         localStorage.removeItem('userinfo');
+        localStorage.removeItem('userdapp');
         user_model.clearAll();
         this.setState({ auth: undefined });
+        window.location.reload(true); 
+        
     };
-
 
     //提交新地址
     handleSignup = publicAddress =>
@@ -137,20 +139,14 @@ const AppHeader = observer(class AppHeader extends Component {
                     style={{ color: 'aliceblue' }}
                     // className='active' 
                 >
-                    账户信息&API_KEY
+                账户信息&API_KEY
                 </Anchor>
-                {/* <Anchor
-                    href='/dappmanage'
-                    style={{ color: 'aliceblue' }}
-                >
-                  DAPP管理
-                </Anchor> */}
                 <Anchor
                     href='#'
                     style={{ color: 'aliceblue' }}
                     onClick={() => this.handleLoggedOut()}
                 >
-                    退出登录
+                退出登录
                 </Anchor>
             </Menu>;
         } else {
@@ -174,25 +170,21 @@ const AppHeader = observer(class AppHeader extends Component {
                         src='https://programmerinnfile.b0.upaiyun.com/community/10001/20180814/yzdXjjAI4g.png'
                         style={{ height: 30, width: 108, margin: '0 35px 5px 0' }}
                     />
-                    {/* <HpiIcon colorIndex="brand" size="large" /> */}
                     <Box pad="small" />
-                    <Menu label="导航" inline={true} direction="row">
-                        <Anchor path="/">首页</Anchor>
-                        <Anchor href="/docs/zh/started">API</Anchor>
-                        <Anchor href="/dapp">DAPP</Anchor>
-                        <Anchor href="https://github.com/binstd/tplan" target="_blank" >文档计划</Anchor>
-                        <Anchor href="/info">关于</Anchor>
-                    </Menu>
-
+                        <Menu label="导航" inline={true} direction="row">
+                            <Anchor path="/">首页</Anchor>
+                            <Anchor href="/docs/zh/started">API</Anchor>
+                            <Anchor href="/dapp/index">DAPP</Anchor>
+                            <Anchor href="https://github.com/binstd/tplan" target="_blank" >文档计划</Anchor>
+                            <Anchor href="/info">关于</Anchor>
+                        </Menu>
                     <Box flex="grow" align="end">
                         {user_label}
                     </Box>
                 </Box>
-
             </Header>
         );
     };
-
 });
 
 

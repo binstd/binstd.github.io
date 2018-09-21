@@ -4,9 +4,9 @@ import Foot from '../../components/Foot';
 import { observer } from 'mobx-react';
 
 import 'font-awesome/css/font-awesome.min.css';
-import DappErc20 from '../../components/dapp/DappErc20';
+import UserDapp from '../../components/dapp/UserDapp';
 
-const CreatePage = observer(class CreatePage extends Component {
+const MylistPage = observer(class CreatePage extends Component {
 
     constructor() {
         super();
@@ -16,11 +16,11 @@ const CreatePage = observer(class CreatePage extends Component {
         return ( 
             <div >
                 <Header />       
-                <DappErc20 />
+                <UserDapp />
                 <Foot style="" />
             </div>
         ) 
     }
 });
 
-export default CreatePage
+export default MylistPage

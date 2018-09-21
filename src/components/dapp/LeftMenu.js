@@ -40,12 +40,12 @@ class LeftMenu extends Component {
     }
 
     childList(child_list) {
-        return child_list.map((menu, index) => {
-            let label = menu.label;
+        return child_list.map((child_menu, index) => {
+            let label = child_menu.label;
             return (
                 <li key={index} >
-                    <a onClick = { label => this.ToLink(menu.link) } >
-                        {menu.label}
+                    <a onClick = { label => this.ToLink(child_menu) } >
+                        {child_menu.label}
                     </a>
                 </li>
             );
