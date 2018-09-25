@@ -146,9 +146,7 @@ const Create = observer(class DappErc20 extends Component {
                                     onChange={this.decimalSet} 
                                 />
                             </div>
-
                         </div>
-
                          <div className="field">
                             <label className="label"> 总发行量:</label>
                             <div className="control has-icons-left has-icons-right">

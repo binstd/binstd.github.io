@@ -64,6 +64,7 @@ const ERC20AddContact = observer( class ERC20AddContact extends Component {
     render() {
         return (
             <div>
+                
                 <div className="field">
                     <label className="label">备注:</label>
                     <div className="control has-icons-left has-icons-right">
@@ -74,6 +75,7 @@ const ERC20AddContact = observer( class ERC20AddContact extends Component {
                     </div>
                     {/* <p className="help is-danger">token缩写, 而非全称</p> */}
                 </div>
+
                 <div className="field">
                     <label className="label">账户地址:</label>
                     <div className="control has-icons-left has-icons-right">
@@ -83,11 +85,14 @@ const ERC20AddContact = observer( class ERC20AddContact extends Component {
                         />
                     </div>
                 </div>
+
                 <div className="field has-text-centered">
                     <a
                         className=" button is-info is-rounded "
                         onClick={() => this.addContact()}
-                    >导入</a>
+                    >
+                        添加
+                    </a>
                 </div> 
             </div>
         );

@@ -79,9 +79,7 @@ const Importcontract = observer(class Importcontract extends Component {
             default:
                 break;
         }
-
     }
-
 
     render() {
         const { showtoast } = this.state;
@@ -98,7 +96,6 @@ const Importcontract = observer(class Importcontract extends Component {
                 </Toast>
             );
         }
-
 
         return (
             <div className="container">

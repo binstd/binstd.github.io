@@ -11,6 +11,7 @@ import LeftMenu from "./LeftMenu";
 
 import ERC20AddContact from "./ERC20AddContact";
 import ERC20AddApprove from "./ERC20AddApprove";
+import ERC20AddTransfer from "./ERC20AddTransfer";
 import ContactList from "./ContactList";
 const menulist = [
     {
@@ -27,12 +28,20 @@ const menulist = [
         label: '操作:',
         child_list:[
             {
-                label:'转账任务',
-                link:'/databoard',
+                label:'单次转账',
+                link:'transfer',
+            },
+            {
+                label:'批量转账',
+                link:'transferall',
             },
             {
                 label:'添加托管人',
                 link:'approve',
+            },
+            {
+                label:'减少托管人',
+                link:'deleteapprove',
             },
             {
                 label:'添加地址备注',
@@ -93,13 +102,14 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
     }
 
     chooseMainComponent(comp) {
-        // this.setState({mainID});
-        console.log('comp:',comp);;
         this.setState({mainID:comp})
     }
 
     render() {
         let {tolink, isOpenModel, mainID } = this.state;
+        let ContactListClass, ApproveListClass,TransferClass,DefaultClass = classNames({
+            'is-right': true,
+        });
         let modelComponent,mainComponent = '';
         // let mainComponent = 
 
@@ -112,8 +122,12 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
                 break;
             case 'approve':    
                 modelComponent = <ERC20AddApprove dappid="1"  closeModel={() => this.closeModel()}  />
-                break;    
+                break; 
+            case 'transfer':    
+                modelComponent = <ERC20AddTransfer dappid="1"  closeModel={() => this.closeModel()}  />
+                break;                 
             default:
+                isOpenModel = false;
                 break;  
         }
 
@@ -121,8 +135,16 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
             case 'contact':
                 console.log('mainID');
                 mainComponent = <ContactList  />
+                ContactListClass = classNames({
+                    'is-right': true,
+                    'is-active': true
+                });
                 break;
             default:
+                DefaultClass = classNames({
+                    'is-right': true,
+                    'is-active': true
+                });
                 mainComponent = <div>
                                     <nav className="level is-mobile">
                                         <div className="level-item has-text-centered">
@@ -168,6 +190,8 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
             modal: true,
             'is-active': isOpenModel
         });
+
+
         // #f5f5f5
         return (    
             <div style={{background:'#f5f5f5'}} > 
@@ -175,20 +199,21 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
                     <div className="column is-narrow">
                         <LeftMenu menulist={menulist}  ToLink={(child_menu) => this.ToLink(child_menu)} />
                     </div>
+
                     <div className="column" style={{margin:5}}>
+                    
                         <div className="box">
                             <div className="tabs is-right is-small" >
                                 <ul>
-                                    <li className="is-active is-left"><a onClick={() => this.chooseMainComponent('/')} >仪表盘</a></li>
-                                    <li className="is-right" ><a>正在托管</a></li>
-                                    <li className="is-right" ><a>待处理转账</a></li>
-                                    <li className="is-right" onClick={() => this.chooseMainComponent('contact')} ><a>转账地址</a></li>
+                                    <li className={DefaultClass}><a onClick={() => this.chooseMainComponent('/')} >仪表盘</a></li>
+                                    <li className={ApproveListClass} ><a>正在托管</a></li>
+                                    <li className={TransferClass} ><a>待处理转账</a></li>
+                                    <li className={ContactListClass} onClick={() => this.chooseMainComponent('contact')} ><a>已备注账户</a></li>
                                 </ul>
                             </div>
                             <div className="column">
                                 {mainComponent}
                             </div>  
-
                         </div>
 
                         <div className={modelClass} style={{background:'#fff'}}  >
@@ -206,19 +231,8 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
                                 </section>
                             </div>
                         </div>
-
-                        {/* <div class={modelClass} style={{background:'#fff'}} >
-                            <div class="modal-background" onClick={() => this.closeModel()} > </div>
-                            <div class="modal-content">
-                                {modelComponent} 
-                            </div>
-                            <button class="modal-close is-large" aria-label="close" onClick={() => this.closeModel()} ></button>
-                        </div> */}
-
                     </div>
-
                 </div>
-
             </div> 
         )
         

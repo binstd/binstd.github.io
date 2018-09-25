@@ -7,26 +7,12 @@ import { server_url } from '../../lib/config';
 const tokenjson = require('./sol/ERC20Token.json');
 
 import { getMetamaskStatus, web3 } from '../../lib/eth';
-// const contactlist = [
-//     {
-//         contactName:'luz',
-//         contactAddress:'0x81d723361d4f3e648f2c9c479d88dc6debf4fa5f',
-//     },
-//     {
-//         contactName:'赵佳佳',
-//         contactAddress:'0x81d723361d4f3e648f2c9c479d88dc6debf4fa5f',
-//     },
-//     {
-//         contactName:'孙方',
-//         contactAddress:'0x81d723361d4f3e648f2c9c479d88dc6debf4fa5f',
-//     }
-// ];
-const ERC20AddApprove = observer(  class ERC20AddApprove extends Component {
+
+const ERC20AddTransfer = observer(  class ERC20AddTransfer extends Component {
     
     constructor(props) {
         super(props);
         this.state = {
-            contactName:'孙方',
             contactAddress:'',
             contactlist:[],
             searcthedContactList:[],
@@ -37,19 +23,15 @@ const ERC20AddApprove = observer(  class ERC20AddApprove extends Component {
     }
 
     componentWillMount(){
-
-       console.log(this.props.dappid);
        let auth, userdapp = ''; 
        if (localStorage.getItem("userinfo")&&localStorage.getItem("userdapp")) {
             let userinfo = JSON.parse(localStorage.getItem("userinfo"));
             userdapp =  JSON.parse(localStorage.getItem("userdapp"));
             auth = userinfo.auth.accessToken;
         }
-        console.log('userdapp:',userdapp);
         userdapp.map((item, index) => {
-            console.log(item.id);
             if(item.id == this.props.dappid) {
-                console.log('\n item.contractAddress: \n ',item.contractAddress)  
+                // console.log('\n item.contractAddress: \n ',item.contractAddress)  
                 this.setState({
                     contractAddress:item.contractAddress
                 });          
@@ -75,21 +57,20 @@ const ERC20AddApprove = observer(  class ERC20AddApprove extends Component {
     //token name 设置   
     // addressSet = (value) => {
     addressSet = ({ target: { value } }) => {
-        console.log(value);
         let {contactlist} = this.state;
         let searcthedContactList = [];
         this.setState({ 
             contactAddress: value,
             isSearch:false
         });
-        console.log('\n searcthedContactList.length=1>', searcthedContactList.length);
+       
         contactlist.map((contact, index) => {
             console.log(contact.contactName.includes(value));
             if(contact.contactName.includes(value)||contact.contactAddress.includes(value)) {
                 searcthedContactList.push(contact);  
             }       
         });
-        console.log('\n searcthedContactList.length=2>', searcthedContactList.length);
+      
         if ( searcthedContactList.length != 0 ) {
             this.setState({
                 isSearch:true,
@@ -123,7 +104,7 @@ const ERC20AddApprove = observer(  class ERC20AddApprove extends Component {
         });
     }
 
-    Approve(){
+    addTransfer(){
         console.log(this.state.contactAddress, this.state.amount);
         // console.log(httpweb3);
         switch (getMetamaskStatus()) {
@@ -136,16 +117,32 @@ const ERC20AddApprove = observer(  class ERC20AddApprove extends Component {
             case 'okMetamask':
                 let MyContract = web3.eth.contract(tokenjson.abi);
                 // initiate contract for an address
+                console.log('\n this.state.contractAddress:',this.state.contractAddress);
                 let myContractInstance = MyContract.at(this.state.contractAddress);
-                myContractInstance.approve(
+                myContractInstance.transfer(
                     this.state.contactAddress, 
                     this.state.amount,
-                    function (err, myContract) {
+                    function (err, transactionHash) {
                         if (!err) {
-                            console.log('get!!!');    
+                            console.log('get!!!'); 
+                            if(transactionHash){
+                                this.props.closeModel();
+                                console.log(transactionHash);
+                            }   
                         }
                     }
                 ); 
+                // web3.eth.sendTransaction({from: web3.eth.accounts[0], to: to_address, value: web3.toWei(amount, "ether")},
+                // function(err, transactionHash) {
+                //     if (!err)
+                //     //   console.log(transactionHash); 
+                //     //   console.log(redirect_url);
+                //       if(transactionHash){
+                //         window.location.href = redirect_url;
+                //       }
+                     
+                //   }    
+                // )
             default:
                 break;
         }
@@ -166,7 +163,7 @@ const ERC20AddApprove = observer(  class ERC20AddApprove extends Component {
         return (
             <div>
                 <div className="field">
-                    <label className="label">托管账户:</label>
+                    <label className="label">转账账户:</label>
                     <div className="control has-icons-left has-icons-right">
                         <input
                             className="input is-info" type="text" placeholder="输入新地址或搜索账户备注列表"
@@ -178,10 +175,10 @@ const ERC20AddApprove = observer(  class ERC20AddApprove extends Component {
                     </div>
                 </div>
                 <div className="field">
-                    <label className="label">托管金额:</label>
+                    <label className="label">转账金额:</label>
                     <div className="control has-icons-left has-icons-right">
                         <input
-                            className="input is-info" type="text" placeholder="账户地址"
+                            className="input is-info" type="text" placeholder="账户金额"
                             onChange={this.amountSet}
                         />
                     </div>
@@ -189,12 +186,12 @@ const ERC20AddApprove = observer(  class ERC20AddApprove extends Component {
                 <div className="field has-text-centered">
                     <a
                         className="button is-info is-rounded "
-                        onClick={() => this.Approve()}
-                    >确定托管</a>
+                        onClick={() => this.addTransfer()}
+                    >确定转账</a>
                 </div> 
             </div>
         );
     }
 });
 
-export default ERC20AddApprove;
+export default ERC20AddTransfer;
