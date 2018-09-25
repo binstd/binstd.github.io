@@ -15,7 +15,6 @@ const ContactList = observer( class ContactList extends Component {
         };
     }
 
-
     componentWillMount() {
        console.log(user_model.address) 
        let auth = ''; 
