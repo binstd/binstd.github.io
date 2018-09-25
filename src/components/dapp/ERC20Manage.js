@@ -12,7 +12,7 @@ import LeftMenu from "./LeftMenu";
 import ERC20AddContact from "./ERC20AddContact";
 import ERC20AddApprove from "./ERC20AddApprove";
 import ERC20AddTransfer from "./ERC20AddTransfer";
-import ContactList from "./ContactList";
+import ContactList from "./Contactlist";
 const menulist = [
     {
         label: '数据:',
