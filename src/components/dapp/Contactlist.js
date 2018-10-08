@@ -39,6 +39,7 @@ const ContactList = observer( class ContactList extends Component {
             });
         });
     }
+    
     //token name 设置   
     contactNameSet = ({ target: { value } }) => {
         this.setState({ contactName: value });

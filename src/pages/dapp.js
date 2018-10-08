@@ -14,14 +14,13 @@ import {
 
 import DappList from '../components/dapp/DappList';
 import UserDapp from '../components/dapp/UserDapp';
-import ERC20Manage from '../components/dapp/ERC20Manage';
+import ERC20Manage from '../components/erc20/ERC20Manage';
 import Import from '../components/dapp/Import';
 import Create from '../components/dapp/Create';
 
 const DappPage = class DappPage extends Component {
     render() { 
         return ( 
-         
             <Box>
                 <Header />
                     <Route path="/dapp/index" component={DappList} />

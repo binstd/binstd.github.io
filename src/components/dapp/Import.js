@@ -19,7 +19,7 @@ const Import = observer(class ImportPage extends Component {
             showtoast: false,
             abi:'',
             dappName:'',
-            contactAddress:''
+            contractAddress:''
         };
     }
 
@@ -32,9 +32,9 @@ const Import = observer(class ImportPage extends Component {
     };
 
     //token 小数点位数 设置
-    contactAddressSet = ({ target: { value } }) => {
-        this.setState({ contactAddress: value });
-        console.log(this.state.contactAddress);
+    contractAddressSet = ({ target: { value } }) => {
+        this.setState({ contractAddress: value });
+        console.log(this.state.contractAddress);
     };
 
     importDapp() {
@@ -62,7 +62,7 @@ const Import = observer(class ImportPage extends Component {
             method: 'POST'
         }).then(response => response.json()).then(data => {
             if(data.id){
-                navigateTo('/dapp/')
+                navigateTo('/dapp/index')
             }
         })
       
@@ -120,7 +120,7 @@ const Import = observer(class ImportPage extends Component {
                             <div className="control has-icons-left has-icons-right">
                                 <input 
                                     className="input is-info" type="text" placeholder="合约地址"  
-                                    onChange={this.contactAddressSet}
+                                    onChange={this.contractAddressSet}
                                 />
                                
                             </div>

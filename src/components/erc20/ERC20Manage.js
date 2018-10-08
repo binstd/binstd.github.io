@@ -7,12 +7,15 @@ import classNames from 'classnames/bind';
 import { observer } from 'mobx-react';
 import user_model from '../../model/user_model';
 import { navigateTo } from "gatsby-link";
-import LeftMenu from "./LeftMenu";
+import LeftMenu from "../dapp/LeftMenu";
 
 import ERC20AddContact from "./ERC20AddContact";
 import ERC20AddApprove from "./ERC20AddApprove";
 import ERC20AddTransfer from "./ERC20AddTransfer";
-import ContactList from "./Contactlist";
+import ContactList from "../dapp/Contactlist";
+import Transferlist from "./Transferlist"; 
+
+import { server_url } from '../../lib/config';
 const menulist = [
     {
         label: '数据:',
@@ -20,7 +23,6 @@ const menulist = [
             {
                 label:'仪表盘',
                 link:'index',
-                
             },
         ]
     },
@@ -39,10 +41,10 @@ const menulist = [
                 label:'添加托管人',
                 link:'approve',
             },
-            {
-                label:'减少托管人',
-                link:'deleteapprove',
-            },
+            // {
+            //     label:'减少托管人',
+            //     link:'deleteapprove',
+            // },
             {
                 label:'添加地址备注',
                 link:'contact',
@@ -64,8 +66,6 @@ const menulist = [
     }
 ];
 
-
-
 const ERC20Manage = observer(class ERC20Manage extends Component {
     
     constructor() {
@@ -75,7 +75,9 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
             label:'',
             tolink:'index',
             isOpenModel:false,
-            mainID:''
+            mainID:'',
+            Loading:false,
+            tokenInfo:''
         };      
     }
 
@@ -87,14 +89,38 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
             label:child_menu.label
         });
     }
+
     componentWillMount(){
-        if(user_model.address){
-            // console.log('已登录');
-        } else {
+        if(!user_model.address){
             navigateTo('/dapp/index');
-        }
+        }else{
+            let userdapp = [];
+            if (localStorage.getItem("userdapp")) {
+                userdapp = JSON.parse(localStorage.getItem("userdapp"));
+                // contractAddress = userdapp.contractAddress;
+                console.log(userdapp[0].contractAddress);
+            }
+            let auth = ''; 
+            if (localStorage.getItem("userinfo")) {
+                let userinfo = JSON.parse(localStorage.getItem("userinfo"));
+                auth = userinfo.auth.accessToken;
+            }
+
+            fetch(`${server_url}/ethapi/tokeninfo?contract_address=${userdapp[0].contractAddress}`, {
+                headers: {
+                    Authorization: `Bearer ${auth}`
+                }
+            }).then(response => response.json())
+                .then(data => {
+                    console.log(data.data);
+                    this.setState({
+                        tokenInfo:data.data
+                    });
+                    
+            });
+        } 
     }
-    
+
     closeModel() {
         this.setState({
             isOpenModel:false
@@ -106,7 +132,7 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
     }
 
     render() {
-        let {tolink, isOpenModel, mainID } = this.state;
+        let {tolink, isOpenModel, mainID, tokenInfo } = this.state;
         let ContactListClass, ApproveListClass,TransferClass,DefaultClass = classNames({
             'is-right': true,
         });
@@ -140,6 +166,14 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
                     'is-active': true
                 });
                 break;
+            case 'transferlist':
+                mainComponent = <Transferlist  />
+                TransferClass = classNames({
+                    'is-right': true,
+                    'is-active': true
+                });
+                break;
+                console.log('转账记录')    
             default:
                 DefaultClass = classNames({
                     'is-right': true,
@@ -150,28 +184,27 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
                                         <div className="level-item has-text-centered">
                                             <div>
                                                 <p className="heading">token名称</p>
-                                                <p className="title">Binstd Network</p>
+                                                <p className="title">{tokenInfo.name}</p>
                                             </div>
                                         </div>
                                         <div className="level-item has-text-centered">
                                             <div>
                                                 <p className="heading">token缩写</p>
-                                                <p className="title">SDT</p>
+                                                <p className="title">{tokenInfo.symbol}</p>
                                             </div>
                                         </div>
                                         <div className="level-item has-text-centered">
                                             <div>
                                                 <p className="heading">小数点位数</p>
-                                                <p className="title">18</p>
+                                                <p className="title">{tokenInfo.decimals}</p>
                                             </div>
                                         </div>
                                     </nav>
-                                    {this.state.tolink} 
+                                    {/* {this.state.tolink}  */}
                                 </div> ;
                 break;                
         }
         
-
         const { showtoast } = this.state;
         let toast;
         if (showtoast) {
@@ -206,8 +239,8 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
                             <div className="tabs is-right is-small" >
                                 <ul>
                                     <li className={DefaultClass}><a onClick={() => this.chooseMainComponent('/')} >仪表盘</a></li>
-                                    <li className={ApproveListClass} ><a>正在托管</a></li>
-                                    <li className={TransferClass} ><a>待处理转账</a></li>
+                                    {/* <li className={ApproveListClass} ><a>正在托管</a></li> */}
+                                    <li className={TransferClass}  onClick={() => this.chooseMainComponent('transferlist')}  ><a>待处理转账</a></li>
                                     <li className={ContactListClass} onClick={() => this.chooseMainComponent('contact')} ><a>已备注账户</a></li>
                                 </ul>
                             </div>
@@ -234,9 +267,7 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
                     </div>
                 </div>
             </div> 
-        )
-        
+        )   
     }
 });
-
 export default ERC20Manage

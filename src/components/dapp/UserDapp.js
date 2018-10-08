@@ -19,7 +19,6 @@ const DappList = observer(class DappList extends Component {
             showtoast: false,
         };
     }
-
     componentDidMount() {
         console.log(this.state.myDappList);
     }

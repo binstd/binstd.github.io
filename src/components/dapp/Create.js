@@ -5,12 +5,13 @@ import Toast from 'grommet/components/Toast';
 
 import { observer } from 'mobx-react';
 
-const tokenjson = require('./sol/ERC20Token.json');
+const tokenjson = require('../../lib/sol/ERC20Token.json');
 
 import { getMetamaskStatus, web3 } from '../../lib/eth';
 const rpc_url = 'https://mainnet.infura.io/v3/0045c2ce288a4e649a8f39f3d19446b4';
 
 const Create = observer(class DappErc20 extends Component {
+    
     constructor() {
         super();
         this.state = {
@@ -39,10 +40,7 @@ const Create = observer(class DappErc20 extends Component {
     };
     
     delpoyContract() {
-        console.log(' tokenname:', this.state.tokenname);
-        console.log(' symbol:', this.state.symbol);
-        console.log(' decimal:', this.state.decimal);
-        console.log(' total: ', this.state.total);
+        
         // console.log(httpweb3);
         switch (getMetamaskStatus()) {
             case 'unlockMetamask':
@@ -77,7 +75,6 @@ const Create = observer(class DappErc20 extends Component {
             default:
                 break;
         }
-
     }
 
     render() {

@@ -32,8 +32,6 @@ const DappList = observer(class DappList extends Component {
             address = userinfo.address;
         }
 
-        
-
         fetch(`${server_url}/api/dapp/${address}`, {
             headers: {
                 Authorization: `Bearer ${auth}`
