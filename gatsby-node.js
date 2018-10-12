@@ -110,7 +110,6 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       });
     });
   };
- 
   // 
 exports.onCreatePage = async ({ page, boundActionCreators }) => {
     const { createPage } = boundActionCreators;

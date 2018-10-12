@@ -18,7 +18,13 @@ commit: 30939d5
 
 **3. 请求参数**
 
-header中需有api-key，**不知api-key如何添加到http请求的header中？** 详情参考文档：[接口使用介绍](/started)。
+字段       |字段类型       |字段说明
+------------|-----------|-----------
+chain  |string        |链名称(可选eth_main,eth_ropsten等等)
+
+header中需有api-key: **不知api-key如何添加到http请求的header中？**详情参考文档：[接口使用介绍](/docs/zh/started)的章节:**接口返回状态编码释意&错误代码** 
+
+**chain类型支持那些？** 详情参考文档：[接口使用介绍](/docs/zh/started)的章节: **参数chain支持的区块链&主网类型** 
 
 **4. 返回结果**
 

@@ -11,9 +11,9 @@ commit: 30939d5
 
 ###操作步骤
 
-**1. 登陆&API-KEY的软件环境**
+**1. 登录&API-KEY的软件环境**
 
-需在装有metamask的chrome,firefox，trust钱包等提供web3.js容器的浏览器环境中，打开我们的官网：https://www.binstd.com/ .并登陆：
+需在装有metamask的chrome,firefox，trust钱包等提供web3.js容器的浏览器环境中，打开我们的官网：https://www.binstd.com/ .并登录：
 ![](https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/Jietu20180827-103226-HD.gif)
 
 
@@ -32,7 +32,6 @@ key      |value       |备注
 Authorization      |Bearer +API_KEY     |Bearer 和API_KEY之间要有空格
 
 
-
 如图：![](https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/025024.png)
 
 
@@ -45,7 +44,13 @@ Authorization      |Bearer +API_KEY     |Bearer 和API_KEY之间要有空格
 1004      |区块链网络连接异常    |
  1005    | 没有账户权限，请重新授权 |
 
-
+###参数chain支持的区块链&主网类型
+chain字符串    |网络     |所属区块链 | 可用状态
+------------|-----------|-----------|-----------
+eth_main      |以太坊公链主网     |以太坊 |可用
+eth_ropsten      |测试网络     |以太坊 |可用
+eos_main      |eos主网   | eos   |等待上线
+eos_force      |eos原力    | eos    |等等上线
 
 ###去中心化的api接口网关&节点计划
 目前只有一个api网关地址：
