@@ -3,7 +3,7 @@ import Header from '../../components/Header';
 import Foot from '../../components/Foot';
 import { observer } from 'mobx-react';
 
-import 'font-awesome/css/font-awesome.min.css';
+// import 'font-awesome/css/font-awesome.min.css';
 import UserDapp from '../../components/dapp/UserDapp';
 
 const MylistPage = observer(class CreatePage extends Component {
