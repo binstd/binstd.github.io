@@ -10,13 +10,25 @@ import './common.css'
 const Layout = ({ children, data }) => (
 
     <div>
-        <Helmet
-            title={data.site.siteMetadata.title}
+          <Helmet defaultTitle={data.site.siteMetadata.title} titleTemplate={`%s BinSTD进制 - 区块链云服务平台`}>
+          <meta name="twitter:site" content="@gatsbyjs" />
+          <meta name="og:type" content="website" />
+          <meta name="og:site_name" content="ethluz-blog" />
+          <link
+            rel="canonical"
+            href={`https://blockman.org`}
+          />
+          <html lang="en" />
+        </Helmet>
+        {/* <Helmet
+            // title={data.site.siteMetadata.title}
+            defaultTitle={data.site.siteMetadata.title} 
+            titleTemplate={`%s |BinSTD进制 - 区块链云服务平台`}
             meta={[
                 { name: 'description', content: 'Sample' },
                 { name: 'keywords', content: 'sample, something' },
             ]}
-        />
+        /> */}
         <div >
             {children()}
         </div>

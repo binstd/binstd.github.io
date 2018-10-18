@@ -218,6 +218,8 @@ export default ({
     frontmatter: { commit, title, description },
     fields: { slug, chapter, framework, language },
   } = currentPage;
+  
+  //const post = this.props.data.markdownRemark
 
   const githubFileUrl = `${githubUrl}/blob/master/content${slug.replace(/\/$/, '')}.md`;
 
@@ -227,6 +229,9 @@ export default ({
 
   return (
     <div>
+    <Helmet>
+         <title>{title} </title>    
+     </Helmet>
     <Header />
     <DocsWrapper>
       <Sidebar>

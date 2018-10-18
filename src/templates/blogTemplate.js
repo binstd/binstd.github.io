@@ -1,4 +1,5 @@
 import React from "react";
+import Helmet from 'react-helmet';
 import Section from 'grommet/components/Section';
 import Paragraph from 'grommet/components/Paragraph';
 import Heading from 'grommet/components/Heading';
@@ -13,6 +14,9 @@ export default function Template({
   const { frontmatter, html } = markdownRemark;
   return (
     <div>
+        <Helmet>
+            <title>{frontmatter.title} </title>    
+        </Helmet>
         <Header style="" />
 
         <Article  
