@@ -2,8 +2,8 @@
 import React, { Component } from 'react';
 import user_model from '../../model/user_model';
 import { observer } from 'mobx-react';
-
 import { server_url } from '../../lib/config';
+
 const ERC20AddContact = observer( class ERC20AddContact extends Component {
     
     constructor(props) {
@@ -46,7 +46,7 @@ const ERC20AddContact = observer( class ERC20AddContact extends Component {
 
         console.log('user_model.auth:\n',auth);
         console.log(postData);
-        fetch(`${server_url}/api/usercontact`, {
+        fetch(`${server_url}/api/user/contact`, {
             body: JSON.stringify(postData),
             headers: {
                 Authorization: `Bearer ${auth}`,
@@ -66,10 +66,10 @@ const ERC20AddContact = observer( class ERC20AddContact extends Component {
             <div>
                 
                 <div className="field">
-                    <label className="label">备注:</label>
+                    <label className="label">备注名:</label>
                     <div className="control has-icons-left has-icons-right">
                         <input
-                            className="input is-info" type="text" placeholder="对钱包地址备注"
+                            className="input is-info" type="text" placeholder="对公钥地址的备注"
                             onChange={this.contactNameSet}
                         />
                     </div>

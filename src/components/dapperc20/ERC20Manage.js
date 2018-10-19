@@ -9,12 +9,14 @@ import user_model from '../../model/user_model';
 import { navigateTo } from "gatsby-link";
 import LeftMenu from "../dapp/LeftMenu";
 
-import ERC20AddContact from "./ERC20AddContact";
+import ERC20AddContact from "../dappcontact/AddContact";
 import ERC20AddApprove from "./ERC20AddApprove";
 import ERC20AddTransfer from "./ERC20AddTransfer";
-import ContactList from "../dapp/Contactlist";
+import ContactList from "../dappcontact/Contactlist";
 import Transferlist from "./Transferlist"; 
+import MoreTransferlist from './MoreTransferlist';
 
+import ERC20AddMoreTransfer from './ERC20AddMoreTransfer';
 import { server_url } from '../../lib/config';
 const menulist = [
     {
@@ -35,7 +37,7 @@ const menulist = [
             },
             {
                 label:'批量转账',
-                link:'transferall',
+                link:'moretransfer',
             },
             {
                 label:'添加托管人',
@@ -91,6 +93,7 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
     }
 
     componentWillMount(){
+        console.log('/dapp/manage:',this.props.match.params.id);
         if(!user_model.address){
             navigateTo('/dapp/index');
         }else{
@@ -106,7 +109,7 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
                 auth = userinfo.auth.accessToken;
             }
 
-            fetch(`${server_url}/ethapi/tokeninfo?contract_address=${userdapp[0].contractAddress}`, {
+            fetch(`${server_url}/api/chain/tokeninfo?contract_address=${userdapp[0].contractAddress}&chain=eth_ropsten`, {
                 headers: {
                     Authorization: `Bearer ${auth}`
                 }
@@ -133,7 +136,7 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
 
     render() {
         let {tolink, isOpenModel, mainID, tokenInfo } = this.state;
-        let ContactListClass, ApproveListClass,TransferClass,DefaultClass = classNames({
+        let ContactListClass, ApproveListClass, TransferClass, MoreTransferClass, DefaultClass = classNames({
             'is-right': true,
         });
         let modelComponent,mainComponent = '';
@@ -144,13 +147,16 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
                 isOpenModel = false;
                 break;
             case 'contact':
-                modelComponent = <ERC20AddContact dappid="1"  closeModel={() => this.closeModel()}  />
+                modelComponent = <ERC20AddContact dappid={this.props.match.params.id}  closeModel={() => this.closeModel()}  />
                 break;
             case 'approve':    
-                modelComponent = <ERC20AddApprove dappid="1"  closeModel={() => this.closeModel()}  />
+                modelComponent = <ERC20AddApprove dappid={this.props.match.params.id}  closeModel={() => this.closeModel()}  />
                 break; 
             case 'transfer':    
-                modelComponent = <ERC20AddTransfer dappid="1"  closeModel={() => this.closeModel()}  />
+                modelComponent = <ERC20AddTransfer dappid={this.props.match.params.id}  closeModel={() => this.closeModel()}  />
+                break; 
+            case 'moretransfer':
+                modelComponent = <ERC20AddMoreTransfer dappid={this.props.match.params.id}  closeModel={() => this.closeModel()}  />        
                 break;                 
             default:
                 isOpenModel = false;
@@ -173,7 +179,15 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
                     'is-active': true
                 });
                 break;
-                console.log('转账记录')    
+                console.log('转账记录') 
+            case 'moretransferlist':
+                mainComponent = <MoreTransferlist dappid={this.props.match.params.id}  />
+                MoreTransferClass = classNames({
+                    'is-right': true,
+                    'is-active': true
+                });
+                break;
+        
             default:
                 DefaultClass = classNames({
                     'is-right': true,
@@ -224,7 +238,6 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
             'is-active': isOpenModel
         });
 
-
         // #f5f5f5
         return (    
             <div style={{background:'#f5f5f5'}} > 
@@ -240,10 +253,12 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
                                 <ul>
                                     <li className={DefaultClass}><a onClick={() => this.chooseMainComponent('/')} >仪表盘</a></li>
                                     {/* <li className={ApproveListClass} ><a>正在托管</a></li> */}
-                                    <li className={TransferClass}  onClick={() => this.chooseMainComponent('transferlist')}  ><a>待处理转账</a></li>
+                                    <li className={TransferClass}  onClick={() => this.chooseMainComponent('transferlist')} > <a>普通转账记录</a> </li>
+                                    <li className={MoreTransferClass}  onClick={() => this.chooseMainComponent('moretransferlist')} > <a>未处理批量转账</a> </li>
                                     <li className={ContactListClass} onClick={() => this.chooseMainComponent('contact')} ><a>已备注账户</a></li>
                                 </ul>
                             </div>
+                            
                             <div className="column">
                                 {mainComponent}
                             </div>  

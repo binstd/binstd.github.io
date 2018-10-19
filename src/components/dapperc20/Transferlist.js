@@ -98,21 +98,22 @@ const ContactList = observer( class ContactList extends Component {
 
                         <td>
                             {amount}
-                        </td>     
+                        </td> 
+                        {/* <td>
+                            
+                        </td>      */}
                     </tr>   
                 );
             }
-
-            
         });
-       
         return (
             <div>
-                <table className="table">
+                <table className="table is-hoverable is-narrow is-fullwidth">
                 <thead>
                     <tr>
                     <th> 目标地址 </th>
-                    <th>token数量</th>
+                    <th> token数量 </th>
+                    {/* <th> 转账状态 </th> */}
                     </tr>
                 </thead>
                 <tbody>    

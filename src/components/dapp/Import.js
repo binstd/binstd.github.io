@@ -11,6 +11,7 @@ import { server_url } from '../../lib/config';
 // import queryString  from 'query-string';
 import {navigateTo}  from "gatsby-link";
 
+//导入合约
 const Import = observer(class ImportPage extends Component {
 
     constructor() {
@@ -19,17 +20,26 @@ const Import = observer(class ImportPage extends Component {
             showtoast: false,
             abi:'',
             dappName:'',
-            contractAddress:''
+            contractAddress:'',
+            chain:''
         };
     }
 
     componentDidMount() {
+        console.log("*****************************　　\n \n \n");
+        console.log("我是:/component/dapp/import.js");
+        console.log("\n \n \n***************************** \n");
     }
 
     //token name 设置   
     dappNameSet = ({ target: { value } }) => {
         this.setState({ dappName: value });
     };
+
+    chainSet = ({ target: { value } }) => {
+        console.log(value);
+        this.setState({ chain: value });
+    };   
 
     //token 小数点位数 设置
     contractAddressSet = ({ target: { value } }) => {
@@ -39,11 +49,13 @@ const Import = observer(class ImportPage extends Component {
 
     importDapp() {
         // console.log(user_model.address);
+        console.log(this.state.chain);
         let auth = "";
         let postData = {
             dappName:this.state.dappName,
             contractAddress:this.state.contractAddress,
             publicAddress:user_model.address,
+            dappChain: this.state.chain
         }
 
         if (localStorage.getItem("userinfo")) {
@@ -126,6 +138,22 @@ const Import = observer(class ImportPage extends Component {
                             </div>
                         </div>
 
+                        <div className="field">
+                            <label className="label"> 选择区块链网络:</label>
+                            <div className="control has-icons-left has-icons-right">
+                                <div className="select is-info">
+                                    <select onChange={this.chainSet} >
+                                        <option value="eth_main">ETH主网</option>
+                                        <option value="eth_ropsten">ETH-ropsten测试网</option>
+                                    </select>
+                                </div>
+                                {/* <input className="input is-info" type="text" placeholder="总发行量" 
+                                    onChange={this.totalSet} 
+                                 /> */}
+                            </div>
+                            {/* <p className="help is-danger">请输入整型数字!</p> */}
+                        </div>   
+                         
                         <div className="field has-text-centered">
                             <a 
                                 className=" button is-info is-rounded is-fullwidth"

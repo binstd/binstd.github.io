@@ -30,39 +30,39 @@ const DappList = observer(class DappList extends Component {
             // userdapp =  JSON.parse(localStorage.getItem("userdapp"));
             auth = userinfo.auth.accessToken;
             address = userinfo.address;
+            fetch(`${server_url}/api/dapp/${address}`, {
+                headers: {
+                    Authorization: `Bearer ${auth}`
+                }
+            }).then(response => response.json())
+                .then(data => {
+                    this.setState({
+                        myDappCount: data.length,
+                        myDappList: data
+                    });
+                    localStorage.setItem("userdapp", JSON.stringify(data));
+                    if (data.length == 1) {
+                        navigateTo('/dapp/manage/' + data[0].id);
+                    } else if (data.length > 1) {
+                        navigateTo('/dapp/mylist');
+                    } else {
+                        this.setState({
+                            Loading: true
+                        });
+                    }
+                }).catch(err =>{
+                });
+        }else {
+            this.setState({
+                Loading: true
+            });
         }
 
-        fetch(`${server_url}/api/dapp/${address}`, {
-            headers: {
-                Authorization: `Bearer ${auth}`
-            }
-        }).then(response => response.json())
-            .then(data => {
-                this.setState({
-                    myDappCount: data.length,
-                    myDappList: data
-                });
-                localStorage.setItem("userdapp", JSON.stringify(data));
-                if (data.length == 1) {
-                    navigateTo('/dapp/manage/' + data[0].id);
-                } else if (data.length > 1) {
-                    navigateTo('/dapp/mylist');
-                } else {
-                    this.setState({
-                        Loading: true
-                    });
-                }
-            }).catch(err =>{
-
-                this.setState({
-                    Loading: true
-                });
-            });
+        
     }
 
     render() {
         const { showtoast} = this.state;
-        
         let toast;
         if (showtoast) {
             toast = (
@@ -75,7 +75,6 @@ const DappList = observer(class DappList extends Component {
                 </Toast>
             );
         }
-       
         return (
             <div>
                 {

@@ -17,12 +17,15 @@ const Importcontract = observer(class Importcontract extends Component {
             tokenname: '',
             decimal: 18,
             symbol: '',
-            total: 1000000
+            total: ''
         };
     }
 
     componentDidMount() {
         // console.log(this.props.location.search);
+        console.log("*****************************　　\n \n \n");
+        console.log("我是:/component/dapp/importcontract.js");
+        console.log("\n \n \n***************************** \n");
         console.log(tokenjson.abi);
         console.log(tokenjson.bytecode);
     }
@@ -43,6 +46,9 @@ const Importcontract = observer(class Importcontract extends Component {
     symbolSet = ({ target: { value } }) => {
         this.setState({ symbol: value });
     };
+
+    
+    
     
     delpoyContract() {
         switch (getMetamaskStatus()) {
@@ -155,7 +161,9 @@ const Importcontract = observer(class Importcontract extends Component {
                          <div className="field">
                             <label className="label"> 总发行量:</label>
                             <div className="control has-icons-left has-icons-right">
-                                <input className="input is-info" type="text" placeholder="小数点位数"  />
+                                <input className="input is-info" type="text" placeholder="小数点位数"  
+                                  onChange={this.totalSet} 
+                                />
                                 <span className="icon is-small is-left">
                                     <i className="fas fa-user"></i>
                                 </span>

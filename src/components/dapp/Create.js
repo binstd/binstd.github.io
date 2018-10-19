@@ -7,11 +7,15 @@ import { observer } from 'mobx-react';
 
 const tokenjson = require('../../lib/sol/ERC20Token.json');
 
+import user_model from '../../model/user_model';
 import { getMetamaskStatus, web3 } from '../../lib/eth';
-const rpc_url = 'https://mainnet.infura.io/v3/0045c2ce288a4e649a8f39f3d19446b4';
+//const rpc_url = 'https://mainnet.infura.io/v3/0045c2ce288a4e649a8f39f3d19446b4';
+import { server_url } from '../../lib/config';
+// import queryString  from 'query-string';
+import {navigateTo}  from "gatsby-link";
 
 const Create = observer(class DappErc20 extends Component {
-    
+
     constructor() {
         super();
         this.state = {
@@ -19,10 +23,11 @@ const Create = observer(class DappErc20 extends Component {
             tokenname: '',
             decimal: 18,
             symbol: '',
-            total: 1000000
+            total: '',
+            chain: ''
         };
     }
-    
+
     //token name 设置   
     tokennameSet = ({ target: { value } }) => {
         this.setState({ tokenname: value });
@@ -38,9 +43,20 @@ const Create = observer(class DappErc20 extends Component {
     symbolSet = ({ target: { value } }) => {
         this.setState({ symbol: value });
     };
+
+    // token缩写 设置
+    totalSet = ({ target: { value } }) => {
+        console.log(value);
+        this.setState({ total: value });
+    };
+
+    chainSet = ({ target: { value } }) => {
+        console.log(value);
+        this.setState({ chain: value });
+    };
     
     delpoyContract() {
-        
+
         // console.log(httpweb3);
         switch (getMetamaskStatus()) {
             case 'unlockMetamask':
@@ -52,6 +68,7 @@ const Create = observer(class DappErc20 extends Component {
             case 'okMetamask':
                 let erccontract = web3.eth.contract(tokenjson.abi);
                 console.log(web3.eth.accounts[0]);
+                var chain = this.state.chain;
                 var myContractReturned = erccontract.new(
                     this.state.symbol,
                     this.state.tokenname,
@@ -67,9 +84,38 @@ const Create = observer(class DappErc20 extends Component {
                                 console.log(myContract.transactionHash) // The hash of the transaction, which deploys the contract
 
                             } else {
+                                let auth = "";
+                               
+                                if (localStorage.getItem("userinfo")) {
+                                    let userinfo = JSON.parse(localStorage.getItem("userinfo"));
+                                    auth = userinfo.auth.accessToken;
+                                    let postData = {
+                                        dappName: user_model.username+'erc20',
+                                        contractAddress: myContract.address,
+                                        publicAddress: user_model.address,
+                                        dappChain: chain
+                                    }
+                                    fetch(`${server_url}/api/dapp`, {
+                                        body: JSON.stringify(postData),
+                                        headers: {
+                                            Authorization: `Bearer ${auth}`,
+                                            'Content-Type': 'application/json'
+                                        },
+                                        method: 'POST'
+                                    }).then(response => response.json()).then(data => {
+                                        if (data.id) {
+                                            navigateTo('/dapp/index')
+                                        }
+                                    })
+                                } 
+                                // else {
+                                   
+                                // }
+                                navigateTo('/dapp/index');
                                 console.log(myContract.address) // the contract address
                             }
-                           
+                            
+
                         }
                     });
             default:
@@ -92,15 +138,13 @@ const Create = observer(class DappErc20 extends Component {
                 </Toast>
             );
         }
-
-
         return (
             <div className="container">
                 <div className="columns  box">
                     <div className="column is-one-quarter">
-                        <a 
+                        <a
                             className="button  is-white is-rounded"
-                            href="/dapp/index" 
+                            href="/dapp/index"
                         >
                             <span className="icon">
                                 <i className="fa fa-arrow-left"></i>
@@ -109,17 +153,17 @@ const Create = observer(class DappErc20 extends Component {
                         </a>
                     </div>
                 </div>
-                
+
                 <div className="columns is-centered box">
                     <div className="column is-3">
                         <div className="field">
                             <label className="label">token名称:</label>
                             <div className="control has-icons-left has-icons-right">
-                                <input 
-                                    className="input is-info" type="text" placeholder="token名称"  
+                                <input
+                                    className="input is-info" type="text" placeholder="token名称"
                                     onChange={this.tokennameSet}
                                 />
-                              
+
                             </div>
                             {/* <p className="help is-danger">token名称得是英文</p> */}
                         </div>
@@ -127,40 +171,57 @@ const Create = observer(class DappErc20 extends Component {
                         <div className="field">
                             <label className="label">token缩写:</label>
                             <div className="control has-icons-left has-icons-right">
-                                <input 
-                                    className="input is-info" type="text" placeholder="oken缩写"  
+                                <input
+                                    className="input is-info" type="text" placeholder="token缩写"
                                     onChange={this.symbolSet}
                                 />
-                               
+
                             </div>
                         </div>
 
                         <div className="field">
                             <label className="label"> 小数点位数(Decimal):</label>
                             <div className="control has-icons-left has-icons-right">
-                                <input 
-                                    className="input is-info" type="text" placeholder="小数点位数" 
-                                    onChange={this.decimalSet} 
+                                <input
+                                    className="input is-info" type="text" placeholder="小数点位数"
+                                    onChange={this.decimalSet}
                                 />
                             </div>
                         </div>
-                         <div className="field">
+                        <div className="field">
                             <label className="label"> 总发行量:</label>
                             <div className="control has-icons-left has-icons-right">
-                                <input className="input is-info" type="text" placeholder="小数点位数"  />
+                                <input className="input is-info" type="text" placeholder="总发行量"
+                                    onChange={this.totalSet}
+                                />
                             </div>
                             {/* <p className="help is-danger">请输入整型数字!</p> */}
-                        </div> 
+                        </div>
+                        <div className="field">
+                            <label className="label"> 选择区块链网络:</label>
+                            <div className="control has-icons-left has-icons-right">
+                                <div className="select is-info">
+                                    <select onChange={this.chainSet} >
+                                        <option value="eth_main">ETH主网</option>
+                                        <option value="eth_ropsten">ETH-ropsten测试网</option>
+                                    </select>
+                                </div>
+                                {/* <input className="input is-info" type="text" placeholder="总发行量" 
+                                    onChange={this.totalSet} 
+                                 /> */}
+                            </div>
+                            {/* <p className="help is-danger">请输入整型数字!</p> */}
+                        </div>
                         <div className="field has-text-centered">
-                         <a 
-                            className=" button is-info is-rounded is-fullwidth"
-                            onClick={() => this.delpoyContract()}
-                        >提交</a>
-                        </div> 
+                            <a
+                                className=" button is-info is-rounded is-fullwidth"
+                                onClick={() => this.delpoyContract()}
+                            >提交</a>
+                        </div>
                     </div>
-                    
+
                 </div>
-                       
+
                 {toast}
             </div>
 

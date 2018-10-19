@@ -36,10 +36,6 @@
       "component---src-pages-index-js-40dd99b6f265210003aa.js",
       "component---src-pages-index-js-40dd99b6f265210003aa.js.map"
     ],
-    "component---src-pages-dapp-manage-js": [
-      "component---src-pages-dapp-manage-js-192c7049eb21124b1979.js",
-      "component---src-pages-dapp-manage-js-192c7049eb21124b1979.js.map"
-    ],
     "component---src-templates-tags-js": [
       "component---src-templates-tags-js-847b410c154d4410d7d0.js",
       "component---src-templates-tags-js-847b410c154d4410d7d0.js.map"
@@ -64,29 +60,17 @@
       "path---docs-zh-txall-35c1a3513c0f5d96a4a1.js",
       "path---docs-zh-txall-35c1a3513c0f5d96a4a1.js.map"
     ],
-    "component---src-pages-dapp-mylist-js": [
-      "component---src-pages-dapp-mylist-js-8ee1c6fa4f1116ea6e5a.js",
-      "component---src-pages-dapp-mylist-js-8ee1c6fa4f1116ea6e5a.js.map"
-    ],
     "component---src-layouts-index-js": [
-      "component---src-layouts-index-js-898967a25a6ee283b498.js",
-      "component---src-layouts-index-js-898967a25a6ee283b498.js.map"
-    ],
-    "path---dapp-all": [
-      "path---dapp-all-a0e39f21c11f6a62c5ab.js",
-      "path---dapp-all-a0e39f21c11f6a62c5ab.js.map"
+      "component---src-layouts-index-js-a63fd0688ce8a905d647.js",
+      "component---src-layouts-index-js-a63fd0688ce8a905d647.js.map"
     ],
     "component---src-templates-blog-template-js": [
-      "component---src-templates-blog-template-js-7fa1e33983daf1f1e3a6.js",
-      "component---src-templates-blog-template-js-7fa1e33983daf1f1e3a6.js.map"
-    ],
-    "component---src-pages-dapp-all-js": [
-      "component---src-pages-dapp-all-js-3ed78e22d34d1e50ee4a.js",
-      "component---src-pages-dapp-all-js-3ed78e22d34d1e50ee4a.js.map"
+      "component---src-templates-blog-template-js-41fb7aedb526ff1e0e0e.js",
+      "component---src-templates-blog-template-js-41fb7aedb526ff1e0e0e.js.map"
     ],
     "component---src-pages-dapp-js": [
-      "component---src-pages-dapp-js-8ba15217528d11815a55.js",
-      "component---src-pages-dapp-js-8ba15217528d11815a55.js.map"
+      "component---src-pages-dapp-js-ca36e8fe1087fd0622fd.js",
+      "component---src-pages-dapp-js-ca36e8fe1087fd0622fd.js.map"
     ],
     "path---index": [
       "path---index-3e3a1cf4cddcb24955d7.js",
@@ -105,17 +89,17 @@
       "component---src-pages-404-js-af605838838f1684c1fd.js.map"
     ],
     "component---src-templates-chapter-js": [
-      "component---src-templates-chapter-js-c2a62af5f829204e8fea.js",
-      "component---src-templates-chapter-js-c2a62af5f829204e8fea.js.map"
+      "component---src-templates-chapter-js-3dab14402bed33e6739d.js",
+      "component---src-templates-chapter-js-3dab14402bed33e6739d.js.map"
     ],
     "path---docs-zh-started": [
       "path---docs-zh-started-a51f5471e8a0e43d612c.js",
       "path---docs-zh-started-a51f5471e8a0e43d612c.js.map"
     ],
     "commons": [
-      "commons-74ef3c3584751163a595.js",
+      "commons-e089bbec53f2069f3891.js",
       "build-js-styles.css",
-      "commons-74ef3c3584751163a595.js.map",
+      "commons-e089bbec53f2069f3891.js.map",
       "build-js-styles.css.map"
     ],
     "path---docs-zh-gas-price": [
@@ -138,17 +122,9 @@
       "path---userinfo-a0e39f21c11f6a62c5ab.js",
       "path---userinfo-a0e39f21c11f6a62c5ab.js.map"
     ],
-    "path---dapp-manage": [
-      "path---dapp-manage-a0e39f21c11f6a62c5ab.js",
-      "path---dapp-manage-a0e39f21c11f6a62c5ab.js.map"
-    ],
     "component---src-pages-tags-js": [
       "component---src-pages-tags-js-fa28353953f839c77222.js",
       "component---src-pages-tags-js-fa28353953f839c77222.js.map"
-    ],
-    "path---dapp-mylist": [
-      "path---dapp-mylist-a0e39f21c11f6a62c5ab.js",
-      "path---dapp-mylist-a0e39f21c11f6a62c5ab.js.map"
     ],
     "path---tags-新闻": [
       "path---tags-新闻-099dd37f718f6b02f74b.js",
@@ -167,9 +143,9 @@
       "path---blog-2-ddfe9654f73984bd9f20.js.map"
     ],
     "app": [
-      "app-57b93d9d080bdbd0ab33.js",
+      "app-bdc16da3d634bcb3a384.js",
       "build-js-styles.css",
-      "app-57b93d9d080bdbd0ab33.js.map",
+      "app-bdc16da3d634bcb3a384.js.map",
       "build-js-styles.css.map"
     ],
     "path---u-zian": [
