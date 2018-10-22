@@ -294,7 +294,8 @@ const ERC20AddMoreTransfer = observer( class ERC20AddMoreTransfer extends Compon
                                         // onChange={this.amountSet}
                                     />
                                 </div>
-                            </div> */}
+                            </div> */
+                            }
                             <div className="field has-text-centered">
                                 <a
                                     className="button is-info is-rounded "

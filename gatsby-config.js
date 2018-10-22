@@ -30,7 +30,6 @@ module.exports = {
             },
         },
         'gatsby-transformer-remark',
-
         {
             resolve: `gatsby-plugin-sass`,
             options: {
@@ -42,7 +41,7 @@ module.exports = {
             options: {
                 //test-binstd trackingId:UA-127508766-2
                 //binstd trackingId:UA-127508766-1
-                trackingId: "UA-127508766-2",
+                trackingId: "UA-127508766-1",
                 // Puts tracking script in the head instead of the body
                 head: false,
                 // Setting this parameter is optional

@@ -24,6 +24,7 @@ const DappPage = class DappPage extends Component {
             <Box>
                 <Header />
                     <Route path="/dapp/index" component={DappList} />
+                    {/* <Route path="/dapp/" component={DappList} /> */}
                     <Route path="/dapp/manage/:id" component={ERC20Manage} />   
                     <Route path="/dapp/mylist" component={UserDapp} />   
                     <Route path="/dapp/import" component={Import} />   

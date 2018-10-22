@@ -58,7 +58,6 @@ const MoreTransferlist = observer( class MoreTransferlist extends Component {
                     <td>
                           {data.amount}
                     </td> 
-                     
                 </tr>  
             );
         });

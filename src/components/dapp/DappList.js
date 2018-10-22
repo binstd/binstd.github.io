@@ -58,7 +58,6 @@ const DappList = observer(class DappList extends Component {
             });
         }
 
-        
     }
 
     render() {

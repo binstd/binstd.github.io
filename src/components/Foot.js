@@ -9,9 +9,7 @@ import GithubIcon from 'grommet/components/icons/base/SocialGithub';
 import AccessibleIcon from
     'grommet/components/icons/base/Accessible';
 
-
 import Image from 'grommet/components/Image';
-
 
 export default class Foot extends Component {
     constructor () {
