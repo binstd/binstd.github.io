@@ -57,14 +57,14 @@ const UserinfoPage = observer(class UserinfoPage extends Component {
         
     }
 
-     decodeToken(token){
-        var playload  = {};
-        if(token != null){
-            const windowGlobal = typeof window !== 'undefined' && window;
-            playload = JSON.parse($windowGlobal.atob(token.split('.')[1]));
-        }
-        return playload;
-    };
+    //  decodeToken(token){
+    //     var playload  = {};
+    //     if(token != null){
+    //         const windowGlobal = typeof window !== 'undefined' && window;
+    //         playload = JSON.parse($windowGlobal.atob(token.split('.')[1]));
+    //     }
+    //     return playload;
+    // };
 
     handleChange = ({ target: { value } }) => {
         this.setState({ username: value });
@@ -151,7 +151,6 @@ const UserinfoPage = observer(class UserinfoPage extends Component {
                 <Foot style="" />
             </div>
         )
-        
     }
 });
 

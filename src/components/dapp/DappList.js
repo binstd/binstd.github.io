@@ -104,8 +104,8 @@ const DappList = observer(class DappList extends Component {
                                             <figure className="image is-3by3 ">
                                                 <img src="https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/atomic-swap-erc20.png" />
                                             </figure>
-                                            <p className="title">ERC20</p>
-                                            <p className="subtitle">将部署一个标准的ERO20toekn,管理转账</p>
+                                            <p className="title" style={{marginBottom:"3px"}} >ERC20</p>
+                                            <p className="">将部署一个标准的ERO20toekn</p>
                                         </article>
                                     </a>
                                 </div>
@@ -114,24 +114,25 @@ const DappList = observer(class DappList extends Component {
                                     <article className="tile is-child box">
 
                                         <figure className="image is-3by3 ">
-                                            <img src="https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/085702.jpg" />
+                                            <img src="https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/airport.png" />
                                         </figure>
-                                        <p className="title">ERC20</p>
-                                        <p className="subtitle">将部署一个标准的ERO20toekn,管理转账</p>
+                                        <p className="title" style={{marginBottom:"3px"}}>ERC721 </p>
+                                        <p className="">部署一个标准的ERO721合约,实现非同质化资产上链确权</p>
                                     </article>
                                 </div>
                                 <div className="column is-3 is-narrow has-text-centered">
                                     <article className="tile is-child box">
 
                                         <figure className="image is-3by3 ">
-                                            <img src="https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/085702.jpg" />
+                                   
+                                            <img src="https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/airport.png" />
                                         </figure>
-                                        <p className="title">ERC20</p>
-                                        <p className="subtitle">将部署一个标准的ERO20toekn,管理转账</p>
+                                        <p className="title" style={{marginBottom:"3px"}} >空投合约</p>
+                                        <p className="">部署一个空投合约</p>
                                     </article>
                                 </div>
 
-                                <div className="column is-3 is-narrow has-text-centered">
+                                {/* <div className="column is-3 is-narrow has-text-centered">
                                     <article className="tile is-child box">
 
                                         <figure className="image is-3by3 ">
@@ -140,7 +141,7 @@ const DappList = observer(class DappList extends Component {
                                         <p className="title">ERC20</p>
                                         <p className="subtitle">将部署一个标准的ERO20toekn,管理转账</p>
                                     </article>
-                                </div>
+                                </div> */}
                             </div>
                             {toast}
                         </div>

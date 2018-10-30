@@ -10,7 +10,7 @@ import './common.css'
 const Layout = ({ children, data }) => (
 
     <div>
-          <Helmet defaultTitle={data.site.siteMetadata.title} titleTemplate={`%s BinSTD进制 - 区块链云服务平台`}>
+          <Helmet  titleTemplate={`%s BinSTD进制 - 区块链云服务平台`}>
           <meta name="twitter:site" content="@gatsbyjs" />
           <meta name="og:type" content="website" />
           <meta name="og:site_name" content="ethluz-blog" />
@@ -20,20 +20,11 @@ const Layout = ({ children, data }) => (
           />
           <html lang="en" />
         </Helmet>
-        {/* <Helmet
-            // title={data.site.siteMetadata.title}
-            defaultTitle={data.site.siteMetadata.title} 
-            titleTemplate={`%s |BinSTD进制 - 区块链云服务平台`}
-            meta={[
-                { name: 'description', content: 'Sample' },
-                { name: 'keywords', content: 'sample, something' },
-            ]}
-        /> */}
+       
         <div >
             {children()}
         </div>
     </div>
-
 )
 
 Layout.propTypes = {
@@ -41,12 +32,12 @@ Layout.propTypes = {
 }
 
 export default Layout
-export const query = graphql`
-  query SiteTitleQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`
+// export const query = graphql`
+//   query SiteTitleQuery {
+//     site {
+//       siteMetadata {
+//         title
+//       }
+//     }
+//   }
+// `

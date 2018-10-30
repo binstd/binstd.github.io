@@ -26,7 +26,7 @@ export default class Foot extends Component {
 
     _layout() {
         if (this._mobileNavRef) {
-            const rect = findDOMNode(this._mobileNavRef).getBoundingClientRect();
+            const rect = window.findDOMNode(this._mobileNavRef).getBoundingClientRect();
             this.setState({ mobileNavHeight: rect.height });
         }
     }  

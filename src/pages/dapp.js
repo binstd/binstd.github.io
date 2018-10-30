@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import '../lib/mybulma.sass'
+import '../mybulma.sass'
+
 // import jwtDecode from 'jwt-decode';
 
 import Box from 'grommet/components/Box';
