@@ -47,9 +47,7 @@ const Importcontract = observer(class Importcontract extends Component {
         this.setState({ symbol: value });
     };
 
-    
-    
-    
+
     delpoyContract() {
         switch (getMetamaskStatus()) {
             case 'unlockMetamask':

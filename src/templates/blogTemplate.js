@@ -8,37 +8,36 @@ import Article from 'grommet/components/Article';
 import Header from '../components/Header';
 import Foot from '../components/Foot';
 export default function Template({
-  data, // this prop will be injected by the GraphQL query below.
+    data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { markdownRemark } = data; // data.markdownRemark holds our post data
-  const { frontmatter, html } = markdownRemark;
-  return (
-    <div>
-        <Helmet>
-            <title>{frontmatter.title} </title>    
-        </Helmet>
-        <Header style="" />
+    const { markdownRemark } = data; // data.markdownRemark holds our post data
+    const { frontmatter, html } = markdownRemark;
+    return (
+        <div>
+            <Helmet>
+                <title>{frontmatter.title} </title>
+            </Helmet>
+            <Header style="" />
 
-        <Article  
-            justify='center'
-            align='center'
-        >
-        
-        <Section 
-            align='center'
-            pad='medium'
-            margin='small'
-            size={{width:'xxlarge'}} 
-        >
+            <Article
+                justify='center'
+                align='center'
+            >
 
-        <Heading tag="h1">{frontmatter.title}</Heading>
-        <Markdown content={html} className='blog-content'  />
-        </Section>  
+                <Section
+                    align='center'
+                    pad='medium'
+                    margin='small'
+                    size={{ width: 'xxlarge' }}
+                >
 
-        </Article>
-        <Foot style="" />
-  </div>
-  );
+                    <Heading tag="h1">{frontmatter.title}</Heading>
+                    <Markdown content={html} className='blog-content' />
+                </Section>
+            </Article>
+            <Foot style="" />
+        </div>
+    );
 }
 
 export const pageQuery = graphql`

@@ -93,7 +93,7 @@ const ContactList = observer( class ContactList extends Component {
                 return (
                     <tr  key={index} >
                         <td>
-                            {data.to}
+                           <a href={'https://ropsten.etherscan.io/tx/'+data.hash} target="_Blank" >{data.to}</a> 
                         </td>
 
                         <td>

@@ -213,6 +213,12 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
                                                 <p className="title">{tokenInfo.decimals}</p>
                                             </div>
                                         </div>
+                                        <div className="level-item has-text-centered">
+                                            <div>
+                                                <p className="heading">发行量</p>
+                                                <p className="title">{tokenInfo.totalSupply? tokenInfo.totalSupply/Math.pow(10,tokenInfo.decimals):''}</p>
+                                            </div>
+                                        </div>
                                     </nav>
                                     {/* {this.state.tolink}  */}
                                 </div> ;
@@ -286,3 +292,5 @@ const ERC20Manage = observer(class ERC20Manage extends Component {
     }
 });
 export default ERC20Manage
+
+//50 000 00000 00000 00000
