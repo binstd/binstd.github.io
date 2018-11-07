@@ -18,7 +18,6 @@ import Animate from 'grommet/components/Animate';
 
 import GithubIcon from 'grommet/components/icons/base/SocialGithub';
 
-
 import Image from 'grommet/components/Image';
 
 import Hands from './img/Hands.js';

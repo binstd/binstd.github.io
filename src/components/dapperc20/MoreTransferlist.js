@@ -7,6 +7,7 @@ import { server_url } from '../../lib/config';
 const TOKENTXLIST_API_URL = 'https://api-ropsten.etherscan.io/api?module=account&action=tokentx';
 const API_KEY = '7Y1ATI2EXF81K6QMR3ASNNJMKPJGT2QB24';
 const MoreTransferlist = observer( class MoreTransferlist extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {
