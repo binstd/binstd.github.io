@@ -42,7 +42,7 @@ const DappList = observer(class DappList extends Component {
                     });
                     localStorage.setItem("userdapp", JSON.stringify(data));
                     if (data.length == 1) {
-                        navigateTo('/dapp/manage/' + data[0].id);
+                        navigateTo('/dapp/manage/' + data[0].id + '/');
                     } else if (data.length > 1) {
                         navigateTo('/dapp/mylist');
                     } else {

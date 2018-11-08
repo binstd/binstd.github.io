@@ -292,6 +292,11 @@ exports.onCreatePage = async ({ page, boundActionCreators }) => {
         // Update the page.
         createPage(page);
     }
+    if (page.path.match(/^\/article/)) {
+        page.matchPath = "/article/*";
+        // Update the page.
+        createPage(page);
+    }
     if (page.path.match(/^\/docs/)) {
         // It's assumed that `landingPage.js` exists in the `/layouts/` directory
         page.matchPath = "/dapp/*";
