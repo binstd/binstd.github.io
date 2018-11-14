@@ -173,7 +173,7 @@ const AppHeader = observer(class AppHeader extends Component {
                     <Box pad="small" />
                         <Menu label="导航" inline={true} direction="row">
                             <Anchor path="/">首页</Anchor>
-                            <Anchor href="/article/">区块链认知</Anchor>
+                            <Anchor href="/article/">文章</Anchor>
                             <Anchor href="/docs/getting-started/info">API</Anchor>
                             <Anchor href="/dapp/index">DAPP云台</Anchor>
                           

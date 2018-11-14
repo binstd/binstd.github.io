@@ -1,7 +1,5 @@
 ---
 title: "token明细"
-tocTitle: "查看token详情"
-description: " 给定token合约地址看详细信息"
 commit: 30939d5
 ---
 

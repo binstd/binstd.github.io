@@ -1,5 +1,5 @@
 ---
-title: "交易记录"
+title: 交易详情
 commit: dd04879
 ---
 

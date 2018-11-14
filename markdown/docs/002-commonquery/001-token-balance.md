@@ -1,7 +1,5 @@
 ---
 title: "token余额"
-tocTitle: "指定地址的token余额"
-description: "给定合约地址和钱包公钥返回额度"
 commit: 30939d5
 ---
 

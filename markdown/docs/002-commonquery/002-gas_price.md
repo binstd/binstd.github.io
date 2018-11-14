@@ -1,7 +1,5 @@
 ---
 title: "当前gas价格"
-tocTitle: "当前gas价格"
-description: "查询当前网络下的gas费用 "
 commit: 30939d5
 ---
 
