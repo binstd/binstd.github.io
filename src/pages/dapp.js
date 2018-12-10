@@ -1,39 +1,41 @@
 import React, { Component } from 'react';
-import '../mybulma.sass'
+import Layout from '../components/layout'
+import { Router, navigate } from '@reach/router';
 
-// import jwtDecode from 'jwt-decode';
+import DappCreate from '../view/dapp/create';
+import DappDeployed from '../view/dapp/deployed';
+import MyDappList from '../view/dapp/MyDappList';
+import DappManage from '../view/dapp/manage';
 
-import Box from 'grommet/components/Box';
-import Header from '../components/Header';
-import Foot from '../components/Foot';
-// import { observer } from 'mobx-react';
+import MaLayout from '../components/MaLayout'
+import Dashboard from '../components/dashboard/Dashboard'
 
-import {
-    BrowserRouter as Router,
-    Route
-} from 'react-router-dom'
-
-import DappList from '../components/dapp/DappList';
-import UserDapp from '../components/dapp/UserDapp';
-import ERC20Manage from '../components/dapperc20/ERC20Manage';
-import Import from '../components/dapp/Import';
-import Create from '../components/dapp/Create';
-
-const DappPage = class DappPage extends Component {
+const ArticlePage = class DappPage extends Component {
     render() { 
         return ( 
-            <Box>
-                <Header />
-                    <Route path="/dapp/index" component={DappList} />
-                    {/* <Route path="/dapp/" component={DappList} /> */}
-                    <Route path="/dapp/manage/:id/" component={ERC20Manage} />   
-                    <Route path="/dapp/mylist" component={UserDapp} />   
-                    <Route path="/dapp/import" component={Import} />   
-                    <Route path="/dapp/create" component={Create} />  
-                    <Foot style="" />
-            </Box>     
+            <div>
+                <MaLayout>
+                    <div
+                        style={{
+                            margin: '0 auto',
+                            maxWidth: 960,
+                            padding: '0px 1.0875rem 1.45rem',
+                            paddingTop: 0,
+                        }}
+                    >
+                        <Router>
+                            <DappCreate path="/dapp/create/:name/" />
+                            {/* <Dashboard path="/dapp/mana/:contractAddress/" /> */}
+                            <DappManage path="/dapp/manage/:contractAddress/" />
+                            
+                            <DappDeployed path="/dapp/deployed/:txhash/" />
+                            <MyDappList path="/dapp/:address/" />
+                        </Router>
+                    </div>
+                </MaLayout>   
+            </div>  
         ) 
     }
 };
 
-export default DappPage
+export default ArticlePage

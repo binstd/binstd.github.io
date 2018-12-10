@@ -2,7 +2,7 @@ import React from 'react'
 import { server_url } from '../../lib/config';
 import fetch from 'node-fetch';
 import { navigate } from "@reach/router";
-//import { web3 } from '../../lib/eth';
+import { web3,eth } from '../../lib/eth';
 
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -48,11 +48,19 @@ class DappCreate extends React.Component {
         this.state = {
             contract: {},
             inputlist: [],
-            deploydata: {}
+            deploydata: {},
+            userinfo: {}
+
         }
     }
 
     componentWillMount() {
+        if (localStorage.getItem("userinfo")) {
+            let userinfo = JSON.parse(localStorage.getItem("userinfo"));
+             this.setState({
+                userinfo
+             });
+        }
         fetch(`${server_url}/api/chain/abi?apiname=${this.props.name}`).then(res => res.json()).then(result => {
             // console.log(data);
             // console.log(result.data);
@@ -69,8 +77,7 @@ class DappCreate extends React.Component {
                 for (let data of inputlist) {
                     deploydata[data.name] = '';
                 }
-
-
+                
                 this.setState({
                     deploydata
                 });
@@ -84,12 +91,12 @@ class DappCreate extends React.Component {
         }).catch(function (e) {
             console.log("失败");
         });
-
+       
     }
 
     SetInput = (name, event) => {
-        console.log(event.target.value);
-        console.log(name);
+        //console.log(event.target.value);
+       // console.log(name);
         let deploydata = this.state.deploydata;
         deploydata[name] = event.target.value;
         this.setState({
@@ -99,26 +106,43 @@ class DappCreate extends React.Component {
     }
 
     delpoyContract = () => {
-        console.log('::::=>>>');
-        console.log(this.state.deploydata);
-        // let argument = Object.values(this.state.deploydata)
-        // console.log(argument);
+        let argument = Object.values(this.state.deploydata)
         // var myContract = new web3.eth.Contract(this.state.contract.abi);
+        window.ethereum.enable().then( (accounts) => {
+            console.log(accounts);
+        })
+
+       console.log(this.state.deploydata);
+        eth.accounts().then((accounts) => {
+            const SimpleStore = eth.contract(this.state.contract.abi, this.state.contract.bytecode, {
+              from: accounts[0],
+              gas: 300000,
+            });
+          
+            // create a new contract
+            SimpleStore.new(...argument,(error, result) => {
+                console.log(result);
+                this.postDapp(result);
+            //   result null '0x928sdfk...' (i.e. the transaction hash)
+            });
+        });
+  
+
         // //console.log(this.state.contract);
         // myContract.deploy({
         //     data: this.state.contract.bytecode,
         //     arguments: argument
-        // })
-        //     .send({
+        // }).send({
         //         from: '0x81D723361d4F3e648F2c9c479d88DC6dEBF4fA5f'
         //     }, (error, transactionHash) => {
         //         console.log(transactionHash, "<==transactionHash");
         //         this.postDapp(transactionHash);
         //     }
-
-        //     ).then(function (transactionHash) {
+        // ).then(function (transactionHash) {
         //         console.log(transactionHash) // instance with the new contract address
-        //     });
+        // });
+
+
     }
 
 
@@ -129,8 +153,8 @@ class DappCreate extends React.Component {
             dappName: '',
             txHash: txhash,
             contractInfo: this.props.name,
-            publicAddress: '0x81D723361d4F3e648F2c9c479d88DC6dEBF4fA5f',
-            dappChain: 'kovan'
+            publicAddress: this.state.userinfo.address,
+            dappChain: 'kovan' //不应该写死
         }
 
         fetch(`${server_url}/api/dapp`, {
@@ -152,7 +176,7 @@ class DappCreate extends React.Component {
        
         let { contract, inputlist } = this.state;
         const { classes } = this.props;
-        console.log(inputlist);
+       // console.log(inputlist);
         const contractview = inputlist.map((data, index) => {
             const { name, type } = data;
                 return (
@@ -167,23 +191,6 @@ class DappCreate extends React.Component {
                                 autoComplete="billing address-line1"
                             />
                     </Grid>
-                    // <section key={index} className="hero is-primary" style={{'margin':'20px auto'}} >
-                    //     <div className="hero-body">
-                    //         <div className="container">
-                    //             <h2 className="subtitle">
-                    //                 类型:{contractInfo}
-                    //             </h2>
-                    //             <h2 className="subtitle">
-                    //                 交易hash:
-                    //             </h2>
-                    //             <p className="subtitle is-6">
-                    //                 <a href={'https://kovan.etherscan.io/tx/'+txHash} target="_Blank" >
-                    //                 {txHash}
-                    //                 </a> 
-                    //             </p>
-                    //         </div>
-                    //     </div>
-                    // </section>
                 );
         });   
         return (
@@ -193,27 +200,6 @@ class DappCreate extends React.Component {
                         合约部署
                     </Typography>
                     <Grid container spacing={24}>
-
-                        {/* <Grid item xs={12}>
-                            <TextField
-                                required
-                                id="address1"
-                                name="address1"
-                                label="fromAddress"
-                                fullWidth
-                                autoComplete="billing address-line1"
-                            />
-                        </Grid>
-
-                        <Grid item xs={12}>
-                            <TextField
-                                id="addiress2"
-                                name="addiress2"
-                                label="toAddress"
-                                fullWidth
-                                autoComplete="billing address-line2"
-                            />
-                        </Grid> */}
 
                         {contractview}
 
