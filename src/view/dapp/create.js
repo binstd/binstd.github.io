@@ -2,7 +2,7 @@ import React from 'react'
 import { server_url } from '../../lib/config';
 import fetch from 'node-fetch';
 import { navigate } from "@reach/router";
-import { web3,eth } from '../../lib/eth';
+import { eth } from '../../lib/eth';
 
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -49,12 +49,46 @@ class DappCreate extends React.Component {
             contract: {},
             inputlist: [],
             deploydata: {},
-            userinfo: {}
+            userinfo: {},
+            network:'',
 
         }
     }
 
     componentWillMount() {
+        var network = '';
+       // console.log('1111');
+        eth.net_version().then((result) => {
+            switch (result) {
+                case "1":
+                    console.log('This is mainnet')
+                    network = 'eth_main'
+                    break
+                case "2":
+                    console.log('This is the deprecated Morden test network.')
+                    network = 'eth_morden'
+                    break
+                case "3":
+                    console.log('This is the ropsten test network.')
+                    network = 'eth_ropsten'
+                    break
+                case "4":
+                    console.log('This is the Rinkeby test network.')
+                    network = 'eth_rinkeby'
+                    break
+                case "42":
+                    console.log('This is the Kovan test network.')
+                    network = 'eth_kovan'
+                    break
+                default:
+                    console.log('This is an unknown network.')
+                    network = 'eth_unknown'
+            }
+            this.setState({
+                network
+            });
+        })
+
         if (localStorage.getItem("userinfo")) {
             let userinfo = JSON.parse(localStorage.getItem("userinfo"));
              this.setState({
@@ -78,14 +112,15 @@ class DappCreate extends React.Component {
                     deploydata[data.name] = '';
                 }
                 
-                this.setState({
-                    deploydata
-                });
+                // this.setState({
+                //     deploydata
+                // });
                 //console.log(result.data);
 
                 this.setState({
                     contract: result.data,
-                    inputlist
+                    inputlist,
+                    deploydata
                 });
             }
         }).catch(function (e) {
@@ -116,47 +151,35 @@ class DappCreate extends React.Component {
         eth.accounts().then((accounts) => {
             const SimpleStore = eth.contract(this.state.contract.abi, this.state.contract.bytecode, {
               from: accounts[0],
-              gas: 300000,
+              gas: 4000000,
             });
           
             // create a new contract
             SimpleStore.new(...argument,(error, result) => {
-                console.log(result);
-                this.postDapp(result);
+                //console.log('error:',error);
+                if(!error){
+                    this.postDapp(result);
+                }
+                //console.log('result:',result);
+                
             //   result null '0x928sdfk...' (i.e. the transaction hash)
             });
         });
   
 
-        // //console.log(this.state.contract);
-        // myContract.deploy({
-        //     data: this.state.contract.bytecode,
-        //     arguments: argument
-        // }).send({
-        //         from: '0x81D723361d4F3e648F2c9c479d88DC6dEBF4fA5f'
-        //     }, (error, transactionHash) => {
-        //         console.log(transactionHash, "<==transactionHash");
-        //         this.postDapp(transactionHash);
-        //     }
-        // ).then(function (transactionHash) {
-        //         console.log(transactionHash) // instance with the new contract address
-        // });
-
-
     }
 
 
-
     postDapp = (txhash) => {
-
+        
         let postData = {
             dappName: '',
             txHash: txhash,
             contractInfo: this.props.name,
             publicAddress: this.state.userinfo.address,
-            dappChain: 'kovan' //不应该写死
+            dappChain: this.state.network //不应该写死
         }
-
+        console.log(postData);
         fetch(`${server_url}/api/dapp`, {
             body: JSON.stringify(postData),
             headers: {

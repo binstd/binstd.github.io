@@ -86,7 +86,7 @@ class DappList extends React.Component {
                     <Paper className={classes.paper}>
                         <Grid container spacing={24}>
                             <Grid item>
-                                <ButtonBase className={classes.image}  onClick={() => navigate(`/dapp/manage/${contractAddress}`)} >
+                                <ButtonBase className={classes.image}  onClick={() => navigate(`/dapp/manage/${contractInfo}/${contractAddress}`)} >
                                     <img className={classes.img} alt="complex" src="https://smartz.io/static/img/erc-20.png" />
                                 </ButtonBase>
                             </Grid>

@@ -30,6 +30,18 @@ import MailIcon from '@material-ui/icons/Mail';
 
 
 import Mamenu from '../../components/Mamenu';
+import Massage from '../../components/Massage';
+
+
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
+
+import { eth,Eth } from '../../lib/eth';
+
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -71,6 +83,10 @@ const styles = theme => ({
         padding: theme.spacing.unit * 3,
     },
     toolbar: theme.mixins.toolbar,
+    dialog:{
+        minWidth:'600px',
+        margin:'auto'
+    }
 });
 
 class DappCreate extends React.Component {
@@ -78,25 +94,97 @@ class DappCreate extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            contract: {},
+            open: false, //弹出输入开发
+            messageIsOpen:false, //弹出消息开关
+            messageText:'', //弹出消息开关
+            contractabi: [], //全部abi
             inputlist: [],
             deploydata: {},
             askapi:[],
             writeapi:[],
+            todoFunctionAbi:{}, //要执行的方法abi
+        }
+    }
+
+    handleClickOpen = (data) => {
+        // console.log('32323:',data);
+        if(data.inputs.length == 0) {
+            console.log(data);
+            
+            //alert(data.name);
+            eth.accounts().then((accounts) => {
+                const SimpleStore = eth.contract(this.state.contractabi).at(this.props.contractAddress);    
+                 // use a method that comes with the contract
+                SimpleStore[data.name]().then((txHash) => {
+                    let messageText = '';
+                    console.log('typeof txHash => \n',typeof txHash[0]);
+                    if(typeof txHash[0] === 'object'){
+                        //console.log(txHash[0].toString());
+                        messageText = txHash[0].toString();
+                    }else {
+                        messageText = txHash[0];
+                    }
+                    
+                    this.setMessage(true,messageText)
+              });
+            
+                
+            });
+        } else {
+            console.log(data);
+
+            let deploydata = {};
+            
+            if(data.inputs){
+                for (let item of data.inputs) {
+                    deploydata[item.name] = '';
+                }
+            }    
+            
+            this.setState({
+                todoFunctionAbi:data,
+                open: true, 
+                deploydata
+            });
+            
+        }
+        //this.setState({ open: true });
+    }
+    
+    //
+    handleClose = () => {
+        this.setState({ open: false });
+    }
+
+    //
+    setMessage = (isOpen, messageText) => {
+        console.log(isOpen,typeof messageText);
+        // messageText
+        if(isOpen){
+            this.setState({
+                messageIsOpen:isOpen,
+                messageText
+            });
+        } else {
+            this.setState({
+                messageIsOpen:isOpen
+            });
         }
     }
 
     componentWillMount() {
-        fetch(`${server_url}/api/chain/abi?apiname=ERC20Basic`).then(res => res.json()).then(result => {
+        console.log(this.props.contractName);
+        console.log(this.props.contractAddress);
+        fetch(`${server_url}/api/chain/abi?apiname=${this.props.contractName}`).then(res => res.json()).then(result => {
             // console.log(data);
-            // console.log(result.data);
+            console.log(result.data);
             let deploydata = {};
             if (result.code == 0) {
                 let askapi = [];
                 let writeapi = [];
                 //console.log(result);
                 for (let itemapi of result.data.abi) {
-                    console.log(itemapi);
+                    //console.log(itemapi);
                     if (itemapi.type == 'function') {
                         if(itemapi.constant == true) {
                             askapi.push(itemapi);
@@ -106,11 +194,12 @@ class DappCreate extends React.Component {
                     }
                 }
          
-                console.log(writeapi);    
-                console.log(askapi);   
+               console.log(writeapi);    
+               console.log(askapi);   
                 this.setState({
                     writeapi,
-                    askapi
+                    askapi,
+                    contractabi:result.data.abi
                 });
             }
         }).catch(function (e) {
@@ -120,7 +209,6 @@ class DappCreate extends React.Component {
     }
 
     SetInput = (name, event) => {
- 
         let deploydata = this.state.deploydata;
         deploydata[name] = event.target.value;
         this.setState({
@@ -130,8 +218,72 @@ class DappCreate extends React.Component {
     }
 
     delpoyContract = () => {
-        console.log(this.state.deploydata);
+        console.log('this.state.deploydata:',this.state.deploydata);
+        const todoFunctionAbi = this.state.todoFunctionAbi;
+        let argument = Object.values(this.state.deploydata)
+        // var myContract = new web3.eth.Contract(this.state.contract.abi);
+        window.ethereum.enable().then( (accounts) => {
+            console.log(accounts);
+        })
+
+        this.handleClose();
+        eth.accounts().then((accounts) => {
+             
+            const SimpleStore = eth.contract(this.state.contractabi).at(this.props.contractAddress);    
        
+
+            SimpleStore[todoFunctionAbi.name](...argument,{from:accounts[0]},(error, result) => {
+         
+                if(!error){
+                    console.log('result:',result);
+                    // this.postDapp(result);
+                    let messageText = '';
+                    console.log('typeof txHash => \n',typeof result[0]);
+                    if(typeof result[0] === 'object'){
+                        //console.log(txHash[0].toString());
+                        messageText = result[0].toString();
+                    }else {
+                        messageText = result[0];
+                    }
+                    
+                    this.setMessage(true,messageText)
+
+                } else {
+                    console.log('error:',error);
+                }
+        
+            });
+            
+        });
+    }
+
+    delpoyContractt = () => {
+        let argument = Object.values(this.state.deploydata)
+        // var myContract = new web3.eth.Contract(this.state.contract.abi);
+        window.ethereum.enable().then( (accounts) => {
+            console.log(accounts);
+        })
+
+       console.log(this.state.deploydata);
+        eth.accounts().then((accounts) => {
+            const SimpleStore = eth.contract(this.state.contract.abi, this.state.contract.bytecode, {
+              from: accounts[0],
+              gas: 4000000,
+            });
+          
+            // create a new contract
+            SimpleStore.new(...argument,(error, result) => {
+                //console.log('error:',error);
+                if(!error){
+                    this.postDapp(result);
+                }
+                //console.log('result:',result);
+                
+            //   result null '0x928sdfk...' (i.e. the transaction hash)
+            });
+        });
+  
+
     }
 
     postDapp = (txhash) => {
@@ -159,9 +311,29 @@ class DappCreate extends React.Component {
     }
 
     render() {
-        let { writeapi, askapi } = this.state;
+        let { writeapi, askapi,todoFunctionAbi } = this.state;
         const { classes } = this.props;
-          
+        var contractview = ''
+       
+       if(todoFunctionAbi.inputs){
+            contractview = todoFunctionAbi['inputs'].map((data, index) => {
+                const { name, type } = data;
+                    return (
+                        <Grid key={index}   item xs={12}>
+                                <TextField
+                                    required
+                                    id="address1"
+                                    name={name}
+                                    label={name}
+                                    onChange={this.SetInput.bind(this,name)}
+                                    fullWidth
+                                    autoComplete="billing address-line1"
+                                />
+                        </Grid>
+                    );
+            }); 
+       }
+        
         return (
             <div className={classes.root}>
             {/* <CssBaseline /> */}
@@ -179,9 +351,10 @@ class DappCreate extends React.Component {
                         {/* <ListItemIcon>
                             {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                         </ListItemIcon> */}
-                        <ListItemText primary={data.name} />
+                        <ListItemText primary={data.name} onClick={() => this.handleClickOpen(data)} />
                     </ListItem>
                     ))}
+
                 </List>
                 <Divider />
                 <List>
@@ -190,7 +363,7 @@ class DappCreate extends React.Component {
                         {/* <ListItemIcon>
                         {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                         </ListItemIcon> */}
-                        <ListItemText primary={data.name} />
+                        <ListItemText primary={data.name} onClick={() => this.handleClickOpen(data)} />
                     </ListItem>
                     ))}
                 </List>
@@ -199,30 +372,33 @@ class DappCreate extends React.Component {
             <main className={classes.content}>
               <div className={classes.toolbar} />
               <Typography paragraph>
-                liuliang
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
-                facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-                gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
-                donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-                adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
-                Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
-                imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
-                arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-                donec massa sapien faucibus et molestie ac.
-              </Typography>
-              <Typography paragraph>
-                Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla
-                facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac
-                tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat
-                consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed
-                vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In
-                hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem et
-                tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique sollicitudin
-                nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
-                accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
+             
               </Typography>
             </main>
+                <Dialog
+                    className={classes.dialog} 
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                    aria-labelledby="form-dialog-title"
+                    // style={{minWidth:'700px'}}
+                >
+                        <DialogTitle id="form-dialog-title">方法名称:{todoFunctionAbi.name}</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText>
+                                    调用此方法将触发区块链钱包做签名，请慎重操作
+                            </DialogContentText>
+                            {contractview}
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={this.handleClose} color="primary">
+                            Cancel
+                            </Button>
+                            <Button  onClick={() => this.delpoyContract()} color="primary">
+                            submit
+                            </Button>
+                        </DialogActions>
+                </Dialog>
+                <Massage messageIsOpen={this.state.messageIsOpen} messageText={this.state.messageText}  setMessage = {isOpen => this.setMessage(isOpen)}/>
           </div>
         );
     }
