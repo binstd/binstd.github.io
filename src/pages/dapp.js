@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Layout from '../components/layout'
+
 import { Router, navigate } from '@reach/router';
 
 import DappCreate from '../view/dapp/create';
