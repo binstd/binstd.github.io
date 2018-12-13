@@ -111,7 +111,7 @@ class ButtonAppBar extends React.Component{
                         console.log('This is an unknown network.')
                         network = 'eth_unknown'
                 }
-                
+
                 this.setState({
                     network
                 });
@@ -251,7 +251,8 @@ class ButtonAppBar extends React.Component{
               </IconButton>
               <Typography variant="h6" color="inherit" className={classes.grow}>
               <Button color="inherit"  onClick={() => navigate(`/`)} >首页</Button>
-              <Button color="inherit"  >API</Button>
+              
+              <Button color="inherit"  onClick={() => navigate(`/docs/getting-started/info`)} >API</Button>
               </Typography>
               {/* <Button color="inherit" >{network}</Button> */}
               {network}
