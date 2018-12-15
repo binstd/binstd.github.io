@@ -26,7 +26,7 @@ const ArticlePage = class DappPage extends Component {
                         <Router>
                             <DappCreate path="/dapp/create/:name/" />
                             {/* <Dashboard path="/dapp/mana/:contractAddress/" /> */}
-                            <DappManage path="/dapp/manage/:contractName/:contractAddress/" />
+                                <DappManage path="/dapp/manage/:contractName/:contractAddress/" />
                             
                             {/* <DappDeployed path="/dapp/deployed/:txhash/" /> */}
                             <MyDappList path="/dapp/:address/" />

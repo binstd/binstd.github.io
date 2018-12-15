@@ -38,7 +38,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
+import TransferCard from '../../components/TransferCard';
 
 import { eth,Eth } from '../../lib/eth';
 
@@ -372,7 +372,7 @@ class DappCreate extends React.Component {
             <main className={classes.content}>
               <div className={classes.toolbar} />
               <Typography paragraph>
-             
+                    <TransferCard />  
               </Typography>
             </main>
                 <Dialog
@@ -380,7 +380,6 @@ class DappCreate extends React.Component {
                     open={this.state.open}
                     onClose={this.handleClose}
                     aria-labelledby="form-dialog-title"
-                    // style={{minWidth:'700px'}}
                 >
                         <DialogTitle id="form-dialog-title">方法名称:{todoFunctionAbi.name}</DialogTitle>
                         <DialogContent>
