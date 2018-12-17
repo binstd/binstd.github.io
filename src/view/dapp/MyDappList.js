@@ -33,7 +33,7 @@ const styles = theme => ({
       paper: {
         padding: theme.spacing.unit * 2,
         margin: 'auto',
-        maxWidth: 600,
+        maxWidth: 660,
         height:140,
       },
     //   paper: {

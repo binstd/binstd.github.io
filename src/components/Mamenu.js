@@ -124,11 +124,6 @@ class ButtonAppBar extends React.Component{
                 //user_model.allSet(userinfo);
             }
         }
-        
-        // window.web3.version.getNetwork((err, netId) => {
-            
-        // })
-       
        
     }
 
@@ -167,6 +162,7 @@ class ButtonAppBar extends React.Component{
         const isMenuOpen = Boolean(anchorEl);
         const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
         let user_label;
+
         //未登陆
         if (JSON.stringify(userinfo) === '{}') {
             user_label = <Button color="inherit"  onClick={() => this.login()} > 登陆 </Button>          
@@ -217,27 +213,13 @@ class ButtonAppBar extends React.Component{
               open={isMobileMenuOpen}
               onClose={this.handleMobileMenuClose}
             >
-              <MenuItem>
-                <IconButton color="inherit">
-                  <Badge badgeContent={4} color="secondary">
-                    <MailIcon />
-                  </Badge>
-                </IconButton>
-                <p>Messages</p>
-              </MenuItem>
-              <MenuItem>
-                <IconButton color="inherit">
-                  <Badge badgeContent={11} color="secondary">
-                    <NotificationsIcon />
-                  </Badge>
-                </IconButton>
-                <p>Notifications</p>
-              </MenuItem>
-              <MenuItem onClick={this.handleProfileMenuOpen}>
-                <IconButton color="inherit">
-                  <AccountCircle />
-                </IconButton>
+              <MenuItem  onClick={this.handleMenuClose}>
                 <p>Profile</p>
+              </MenuItem>
+
+              <MenuItem onClick={() => this.handleLoggedOut()}>
+              
+                <p>退出</p>
               </MenuItem>
             </Menu>
           );
