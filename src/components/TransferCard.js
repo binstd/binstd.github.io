@@ -32,11 +32,6 @@ const styles = theme => ({
         maxWidth: 600,
         // height: 140,
     },
-    //   paper: {
-    //     maxWidth: 600,
-    //     margin: `${theme.spacing.unit}px auto`,
-    //     padding: theme.spacing.unit * 2,
-    //   },
     image: {
         width: '100px',
         height: '100px',
@@ -129,26 +124,20 @@ class TransferCard extends React.Component {
 
         return (
             <div style={{ minHeight: '600px', marginTop: '10px' }} >
-                {/* <p className="title is-5 is-spaced">我的合约列表:</p> */}
-                {/* {contractview} */}
                 <div className={classes.root}>
                     <Paper className={classes.paper}>
                         <Grid container spacing={24}>
-                            {/* <Grid item>
-                                <ButtonBase className={classes.image}  onClick={() => navigate(`/dapp/manage/${contractInfo}/${contractAddress}`)} >
-                                    <img className={classes.img} alt="complex" src="https://smartz.io/static/img/erc-20.png" />
-                                </ButtonBase>
-                            </Grid> */}
+                           
                             <Grid item xs={8} sm container>
                                 <Grid item xs container direction="column" >
                                     <Grid item xs style={{ maxWidth: '400px' }} >
                                         <Typography gutterBottom variant="subtitle1">
                                             我是合约11
                                          </Typography>
-                                        合约地址:
-                                            <Typography color="textSecondary"  >
-                                            <a href="http://localhost:8000" color="textSecondary" target="_blank" >
-                                                luz243434343
+                                            合约地址:
+                                            <Typography color="textSecondary">
+                                                <a href="http://localhost:8000" color="textSecondary" target="_blank" >
+                                                    luz243434343
                                                 </a>
                                         </Typography>
                                     </Grid>
@@ -173,7 +162,7 @@ class TransferCard extends React.Component {
                                             方法名称: 转账
                                          </Typography>
                                                 hashhashhashhashhashhashhashhash
-                                            <Typography color="textSecondary"  >
+                                            {/* <Typography color="textSecondary"  > */}
                                                 输入:
                                                 <Table className={classes.table}>
                                                     <TableHead>
@@ -196,8 +185,8 @@ class TransferCard extends React.Component {
                                                         })}
                                                     </TableBody>
                                                 </Table>
-                                           </Typography>
-                                            <Typography color="textSecondary"  style={{marginTop:'30px'}}>
+                                           {/* </Typography> */}
+                                            {/* <Typography color="textSecondary"  style={{marginTop:'30px'}}> */}
                                                结果:
                                                 <Table className={classes.table}>
                                                     <TableHead>
@@ -220,7 +209,7 @@ class TransferCard extends React.Component {
                                                         })}
                                                     </TableBody>
                                                 </Table>
-                                           </Typography>
+                                           {/* </Typography> */}
 
                                     </Grid>
                                 </Grid>

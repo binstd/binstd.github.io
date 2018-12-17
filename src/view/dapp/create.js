@@ -3,7 +3,7 @@ import { server_url } from '../../lib/config';
 import fetch from 'node-fetch';
 import { navigate } from "@reach/router";
 import { eth } from '../../lib/eth';
-
+import { transFunc,transInput } from '../../lib/translate';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -51,6 +51,7 @@ class DappCreate extends React.Component {
             deploydata: {},
             userinfo: {},
             network:'',
+            transferJson:{}
 
         }
     }
@@ -107,18 +108,12 @@ class DappCreate extends React.Component {
                         inputlist = itemapi.inputs;
                     }
                 }
-
                 for (let data of inputlist) {
                     deploydata[data.name] = '';
                 }
-                
-                // this.setState({
-                //     deploydata
-                // });
-                //console.log(result.data);
-
                 this.setState({
                     contract: result.data,
+                    transferJson:result.data.translate,
                     inputlist,
                     deploydata
                 });
@@ -160,13 +155,9 @@ class DappCreate extends React.Component {
                 if(!error){
                     this.postDapp(result);
                 }
-                //console.log('result:',result);
-                
-            //   result null '0x928sdfk...' (i.e. the transaction hash)
             });
         });
   
-
     }
 
 
@@ -196,8 +187,7 @@ class DappCreate extends React.Component {
     }
 
     render() {
-       
-        let { contract, inputlist } = this.state;
+        let { contract, inputlist,transferJson } = this.state;
         const { classes } = this.props;
        // console.log(inputlist);
         const contractview = inputlist.map((data, index) => {
@@ -208,7 +198,8 @@ class DappCreate extends React.Component {
                                 required
                                 id="address1"
                                 name={name}
-                                label={name}
+                                // label={name}
+                                label={transInput(transferJson,'constructor', name)}
                                 onChange={this.SetInput.bind(this,name)}
                                 fullWidth
                                 autoComplete="billing address-line1"
@@ -223,9 +214,7 @@ class DappCreate extends React.Component {
                         合约部署
                     </Typography>
                     <Grid container spacing={24}>
-
                         {contractview}
-
                     </Grid>
 
                     <Button

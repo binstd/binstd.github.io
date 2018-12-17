@@ -1,5 +1,6 @@
 import React from 'react'
 import { server_url } from '../../lib/config';
+import { transFunc,transInput } from '../../lib/translate';
 import fetch from 'node-fetch';
 import { navigate } from "@reach/router";
 //import { web3 } from '../../lib/eth';
@@ -7,27 +8,21 @@ import { navigate } from "@reach/router";
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+
 import Button from '@material-ui/core/Button';
 
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
-import Paper from '@material-ui/core/Paper';
+
 
 import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Toolbar from '@material-ui/core/Toolbar';
+
 import List from '@material-ui/core/List';
 // import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 
+import ListItemText from '@material-ui/core/ListItemText';
 
 import Mamenu from '../../components/Mamenu';
 import Massage from '../../components/Massage';
@@ -89,6 +84,7 @@ const styles = theme => ({
     }
 });
 
+
 class DappCreate extends React.Component {
 
     constructor(props) {
@@ -103,6 +99,7 @@ class DappCreate extends React.Component {
             askapi:[],
             writeapi:[],
             todoFunctionAbi:{}, //要执行的方法abi
+            transferJson:{}
         }
     }
 
@@ -128,7 +125,6 @@ class DappCreate extends React.Component {
                     this.setMessage(true,messageText)
               });
             
-                
             });
         } else {
             console.log(data);
@@ -199,7 +195,8 @@ class DappCreate extends React.Component {
                 this.setState({
                     writeapi,
                     askapi,
-                    contractabi:result.data.abi
+                    contractabi:result.data.abi,
+                    transferJson:result.data.translate
                 });
             }
         }).catch(function (e) {
@@ -311,7 +308,7 @@ class DappCreate extends React.Component {
     }
 
     render() {
-        let { writeapi, askapi,todoFunctionAbi } = this.state;
+        let { writeapi, askapi,todoFunctionAbi,transferJson } = this.state;
         const { classes } = this.props;
         var contractview = ''
        
@@ -324,7 +321,7 @@ class DappCreate extends React.Component {
                                     required
                                     id="address1"
                                     name={name}
-                                    label={name}
+                                    label={transInput(transferJson,todoFunctionAbi.name, name)}
                                     onChange={this.SetInput.bind(this,name)}
                                     fullWidth
                                     autoComplete="billing address-line1"
@@ -348,10 +345,7 @@ class DappCreate extends React.Component {
                 <List>
                     {askapi.map((data, index) => (
                     <ListItem button key={index}>
-                        {/* <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon> */}
-                        <ListItemText primary={data.name} onClick={() => this.handleClickOpen(data)} />
+                        <ListItemText primary={transFunc(transferJson , data.name)} onClick={() => this.handleClickOpen(data)} />
                     </ListItem>
                     ))}
 
@@ -360,10 +354,7 @@ class DappCreate extends React.Component {
                 <List>
                     {writeapi.map((data, index) => (
                     <ListItem button key={index}>
-                        {/* <ListItemIcon>
-                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon> */}
-                        <ListItemText primary={data.name} onClick={() => this.handleClickOpen(data)} />
+                        <ListItemText primary={transFunc(transferJson , data.name)} onClick={() => this.handleClickOpen(data)} />
                     </ListItem>
                     ))}
                 </List>
@@ -381,10 +372,10 @@ class DappCreate extends React.Component {
                     onClose={this.handleClose}
                     aria-labelledby="form-dialog-title"
                 >
-                        <DialogTitle id="form-dialog-title">方法名称:{todoFunctionAbi.name}</DialogTitle>
+                        <DialogTitle id="form-dialog-title">方法名称:{transFunc(transferJson , todoFunctionAbi.name)} </DialogTitle>
                         <DialogContent>
                             <DialogContentText>
-                                    调用此方法将触发区块链钱包做签名，请慎重操作
+                                调用此方法将触发区块链钱包做签名，请慎重操作
                             </DialogContentText>
                             {contractview}
                         </DialogContent>
