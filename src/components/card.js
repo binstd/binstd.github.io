@@ -45,7 +45,7 @@ function ComplexGrid(props) {
         <Grid container spacing={16}>
           <Grid item>
             <ButtonBase className={classes.image}  onClick={() => navigate(`/dapp/create/${option.contractName}`) } >
-              <img className={classes.img} alt="complex" src="https://smartz.io/static/img/erc-20.png" />
+              <img className={classes.img} alt="complex" src={option.imgUrl} />
             </ButtonBase>
           </Grid>
 
