@@ -80,8 +80,6 @@ eth.getBlockByNumber(45300, true, (err, block) => {
 
 const etherValue = Eth.toWei(72, 'ether');
 
-
-
 //导入abi
 const ABI = [{
   "constant": true,
