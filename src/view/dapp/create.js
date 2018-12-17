@@ -194,16 +194,16 @@ class DappCreate extends React.Component {
             const { name, type } = data;
                 return (
                     <Grid key={index}   item xs={12}>
-                            <TextField
-                                required
-                                id="address1"
-                                name={name}
-                                // label={name}
-                                label={transInput(transferJson,'constructor', name)}
-                                onChange={this.SetInput.bind(this,name)}
-                                fullWidth
-                                autoComplete="billing address-line1"
-                            />
+                        <TextField
+                            required
+                            id="address1"
+                            name={name}
+                            // label={name}
+                            label={transInput(transferJson,'constructor', name)}
+                            onChange={this.SetInput.bind(this,name)}
+                            fullWidth
+                            autoComplete="billing address-line1"
+                        />
                     </Grid>
                 );
         });   
