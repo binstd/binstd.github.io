@@ -228,7 +228,6 @@ class DappCreate extends React.Component {
              
             const SimpleStore = eth.contract(this.state.contractabi).at(this.props.contractAddress);    
        
-
             SimpleStore[todoFunctionAbi.name](...argument,{from:accounts[0]},(error, result) => {
          
                 if(!error){

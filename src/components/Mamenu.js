@@ -8,16 +8,14 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import { navigate } from "@reach/router";
 
-
-
-import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+// import MailIcon from '@material-ui/icons/Mail';
+// import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import LensIcon from '@material-ui/icons/Lens';
 
 import { eth } from '../lib/eth';
 const styles = theme => ({
@@ -50,7 +48,20 @@ const styles = theme => ({
       display: 'none',
     },
   },
+  colorMain:{
+      color:'#1abc9c'
+  },
+  colorRopsten:{
+    color:'#FF3E96'
+  },
+  colorRinkeby:{
+    color:'#FFD700'
+  },
+  colorKovan:{
+    color:'#690496'
+  }
 })
+
 
 class ButtonAppBar extends React.Component{
     constructor(props) {
@@ -80,42 +91,25 @@ class ButtonAppBar extends React.Component{
     };
     
     componentWillMount() {
-        var network = '';
+        var networkId = '';
         // if (typeof window !== `undefined`) {
         //     eth  = new Eth(window.ethereum);
         // }
+       
         if(typeof window !== `undefined`) {
-            eth.net_version().then((result) => {
-                switch (result) {
-                    case "1":
-                        console.log('This is mainnet')
-                        network = 'eth_main'
-                        break
-                    case "2":
-                        console.log('This is the deprecated Morden test network.')
-                        network = 'eth_morden'
-                        break
-                    case "3":
-                        console.log('This is the ropsten test network.')
-                        network = 'eth_ropsten'
-                        break
-                    case "4":
-                        console.log('This is the Rinkeby test network.')
-                        network = 'eth_rinkeby'
-                        break
-                    case "42":
-                        console.log('This is the Kovan test network.')
-                        network = 'eth_kovan'
-                        break
-                    default:
-                        console.log('This is an unknown network.')
-                        network = 'eth_unknown'
-                }
-
+           
+            eth.net_version().then((networkId) => {
                 this.setState({
-                    network
+                    networkId
                 });
+            }) 
+
+            window.ethereum.on('networkChanged',  (networkId) => {
+              this.setState({
+                  networkId
+              });
             })
+            
             if (localStorage.getItem("userinfo")) {
                 let userinfo = JSON.parse(localStorage.getItem("userinfo"));
                  this.setState({
@@ -128,9 +122,6 @@ class ButtonAppBar extends React.Component{
     }
 
     login() {
-        // eth.net_version().then((result) => {
-        //     console.log(result);
-        // })
         window.ethereum.enable().then( (accounts) => {
             console.log(accounts[0]);
             let userinfo  = {
@@ -157,7 +148,7 @@ class ButtonAppBar extends React.Component{
     render() {
         // const { classes } = this.props;
 
-        const { userinfo, anchorEl, mobileMoreAnchorEl,network} = this.state;
+        const { userinfo, anchorEl, mobileMoreAnchorEl,networkId} = this.state;
         const { classes } = this.props;
         const isMenuOpen = Boolean(anchorEl);
         const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -180,7 +171,7 @@ class ButtonAppBar extends React.Component{
                 color="inherit"
                 
                 >
-                    <AccountCircle />
+                  <AccountCircle />
                 </IconButton>
             </div>
             <div className={classes.sectionMobile}>
@@ -223,6 +214,39 @@ class ButtonAppBar extends React.Component{
               </MenuItem>
             </Menu>
           );
+          let networkName,networkColor = ''
+          switch (networkId) {
+            case "1":
+                networkColor = classes.colorMain;
+                networkName = 'main'
+                break
+            case "2":
+                networkColor = '';
+                networkName = 'morden'
+                break
+            case "3":
+                networkColor = classes.colorRopsten;
+                networkName = 'ropsten'
+                break
+            case "4":
+                networkColor = classes.colorRinkeby;
+                networkName = 'rinkeby'
+                break
+            case "42":
+                networkColor = classes.colorKovan;
+                networkName = 'kovan'
+                break
+            default:
+                networkName = ' '
+        }
+        const viewNetwork = (
+            <div>
+             <Button color="inherit"  onClick={() => this.login()} > 
+                <LensIcon className={networkColor} style= {{ fontSize: 15, marginRight:'5px' }}/> {networkName} 
+             </Button>  
+           
+            </div>    
+        ); 
 
         return (
             <div className={classes.root}>
@@ -237,10 +261,10 @@ class ButtonAppBar extends React.Component{
               <Button color="inherit"  onClick={() => navigate(`/docs/getting-started/info`)} >API</Button>
               </Typography>
               {/* <Button color="inherit" >{network}</Button> */}
-              {network}
-                {user_label}
-                
-          
+              {viewNetwork}
+              {/* {network} */}
+              {user_label}
+            
             </Toolbar>
           </AppBar>
            
