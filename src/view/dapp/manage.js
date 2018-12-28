@@ -24,7 +24,7 @@ import ListItem from '@material-ui/core/ListItem';
 
 import ListItemText from '@material-ui/core/ListItemText';
 
-import Mamenu from '../../components/Mamenu';
+// import Mamenu from '../../components/Mamenu';
 import Massage from '../../components/Massage';
 
 
@@ -35,7 +35,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TransferCard from '../../components/TransferCard';
 
-import { eth,Eth } from '../../lib/eth';
+import { eth } from '../../lib/eth';
 
 const drawerWidth = 240;
 
@@ -105,7 +105,7 @@ class DappCreate extends React.Component {
 
     handleClickOpen = (data) => {
         // console.log('32323:',data);
-        if(data.inputs.length == 0) {
+        if(data.inputs.length === 0) {
             console.log(data);
             
             //alert(data.name);
@@ -168,21 +168,21 @@ class DappCreate extends React.Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         console.log(this.props.contractName);
         console.log(this.props.contractAddress);
         fetch(`${server_url}/api/chain/abi?apiname=${this.props.contractName}`).then(res => res.json()).then(result => {
             // console.log(data);
             console.log(result.data);
-            let deploydata = {};
-            if (result.code == 0) {
+            // let deploydata = {};
+            if (result.code === 0) {
                 let askapi = [];
                 let writeapi = [];
                 //console.log(result);
                 for (let itemapi of result.data.abi) {
                     //console.log(itemapi);
-                    if (itemapi.type == 'function') {
-                        if(itemapi.constant == true) {
+                    if (itemapi.type === 'function') {
+                        if(itemapi.constant === true) {
                             askapi.push(itemapi);
                         }else {
                             writeapi.push(itemapi);
@@ -269,13 +269,10 @@ class DappCreate extends React.Component {
           
             // create a new contract
             SimpleStore.new(...argument,(error, result) => {
-                //console.log('error:',error);
+
                 if(!error){
                     this.postDapp(result);
                 }
-                //console.log('result:',result);
-                
-            //   result null '0x928sdfk...' (i.e. the transaction hash)
             });
         });
   
@@ -313,7 +310,7 @@ class DappCreate extends React.Component {
        
        if(todoFunctionAbi.inputs){
             contractview = todoFunctionAbi['inputs'].map((data, index) => {
-                const { name, type } = data;
+                const { name } = data;
                     return (
                         <Grid key={index}   item xs={12}>
                                 <TextField

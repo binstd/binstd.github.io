@@ -12,48 +12,74 @@ const styles = theme => ({
   },
 });
 
-class SimpleSnackbar extends React.Component {
+// class SimpleSnackbar extends React.Component {
  
-    constructor(props) {
-        super(props);
-    }
-
-//   handleClick = () => {
-//     this.setState({ open: true });
-//   };
-
-//   handleClose = (event, reason) => {
-//     if (reason === 'clickaway') {
-//       return;
+//     constructor(props) {
+//         super(props);
 //     }
-//     this.setState({ open: false });
-//   };
-  
-  componentWillMount(){
-    console.log('this.props:::',this.props);
-  }
+//     render() {
+//     const { classes } = this.props;
+//     return (
+//       <div>
+//         <Snackbar
+//           anchorOrigin={{
+//             vertical: 'bottom',
+//             horizontal: 'center',
+//           }}
+//           open={this.props.messageIsOpen}
+//           autoHideDuration={6000}
+//           onClose={() => this.props.setMessage(false)}
+//           ContentProps={{
+//             'aria-describedby': 'message-id',
+//           }}
+//           message={<span id="message-id">{this.props.messageText}</span>}
+//           action={[
+//             <Button key="undo" color="secondary" size="small" onClick={() => this.props.setMessage(false)}>
+//               已读
+//             </Button>,
+//             <IconButton
+//               key="close"
+//               aria-label="Close"
+//               color="inherit"
+//               className={classes.close}
+//             //   onClick={this.handleClose}
+//               onClick={() => this.props.setMessage(false)}
+//             >
+//               <CloseIcon />
+//             </IconButton>,
+//           ]}
+//         />
+//       </div>
+//     );
+//   }
+// }
 
-  render() {
-    const { classes } = this.props;
-    console.log(this.props);
-    return (
-      <div>
-        {/* <Button onClick={this.handleClick}>Open simple snackbar</Button> */}
-        
+// SimpleSnackbar.propTypes = {
+//   classes: PropTypes.object.isRequired,
+// };
+
+// export default withStyles(styles)(SimpleSnackbar);
+
+
+function MediaControlCard(props) {
+  const { classes, setMessage, messageText, messageIsOpen } = props;
+
+  return (
+    <div>
         <Snackbar
           anchorOrigin={{
             vertical: 'bottom',
             horizontal: 'center',
           }}
-          open={this.props.messageIsOpen}
+          open={messageIsOpen}
           autoHideDuration={6000}
-          onClose={() => this.props.setMessage(false)}
+          onClose={() => setMessage(false)}
           ContentProps={{
             'aria-describedby': 'message-id',
           }}
-          message={<span id="message-id">{this.props.messageText}</span>}
+          message={<span id="message-id">{messageText}</span>}
           action={[
-            <Button key="undo" color="secondary" size="small" onClick={() => this.props.setMessage(false)}>
+            <Button key="undo" color="secondary" size="small" onClick={() =>  setMessage(false)}>
               已读
             </Button>,
             <IconButton
@@ -61,21 +87,18 @@ class SimpleSnackbar extends React.Component {
               aria-label="Close"
               color="inherit"
               className={classes.close}
-            //   onClick={this.handleClose}
-              onClick={() => this.props.setMessage(false)}
+              onClick={() => setMessage(false)}
             >
               <CloseIcon />
             </IconButton>,
           ]}
         />
-
       </div>
-    );
-  }
+  );
 }
 
-SimpleSnackbar.propTypes = {
+MediaControlCard.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SimpleSnackbar);
+export default withStyles(styles)(MediaControlCard);

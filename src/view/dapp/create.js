@@ -3,12 +3,11 @@ import { server_url } from '../../lib/config';
 import fetch from 'node-fetch';
 import { navigate } from "@reach/router";
 import { eth } from '../../lib/eth';
-import { transFunc,transInput } from '../../lib/translate';
+import { transInput } from '../../lib/translate';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+
 import Button from '@material-ui/core/Button';
 
 import PropTypes from 'prop-types';
@@ -56,7 +55,7 @@ class DappCreate extends React.Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         var network = '';
        // console.log('1111');
         eth.net_version().then((result) => {
@@ -100,11 +99,11 @@ class DappCreate extends React.Component {
             // console.log(data);
             // console.log(result.data);
             let deploydata = {};
-            if (result.code == 0) {
+            if (result.code === 0) {
                 let inputlist = [];
                 //console.log(result);
                 for (let itemapi of result.data.abi) {
-                    if (itemapi.type == 'constructor') {
+                    if (itemapi.type === 'constructor') {
                         inputlist = itemapi.inputs;
                     }
                 }
@@ -187,11 +186,11 @@ class DappCreate extends React.Component {
     }
 
     render() {
-        let { contract, inputlist,transferJson } = this.state;
+        let { inputlist,transferJson } = this.state;
         const { classes } = this.props;
        // console.log(inputlist);
         const contractview = inputlist.map((data, index) => {
-            const { name, type } = data;
+            const { name } = data;
                 return (
                     <Grid key={index}   item xs={12}>
                         <TextField

@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 
-import { Router, navigate } from '@reach/router';
+import { Router } from '@reach/router';
 
 import DappCreate from '../view/dapp/create';
-import DappDeployed from '../view/dapp/deployed';
+// import DappDeployed from '../view/dapp/deployed';
 import MyDappList from '../view/dapp/MyDappList';
 import DappManage from '../view/dapp/manage';
 
 import MaLayout from '../components/MaLayout'
-// import Dashboard from '../components/dashboard/Dashboard'
 
 const ArticlePage = class DappPage extends Component {
     render() { 
@@ -25,10 +24,9 @@ const ArticlePage = class DappPage extends Component {
                     >
                         <Router>
                             <DappCreate path="/dapp/create/:name/" />
-                            {/* <Dashboard path="/dapp/mana/:contractAddress/" /> */}
-                                <DappManage path="/dapp/manage/:contractName/:contractAddress/" />
-                            
-                            {/* <DappDeployed path="/dapp/deployed/:txhash/" /> */}
+                          
+                            <DappManage path="/dapp/manage/:contractName/:contractAddress/" />
+                      
                             <MyDappList path="/dapp/:address/" />
                         </Router>
                     </div>

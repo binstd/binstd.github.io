@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+
 import Grid from '@material-ui/core/Grid';
 
 import { server_url } from '../lib/config';
-import { navigate } from "@reach/router";
 import fetch from 'node-fetch';
 import Card from './card';
 const styles = theme => ({
@@ -32,10 +31,10 @@ class FullWidthGrid extends React.Component{
         }
     }
     
-    componentWillMount() {
+    componentDidMount() {
         fetch(`${server_url}/api/chain/allcontractlist`).then(response => response.json())
             .then(result => {
-                if (result.code == 0) {
+                if (result.code === 0) {
                     // console.log(result);
                     this.setState({
                         contract: result.data
@@ -53,10 +52,10 @@ class FullWidthGrid extends React.Component{
         const { contract } = this.state;
         // console.log(contract);
         const Gridview = contract.map((data, index) => {
-            const { title, description, contractName } = data;
+            // const { title, description, contractName } = data;
             return (
                 <Grid  key={index} item xs={12} sm={6} >
-                        <Card option={data} />
+                    <Card option={data} />
                 </Grid>
           
             );

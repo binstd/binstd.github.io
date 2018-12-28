@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React  from 'react';
 import { eth } from '../../lib/eth';
 
 export default class DappDeployed extends  React.Component {
+
     constructor (props) { 
         super();
         this.state = {
@@ -9,9 +10,8 @@ export default class DappDeployed extends  React.Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         var network_url = '';
-       // console.log('1111');
         eth.net_version().then((result) => {
             switch (result) {
                 case "1":

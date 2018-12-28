@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import fetch from 'node-fetch';
 import { server_url } from '../lib/config';
 
@@ -9,7 +9,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
+// import ButtonBase from '@material-ui/core/ButtonBase';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -18,8 +18,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 // import Paper from '@material-ui/core/Paper';
 
-import { navigate, Link } from "@reach/router";
-import { auto } from 'eol';
+// import { navigate, Link } from "@reach/router";
+// import { auto } from 'eol';
 const styles = theme => ({
     
     root: {
@@ -72,7 +72,7 @@ class TransferCard extends React.Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         fetch(`${server_url}/api/dapp/${this.props.address}?chain=eth_ropsten`).then(res => res.json()).then(result => {
             console.log(result);
             this.setState({
@@ -85,42 +85,42 @@ class TransferCard extends React.Component {
     }
 
     render() {
-        const { dapplist } = this.state;
+        // const { dapplist } = this.state;
         const { classes } = this.props;
-        const contractview = dapplist.map((data, index) => {
-            console.log(data);
-            const { contractInfo, txHash, contractAddress } = data;
-            return (
-                <div key={index} className={classes.root}>
-                    <Paper className={classes.paper}>
-                        <Grid container spacing={24}>
-                            <Grid item>
-                                <ButtonBase className={classes.image} onClick={() => navigate(`/dapp/manage/${contractInfo}/${contractAddress}`)} >
-                                    <img className={classes.img} alt="complex" src="https://smartz.io/static/img/erc-20.png" />
-                                </ButtonBase>
-                            </Grid>
-                            <Grid item xs={8} sm container>
-                                <Grid item xs container direction="column" >
-                                    <Grid item xs style={{ maxWidth: '400px' }} >
-                                        <Typography gutterBottom variant="subtitle1">
-                                            {contractInfo}
-                                        </Typography>
-                                        合约地址:
-                                            <Typography color="textSecondary"  >
-                                            <a href="http://localhost:8000" color="textSecondary" target="_blank" >
-                                                {txHash}
-                                            </a>
-                                        </Typography>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                    </Paper>
+        // const contractview = dapplist.map((data, index) => {
+        //     console.log(data);
+        //     const { contractInfo, txHash, contractAddress } = data;
+        //     return (
+        //         <div key={index} className={classes.root}>
+        //             <Paper className={classes.paper}>
+        //                 <Grid container spacing={24}>
+        //                     <Grid item>
+        //                         <ButtonBase className={classes.image} onClick={() => navigate(`/dapp/manage/${contractInfo}/${contractAddress}`)} >
+        //                             <img className={classes.img} alt="complex" src="https://smartz.io/static/img/erc-20.png" />
+        //                         </ButtonBase>
+        //                     </Grid>
+        //                     <Grid item xs={8} sm container>
+        //                         <Grid item xs container direction="column" >
+        //                             <Grid item xs style={{ maxWidth: '400px' }} >
+        //                                 <Typography gutterBottom variant="subtitle1">
+        //                                     {contractInfo}
+        //                                 </Typography>
+        //                                 合约地址:
+        //                                     <Typography color="textSecondary"  >
+        //                                     <a href="http://localhost:8000" color="textSecondary" target="_blank" >
+        //                                         {txHash}
+        //                                     </a>
+        //                                 </Typography>
+        //                             </Grid>
+        //                         </Grid>
+        //                     </Grid>
+        //                 </Grid>
+        //             </Paper>
 
-                </div>
+        //         </div>
 
-            );
-        });
+        //     );
+        // });
 
         return (
             <div style={{ minHeight: '600px', marginTop: '10px' }} >
@@ -135,8 +135,9 @@ class TransferCard extends React.Component {
                                             我是合约11
                                          </Typography>
                                             合约地址:
+    
                                             <Typography color="textSecondary">
-                                                <a href="http://localhost:8000" color="textSecondary" target="_blank" >
+                                                <a href="http://localhost:8000"  color="textSecondary" target="_blank"  rel="noopener noreferrer" >
                                                     luz243434343
                                                 </a>
                                         </Typography>
@@ -150,11 +151,7 @@ class TransferCard extends React.Component {
                 <div className={classes.root}>
                     <Paper className={classes.paper}>
                         <Grid container spacing={24}>
-                            {/* <Grid item>
-                                <ButtonBase className={classes.image}  onClick={() => navigate(`/dapp/manage/${contractInfo}/${contractAddress}`)} >
-                                    <img className={classes.img} alt="complex" src="https://smartz.io/static/img/erc-20.png" />
-                                </ButtonBase>
-                            </Grid> */}
+                          
                             <Grid item xs={8} sm container>
                                 <Grid item xs container direction="column" >
                                     <Grid item xs style={{}} >

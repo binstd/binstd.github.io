@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import fetch from 'node-fetch';
 import { server_url } from '../../lib/config';
 
@@ -10,22 +10,12 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
-import Button from '@material-ui/core/Button';
 
 
-import Avatar from '@material-ui/core/Avatar';
 
-import { navigate,Link } from "@reach/router";
+import { navigate } from "@reach/router";
 const styles = theme => ({
-    // paper: {
-    //     maxWidth: '650px',
-    //     margin: '5px auto',
-    //     marginTop: theme.spacing.unit * 3,
-    //     display: 'flex',
-    //     flexDirection: 'column',
-    //     alignItems: 'center',
-    //     padding: `${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
-    // },
+
     root: {
         // flexGrow: 1,
         marginTop:10
@@ -36,14 +26,9 @@ const styles = theme => ({
         maxWidth: 660,
         height:140,
       },
-    //   paper: {
-    //     maxWidth: 600,
-    //     margin: `${theme.spacing.unit}px auto`,
-    //     padding: theme.spacing.unit * 2,
-    //   },
       image: {
-        width: '100px',
-        height: '100px',
+        maxwidth: '80px',
+        maxheight: '80px',
       },
       img: {
         margin: 'auto',
@@ -63,7 +48,7 @@ class DappList extends React.Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         fetch(`${server_url}/api/dapp/${this.props.address}?chain=eth_ropsten`).then(res => res.json()).then(result => {
             console.log(result);
             this.setState({
@@ -92,13 +77,13 @@ class DappList extends React.Component {
                             </Grid>
                             <Grid item xs={8} sm container>
                                 <Grid item xs container direction="column" >
-                                    <Grid item xs style={{maxWidth:'400px'}} >
+                                    <Grid item xs style={{maxWidth:'500px',wordWrap: 'break-word'}} >
                                         <Typography gutterBottom variant="subtitle1">
                                             {contractInfo}
                                          </Typography>
                                               合约地址:
                                             <Typography color="textSecondary"  >   
-                                                <a href="http://localhost:8000" color="textSecondary"  target="_blank" >
+                                                <a href="http://localhost:8000" color="textSecondary"  target="_blank"  rel="noopener noreferrer" >
                                                 {txHash} 
                                                 </a>
                                             </Typography>
@@ -115,7 +100,6 @@ class DappList extends React.Component {
 
         return (
             <div style={{ minHeight: '600px',marginTop:'80px' }} >
-                {/* <p className="title is-5 is-spaced">我的合约列表:</p> */}
                 {contractview}
             </div >
         )

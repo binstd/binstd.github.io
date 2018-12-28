@@ -11,18 +11,19 @@ import { navigate } from "@reach/router";
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 
+
 import AccountCircle from '@material-ui/icons/AccountCircle';
-// import MailIcon from '@material-ui/icons/Mail';
-// import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import LensIcon from '@material-ui/icons/Lens';
 
 import { eth } from '../lib/eth';
+
+import user_model from '../model/user_model';
+import { observer } from 'mobx-react';
+import { server_url } from '../lib/config';
+
 const styles = theme => ({
-//   root: {
-//     flexGrow: 1,
-//     marginBottom: 50,
-//   },
+
   root: {
     width: '100%',
   },
@@ -63,14 +64,15 @@ const styles = theme => ({
 })
 
 
-class ButtonAppBar extends React.Component{
+const ButtonAppBar = observer(class ButtonAppBar extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
           userinfo:{},
           anchorEl: null,
           mobileMoreAnchorEl: null,
-          network:''
+          network:'',
+          address:''
         }
     }
     handleProfileMenuOpen = event => {
@@ -91,63 +93,152 @@ class ButtonAppBar extends React.Component{
     };
     
     componentWillMount() {
-        var networkId = '';
-        // if (typeof window !== `undefined`) {
-        //     eth  = new Eth(window.ethereum);
-        // }
-       
+        // var networkId = '';
         if(typeof window !== `undefined`) {
-           
+            this.login();
             eth.net_version().then((networkId) => {
                 this.setState({
                     networkId
                 });
-            }) 
+            }); 
 
             window.ethereum.on('networkChanged',  (networkId) => {
               this.setState({
                   networkId
               });
-            })
-            
+            });
+
             if (localStorage.getItem("userinfo")) {
                 let userinfo = JSON.parse(localStorage.getItem("userinfo"));
                  this.setState({
                     userinfo,
                  });
-                //user_model.allSet(userinfo);
             }
         }
        
     }
 
+    //新登陆
     login() {
         window.ethereum.enable().then( (accounts) => {
             console.log(accounts[0]);
-            let userinfo  = {
-                logintype: 'ETH',
-                address: accounts[0]
-            };
-            localStorage.setItem("userinfo", JSON.stringify(userinfo));
+            // let userinfo = {
+            //     logintype: 'ETH',
+            //     address: accounts[0]
+            // };
+            // localStorage.setItem("userinfo", JSON.stringify(userinfo));
             this.setState({
-                userinfo
+                address: accounts[0]
             }); 
         })
           
+    }  
+
+    // login() {
+    //     window.ethereum.enable().then((accounts) => {
+    //         console.log(accounts[0]);
+    //         let userinfo = {
+    //             logintype: 'ETH',
+    //             address: accounts[0]
+    //         };
+    //         localStorage.setItem("userinfo", JSON.stringify(userinfo));
+    //         this.setState({
+    //             userinfo
+    //         });
+    //     })
+
+    // }
+
+
+
+    //陇余代码
+    payToken() {
+        if(!user_model.address&&!user_model.logintype){
+            console.log('没有登录');
+        }
+        window.ethereum.enable().then( (accounts) => {
+            const publicAddress = accounts[0];
+            console.log("\n server_url",server_url);
+            fetch(
+                `${server_url}/api/users?publicAddress=${publicAddress}`
+            ).then( response => response.json() ).then (
+                users => (users.length ? users[0] : this.handleSignup(publicAddress))
+            ).then(this.handleSignMessage)
+            .then(this.handleAuthenticate)
+            .then(this.handleLoggedIn).catch(err => {
+                window.alert(err);
+            });
+        })
+     
     }
 
+    // web3登录
+    handleSignMessage = ({ publicAddress, nonce, id }) => {
+        this.setState({ 
+            id
+        });
+
+        return new Promise((resolve, reject) =>
+            window.web3.personal.sign(
+                window.web3.fromUtf8(`I am signing: ${nonce}`),
+                publicAddress,
+                (err, signature) => {
+                    if (err) return reject(err);
+                    console.log('\n signature:', signature);
+                    return resolve({ publicAddress, signature });
+                }
+            )
+        );
+    };
+
+    // 获取权限
+    handleAuthenticate = ({ publicAddress, signature }) =>
+        fetch(`${server_url}/api/auth`, {
+            body: JSON.stringify({ publicAddress, signature }),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST'
+    }).then(response => response.json());
+
+    //登录
+    handleLoggedIn = auth => {
+        let userinfo  = {
+            logintype: 'ETH',
+            address: window.web3.eth.accounts[0].toLowerCase(),
+            auth: auth,
+            id:this.state.id
+        };
+        
+        user_model.allSet(userinfo);
+        localStorage.setItem("userinfo", JSON.stringify(userinfo));
+        console.log(user_model.logintype);
+        this.setState({ auth });
+        window.location.reload(true); 
+    };
+    
+    // 退出登录
     handleLoggedOut = () => {
         localStorage.removeItem('userinfo');
-        // localStorage.removeItem('userdapp');
-        // user_model.clearAll();
-        this.setState({ userinfo: {} });
-        // window.location.reload(true); 
-        this.handleMenuClose();
+        localStorage.removeItem('userdapp');
+        user_model.clearAll();
+        this.setState({ auth: undefined });
+        window.location.reload(true); 
+        
     };
+
+    //提交新地址
+    handleSignup = publicAddress =>
+        fetch(`${server_url}/api/users`, {
+            body: JSON.stringify({ publicAddress }),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST'
+    }).then(response => response.json());
 
     render() {
         // const { classes } = this.props;
-
         const { userinfo, anchorEl, mobileMoreAnchorEl,networkId} = this.state;
         const { classes } = this.props;
         const isMenuOpen = Boolean(anchorEl);
@@ -156,7 +247,7 @@ class ButtonAppBar extends React.Component{
 
         //未登陆
         if (JSON.stringify(userinfo) === '{}') {
-            user_label = <Button color="inherit"  onClick={() => this.login()} > 登陆 </Button>          
+            user_label = <Button color="inherit"  onClick={() => this.payToken()} > 登陆 </Button>          
         } else {
             //已登陆
             user_label =  
@@ -190,7 +281,7 @@ class ButtonAppBar extends React.Component{
               open={isMenuOpen}
               onClose={this.handleMenuClose}
             >
-              <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
+              <MenuItem onClick={() => navigate(`/userinfo`)} >个人中心</MenuItem>
               <MenuItem onClick={() => this.handleLoggedOut()} >退出</MenuItem>
               {/* <Button color="inherit"  > 退出 </Button> */}
             </Menu>
@@ -204,10 +295,14 @@ class ButtonAppBar extends React.Component{
               open={isMobileMenuOpen}
               onClose={this.handleMobileMenuClose}
             >
-              <MenuItem  onClick={this.handleMenuClose}>
-                <p>Profile</p>
-              </MenuItem>
 
+              <MenuItem  onClick={() => navigate(`/userinfo`)} >
+                <p>个人中心</p>
+              </MenuItem>
+              <MenuItem   onClick={() => navigate(`/dapp/${userinfo.address}`)}  >
+                <p>Dapp</p>
+              </MenuItem>
+             
               <MenuItem onClick={() => this.handleLoggedOut()}>
               
                 <p>退出</p>
@@ -242,7 +337,7 @@ class ButtonAppBar extends React.Component{
         const viewNetwork = (
             <div>
              <Button color="inherit"  onClick={() => this.login()} > 
-                <LensIcon className={networkColor} style= {{ fontSize: 15, marginRight:'5px' }}/> {networkName} 
+                <LensIcon className={networkColor}  style= {{ fontSize: 15, marginRight:'5px' }} /> {networkName} 
              </Button>  
            
             </div>    
@@ -250,31 +345,34 @@ class ButtonAppBar extends React.Component{
 
         return (
             <div className={classes.root}>
-            <AppBar position="fixed"  className={classes.appBar} >
-            <Toolbar>
-              <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-                {/* <MenuIcon /> */}
-              </IconButton>
-              <Typography variant="h6" color="inherit" className={classes.grow}>
-              <Button color="inherit"  onClick={() => navigate(`/`)} >首页</Button>
-              
-              <Button color="inherit"  onClick={() => navigate(`/docs/getting-started/info`)} >API</Button>
-              </Typography>
-              {/* <Button color="inherit" >{network}</Button> */}
-              {viewNetwork}
-              {/* {network} */}
-              {user_label}
+                <AppBar position="fixed"  className={classes.appBar} >
+                    <Toolbar>
+                        <div className={classes.sectionDesktop} >
+                        <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+                            <img
+                                src='https://programmerinnfile.b0.upaiyun.com/community/10001/20180814/yzdXjjAI4g.png'
+                                style={{ height: 30, width: 108, margin: '0 35px 5px 0' }}
+                            />
+                        </IconButton>
+                        </div>
+                        <Typography variant="h6" color="inherit" className={classes.grow}>
+                            <Button color="inherit"  onClick={() => navigate(`/`)} >首页</Button>
+                            <Button color="inherit"  onClick={() => navigate(`/docs/getting-started/info`)} >API</Button>
+                        </Typography>
+                        <div className={classes.sectionDesktop} >
+                        {viewNetwork}
+                        </div>
+                        {user_label}
+                    </Toolbar>
+
+                    {renderMenu}
+                    {renderMobileMenu}
+                </AppBar>
             
-            </Toolbar>
-          </AppBar>
-           
-            {renderMenu}
-            {renderMobileMenu}
-            </div>
+             </div>
         )
     }
-}
-
+});
 
 
 

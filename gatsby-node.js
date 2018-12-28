@@ -228,8 +228,8 @@ function stripOrderingNumbers(str) {
   return str.replace(/^(\d+-)/, '');
 }
 
-exports.onCreatePage = async ({ page, boundActionCreators }) => {
-    const { createPage } = boundActionCreators;
+exports.onCreatePage = async ({ page, actions }) => {
+    const { createPage } = actions;
     
     if (page.path.match(/^\/dapp/)) {
         page.matchPath = "/dapp/*";

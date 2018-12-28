@@ -1,22 +1,18 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-// import Header from '../components/Header'
-// import Link from 'gatsby-link'
+
 import { pickBy, mapKeys, pick, identity } from 'lodash'
-// import styled, { injectGlobal } from 'styled-components'
 import styled from 'styled-components'
 import Nav from '../components/docs/Nav'
 import Sidebar from '../components/docs/Sidebar'
 import DocLayout from '../components/doclayout'
-import MaLayout from '../components/MaLayout'
+
 import Mamenu from '../components/Mamenu';
 
-import PropTypes from 'prop-types'
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { createMuiTheme } from '@material-ui/core/styles';
 
-// import '../styles.css'
 const Documentation = styled.main`
   float: left;
   width: 60%;
