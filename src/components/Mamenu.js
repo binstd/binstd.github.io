@@ -300,7 +300,7 @@ const ButtonAppBar = observer(class ButtonAppBar extends React.Component{
                 <p>个人中心</p>
               </MenuItem>
               <MenuItem   onClick={() => navigate(`/dapp/${userinfo.address}`)}  >
-                <p>Dapp</p>
+                <p>我的Dapp</p>
               </MenuItem>
              
               <MenuItem onClick={() => this.handleLoggedOut()}>
@@ -356,7 +356,8 @@ const ButtonAppBar = observer(class ButtonAppBar extends React.Component{
                         </IconButton>
                         </div>
                         <Typography variant="h6" color="inherit" className={classes.grow}>
-                            <Button color="inherit"  onClick={() => navigate(`/`)} >首页</Button>
+                            <Button color="inherit"  onClick={() => navigate(`https://www.binstd.com/`)} >官网</Button>
+                            <Button color="inherit"  onClick={() => navigate(`/`)} >Dapp部署</Button>
                             <Button color="inherit"  onClick={() => navigate(`/docs/getting-started/info`)} >API</Button>
                         </Typography>
                         <div className={classes.sectionDesktop} >
