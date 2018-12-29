@@ -1,2 +1,0 @@
-webpackJsonp([0xbd0a90171d47],{889:function(t,a){t.exports={data:{allMarkdownRemark:{totalCount:1,edges:[{node:{frontmatter:{title:"关于我们",keynote:"binstd以程序员为核心建设技术信用,对开发者实现数据化的了解，理解。推动开发生态建设，建立技术生态底层的公用数据服务资源，区块链跨链云服务;发行技术生态标准数字资产STD。成为技术落地的最后一公里，引领开发潮流。",path:"/info"}}}]}},pathContext:{tag:"新闻"}}}});
-//# sourceMappingURL=path---tags-新闻-bcbbd923220d933389a9.js.map
