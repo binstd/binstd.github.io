@@ -104,7 +104,7 @@ const styles = theme => ({
 });
 
 
-class FullWidthGrid extends React.Component{
+class FullWidthGrid extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -135,7 +135,7 @@ class FullWidthGrid extends React.Component{
             const { title, description, contractName } = data;
             return (
                 <Grid  key={index} item xs={12} sm={6} >
-                        <Card option={data} />
+                    <Card option={data} />
                 </Grid>
           
             );

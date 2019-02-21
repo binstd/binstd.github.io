@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
+
 
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -31,25 +31,13 @@ const theme = createMuiTheme({
 });
 
 const MaLayout = ({ children }) => (
-
     <React.Fragment>
         <CssBaseline />
-            <Helmet
-                title=''
-                meta={[
-                { name: 'description', content: 'Sample' },
-                { name: 'keywords', content: 'sample, something' },
-                ]}
-            >
-                <html lang="en" />
-            </Helmet>
-
         <MuiThemeProvider theme={theme}>
-        <Mamenu/>
+            <Mamenu/>
             {children}
         </MuiThemeProvider>
     </React.Fragment>
-
 )
 
 MaLayout.propTypes = {

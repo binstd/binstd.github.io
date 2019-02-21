@@ -36,6 +36,12 @@ module.exports = {
         }
       },
       'gatsby-plugin-offline',
+      {
+        resolve: `gatsby-plugin-material-ui`,
+        options: {
+            // Add any options here
+        },
+      },
     ],
   }
   

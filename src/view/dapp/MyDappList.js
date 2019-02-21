@@ -12,7 +12,6 @@ import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
 
 
-
 import { navigate } from "@reach/router";
 const styles = theme => ({
 
@@ -54,7 +53,7 @@ class DappList extends React.Component {
             this.setState({
                 dapplist: result
             });
-            // let deploydata = {};
+
         }).catch(function (e) {
             console.log("失败");
         });
