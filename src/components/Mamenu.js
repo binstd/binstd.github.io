@@ -22,6 +22,7 @@ import user_model from '../model/user_model';
 import { observer } from 'mobx-react';
 import { server_url } from '../lib/config';
 
+// import Reactotron from 'reactotron-react-js'
 const styles = theme => ({
 
   root: {
@@ -92,9 +93,9 @@ const ButtonAppBar = observer(class ButtonAppBar extends React.Component{
     this.setState({ mobileMoreAnchorEl: null });
     };
     
-    componentWillMount() {
-        // var networkId = '';
-        if(typeof window !== `undefined`) {
+    componentDidMount(){
+        // Reactotron.log('hello rendering world')
+        if(typeof window.ethereum !== `undefined`) {
             this.login();
             eth.net_version().then((networkId) => {
                 this.setState({
@@ -102,11 +103,11 @@ const ButtonAppBar = observer(class ButtonAppBar extends React.Component{
                 });
             }); 
 
-            window.ethereum.on('networkChanged',  (networkId) => {
-              this.setState({
-                  networkId
-              });
-            });
+            // window.ethereum.on('networkChanged',  (networkId) => {
+            //   this.setState({
+            //       networkId
+            //   });
+            // });
 
             if (localStorage.getItem("userinfo")) {
                 let userinfo = JSON.parse(localStorage.getItem("userinfo"));
@@ -120,55 +121,42 @@ const ButtonAppBar = observer(class ButtonAppBar extends React.Component{
 
     //新登陆
     login() {
-        window.ethereum.enable().then( (accounts) => {
-            console.log(accounts[0]);
-            // let userinfo = {
-            //     logintype: 'ETH',
-            //     address: accounts[0]
-            // };
-            // localStorage.setItem("userinfo", JSON.stringify(userinfo));
-            this.setState({
-                address: accounts[0]
-            }); 
-        })
-          
+        if (typeof window.ethereum !== 'undefined') { /* deal with it */ 
+            window.ethereum.enable().then( (accounts) => {
+                console.log(accounts[0]);
+
+                this.setState({
+                    address: accounts[0]
+                }); 
+            })
+        }
+    
     }  
 
-    // login() {
-    //     window.ethereum.enable().then((accounts) => {
-    //         console.log(accounts[0]);
-    //         let userinfo = {
-    //             logintype: 'ETH',
-    //             address: accounts[0]
-    //         };
-    //         localStorage.setItem("userinfo", JSON.stringify(userinfo));
-    //         this.setState({
-    //             userinfo
-    //         });
-    //     })
-
-    // }
-
-
+  
 
     //陇余代码
     payToken() {
         if(!user_model.address&&!user_model.logintype){
             console.log('没有登录');
         }
-        window.ethereum.enable().then( (accounts) => {
-            const publicAddress = accounts[0];
-            console.log("\n server_url",server_url);
-            fetch(
-                `${server_url}/api/users?publicAddress=${publicAddress}`
-            ).then( response => response.json() ).then (
-                users => (users.length ? users[0] : this.handleSignup(publicAddress))
-            ).then(this.handleSignMessage)
-            .then(this.handleAuthenticate)
-            .then(this.handleLoggedIn).catch(err => {
-                window.alert(err);
-            });
-        })
+        // Reactotron.log('==payToke==');
+        if (typeof window.ethereum !== 'undefined') { 
+            // Reactotron.log('typeof window.ethereum !== undefined');
+            window.ethereum.enable().then( (accounts) => {
+                const publicAddress = accounts[0];
+                // window.alert(publicAddress);
+                fetch(
+                    `${server_url}/api/users?publicAddress=${publicAddress}`
+                ).then( response => response.json() ).then (
+                    users => (users.length ? users[0] : this.handleSignup(publicAddress))
+                ).then(this.handleSignMessage)
+                .then(this.handleAuthenticate)
+                .then(this.handleLoggedIn).catch(err => {
+                    window.alert(err);
+                });
+            })
+        }
      
     }
 
