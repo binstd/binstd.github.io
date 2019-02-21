@@ -9,7 +9,7 @@ class IndexPage extends React.Component {
     render() {
         return(
             <MaLayout>
-                <Dapplist />  
+                {/* <Dapplist />   */}
              </MaLayout>
         ); 
     }
