@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Router } from '@reach/router';
 
 import DappCreate from '../view/dapp/create';
-// import DappDeployed from '../view/dapp/deployed';
+
 import MyDappList from '../view/dapp/MyDappList';
 import DappManage from '../view/dapp/manage';
 
