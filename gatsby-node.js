@@ -19,8 +19,9 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
     }
 }
 
-
-
+if(typeof window !== `undefined`) {
+    window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
+}
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage, createRedirect } = actions;

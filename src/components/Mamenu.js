@@ -11,7 +11,6 @@ import { navigate } from "@reach/router";
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 
-
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import LensIcon from '@material-ui/icons/Lens';
@@ -22,7 +21,6 @@ import user_model from '../model/user_model';
 import { observer } from 'mobx-react';
 import { server_url } from '../lib/config';
 
-// import Reactotron from 'reactotron-react-js'
 const styles = theme => ({
 
   root: {
@@ -50,7 +48,7 @@ const styles = theme => ({
       display: 'none',
     },
   },
-  colorMain:{
+  colorMain: {
       color:'#1abc9c'
   },
   colorRopsten:{
