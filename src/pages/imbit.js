@@ -21,7 +21,7 @@ import ProductValues from '../components/imbit/ProductValues';
 import ProductHowItWorks from '../components/imbit/ProductHowItWorks';
 // import ProductCTA from '../components/imbit/ProductCTA';
 // import AppAppBar from './components/imbit/AppAppBar';
-// import AppFooter from '../components/imbit/AppFooter';
+import Footer from '../components/Footer';
 const ImbitPage = class ImbitPage extends Component {
     render() { 
         return ( 
@@ -32,9 +32,11 @@ const ImbitPage = class ImbitPage extends Component {
                             <ProductHero  />
                             <ProductValues />
                             {/* <ProductCategories /> */}
+                            
                             {/* <ProductHowItWorks /> */}
                             {/* <ProductCTA /> */}
                             <ProductSmokingHero />
+                            <Footer /> 
                         </div>
                     {/* <AppFooter /> */}
        

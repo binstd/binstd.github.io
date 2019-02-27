@@ -6,19 +6,21 @@ import LayoutBody from '../common/LayoutBody';
 
 const styles = theme => ({
   root: {
+    backgroundColor: '#ffffff',
     color: theme.palette.common.white,
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
     [theme.breakpoints.up('sm')]: {
-      height: '60vh',
+      height: '90vh',
       minHeight: 300,
       maxHeight: 1300,
     },
   },
   layoutBody: {
-    marginTop: theme.spacing.unit * 5,
-    marginBottom: theme.spacing.unit * 1,
+    backgroundColor: '#ffffff',
+    marginTop: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 14,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -29,7 +31,7 @@ const styles = theme => ({
     right: 0,
     top: 0,
     bottom: 0,
-    // backgroundColor: '#ffffff',
+    backgroundColor: '#ffffff',
     opacity: 0.5,
     zIndex: -1,
   },
@@ -45,7 +47,7 @@ const styles = theme => ({
   },
   arrowDown: {
     position: 'absolute',
-    bottom: theme.spacing.unit * 4,
+    bottom: theme.spacing.unit * 1,
   },
 });
 
@@ -55,17 +57,23 @@ function ProductHeroLayout(props) {
   return (
     <section className={classes.root}>
       <LayoutBody className={classes.layoutBody} width="full">
-       
+       <img
+          src="https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/123435.jpg"
+          alt="wonder"
+        //   width="147"
+          height="80"
+        />
         {children}
         <div className={classes.backdrop} />
         <div className={classNames(classes.background, backgroundClassName)} />
-        {/* <img
+        <img
           className={classes.arrowDown}
           src="https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/productHeroArrowDown-1.png"
           height="16"
           width="12"
           alt="arrow down"
-        /> */}
+        />
+       
       </LayoutBody>
     </section>
   );

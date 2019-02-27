@@ -6,8 +6,8 @@ import Button from '../common/Button';
 import Typography from '../common/Typography';
 import ProductHeroLayout from './ProductHeroLayout';
 
-const backgroundImage =
-    'https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/walletconnect.png';
+// const backgroundImage =
+//     'https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/walletconnect.png';
 
 const styles = theme => ({
     background: {
@@ -15,19 +15,21 @@ const styles = theme => ({
         backgroundColor: '#ffffff', // Average color of the background image.
         backgroundPosition: 'center',
     },
-    backgroundDown: {
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundColor: '#ffffff', // Average color of the background image.
-        backgroundPosition: 'center',
-    },
+    // backgroundDown: {
+    //     backgroundImage: `url(${backgroundImage})`,
+    //     backgroundColor: '#ffffff', // Average color of the background image.
+    //     backgroundPosition: 'center',
+    // },
     button: {
         minWidth: 200,
+        height: '50px',
     },
-    h5: {
+    h4: {
+        color:'#07AEFF',
         marginBottom: theme.spacing.unit * 4,
         marginTop: theme.spacing.unit * 4,
         [theme.breakpoints.up('sm')]: {
-            marginTop: theme.spacing.unit * 5,
+            marginTop: theme.spacing.unit * 4,
         },
     },
     more: {
@@ -44,10 +46,10 @@ function ProductHero(props) {
             <ProductHeroLayout backgroundClassName={classes.background}>
                 {/* <img style={{ display: 'none' }} src={backgroundImage} alt="" /> */}
                 <Typography  align="center" variant="h2" >
-                    Imbit
+                    {/* binstd */}
                 </Typography>
-                <Typography  align="center" variant="h5" className={classes.h5}>
-                            Web3.0时代数字身份系统,自主控制授权你的身份数据
+                <Typography  align="center" variant="h4" className={classes.h4} >
+                    进制，区块链云服务平台
                 </Typography>
 
                 <Button
@@ -59,7 +61,7 @@ function ProductHero(props) {
                     <Link {...linkProps}  target="_blank" href="https://github.com/binstd/imbit/releases" variant="button" />
                     )}
                 >
-                    下载
+                    了解更多
                 </Button>
 
                 <Typography variant="body2" color="inherit" className={classes.more}>
@@ -67,11 +69,11 @@ function ProductHero(props) {
                 </Typography>
 
             </ProductHeroLayout>
-            <ProductHeroLayout backgroundClassName={classes.backgroundDown}>
+            {/* <ProductHeroLayout backgroundClassName={classes.backgroundDown}>
                      
                     <img style={{ display: 'none' }} src={backgroundImage} alt="" />
             
-            </ProductHeroLayout>
+            </ProductHeroLayout> */}
         </div>
 
     );

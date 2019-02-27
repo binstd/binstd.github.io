@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import LayoutBody from './/LayoutBody';
-import Typography from './/Typography';
+import LayoutBody from '../common/LayoutBody';
+import Typography from '../common/Typography';
 import productValues1 from './img/productValues1.svg';
 import productValues2 from './img/productValues2.svg';
 import productValues3 from './img/productValues3.svg';
@@ -67,22 +67,7 @@ function ProductValues(props) {
               </Typography>
             </div>
           </Grid>
-          {/* <Grid item xs={12} md={4}>
-            <div className={classes.item}>
-              <img
-                className={classes.image}
-                src={productValues2}
-                alt="graph"
-              />
-              <Typography variant="h6" className={classes.title}>
-                New experiences
-              </Typography>
-              <Typography variant="subtitle1">
-                {'Privatize a pool, take a Japanese bath or wake up in 900m2 of garden… '}
-                {'your Sundays will not be alike.'}
-              </Typography>
-            </div>
-          </Grid> */}
+        
           <Grid item xs={12} md={6}>
             <div className={classes.item}>
               <img

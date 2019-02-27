@@ -341,9 +341,9 @@ const ButtonAppBar = observer(class ButtonAppBar extends React.Component{
                         </IconButton>
                         </div>
                         <Typography variant="h6" color="inherit" className={classes.grow}>
-                            <Button color="inherit"  onClick={() => navigate(`https://www.binstd.com/`)} >官网</Button>
+                            <Button color="inherit"  onClick={() => navigate(`/`)} >首页</Button>
                             <Button color="inherit"  onClick={() => navigate(`/imbit`)} >IMbit</Button>
-                            <Button color="inherit"  onClick={() => navigate(`/`)} >Dapp部署</Button>
+                            <Button color="inherit"  onClick={() => navigate(`/dapp/index`)} >Dapp部署</Button>
                             <Button color="inherit"  onClick={() => navigate(`/docs/getting-started/info`)} >API</Button>
                         </Typography>
                         <div className={classes.sectionDesktop} >

@@ -10,7 +10,7 @@ import Typography from '../common/Typography';
 const styles = theme => ({
   root: {
     display: 'flex',
-    backgroundColor: '#ffffff',
+    backgroundColor: theme.palette.primary.light,
     overflow: 'hidden',
   },
   layoutBody: {
