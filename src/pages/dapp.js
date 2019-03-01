@@ -10,7 +10,7 @@ import Dapplist from '../components/Dapplist'
 import DappManage from '../view/dapp/manage';
 
 import MaLayout from '../components/MaLayout'
-
+import Footer from '../components/Footer';
 const ArticlePage = class DappPage extends Component {
     render() { 
         return ( 
@@ -31,7 +31,9 @@ const ArticlePage = class DappPage extends Component {
                       
                             <MyDappList path="/dapp/:address/" />
                         </Router>
+                    
                     </div>
+                    <Footer /> 
                 </MaLayout>   
             </div>  
         ) 

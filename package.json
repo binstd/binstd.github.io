@@ -25,6 +25,7 @@
     "gh-pages": "^2.0.1",
     "github-slugger": "^1.2.0",
     "lodash": "^4.17.11",
+    "markdown-to-jsx": "^6.9.1",
     "mobx": "^5.8.0",
     "mobx-react": "^5.4.3",
     "node-fetch": "^2.3.0",

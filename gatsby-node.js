@@ -44,6 +44,7 @@ exports.createPages = ({ actions, graphql }) => {
             depth
           }
           frontmatter {
+            path
             title
           }
         }
@@ -58,31 +59,39 @@ exports.createPages = ({ actions, graphql }) => {
       let nav = [];
 
       result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+        if (!node.frontmatter.path){
+            if (node.fileAbsolutePath.indexOf('index') > 0) {
+            const parent = { title: node.frontmatter.title, children: [], redirectFrom: getDocPath(node) };
+            
+            nav.push(parent);
+            } else {
+            const parent = nav[nav.length - 1];
+            if (!parent.path) {
+                parent.path = getDocPath(node);
+            }
 
-        if (node.fileAbsolutePath.indexOf('index') > 0) {
-          const parent = { title: node.frontmatter.title, children: [], redirectFrom: getDocPath(node) };
-          
-          nav.push(parent);
-        }
-
-        else {
-          const parent = nav[nav.length - 1];
-          if (!parent.path) {
-            parent.path = getDocPath(node);
-          }
-
-          parent.children.push({ title: node.frontmatter.title, path: getDocPath(node) });
+            parent.children.push({ title: node.frontmatter.title, path: getDocPath(node) });
+            }
         }
 
       });
 
-      result.data.allMarkdownRemark.edges
-        .forEach(({ node }, i) => {
-          createPage({
-            path: getDocPath(node),
-            component: documentationTemplate,
-            context: { page: node, nav }
-          })
+      result.data.allMarkdownRemark.edges.forEach(({ node }, i) => {
+          
+        if (node.frontmatter.path) {
+            createPage({
+                path: node.frontmatter.path,
+                component: path.resolve("./src/templates/blogTemplate.js"),
+            });
+
+        } else {
+            createPage({
+                path: getDocPath(node),
+                component: documentationTemplate,
+                context: { page: node, nav }
+            })
+        }
+          
       });
 
     });

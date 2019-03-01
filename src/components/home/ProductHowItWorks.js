@@ -106,7 +106,7 @@ function ProductHowItWorks(props) {
 
    
                  <Typography variant="subtitle1">
-                {'通过应用、程序（框架/库）的开发 建设关键行业的数据（云数据API）的公用服务资源，实现开发能力和数据能力的组件化、插件化、云端化。'}
+                {'通过应用、程序（框架/库）的开发建设关键行业的数据（云数据API）的公用服务资源，实现开发能力和数据能力的组件化、插件化、云端化。'}
                 {'促进数据流通和特定数据区块链化。'}
               </Typography>
               </div>
@@ -120,7 +120,7 @@ function ProductHowItWorks(props) {
                 />
                 
                  <Typography variant="subtitle1">
-                    {'与程序员客栈联合建立ImBit数字身份，促进系统融合，加快促进互联网技术用户往区块链用户转变。'}
+                    {'我们与程序员客栈联合建立ImBit数字身份，促进系统融合，加快促进互联网技术用户往区块链用户转变。'}
               </Typography>
               </div>
             </Grid>

@@ -49,7 +49,7 @@ function ProductHero(props) {
                     {/* binstd */}
                 </Typography>
                 <Typography  align="center" variant="h4" className={classes.h4} >
-                    进制，区块链云服务平台
+                    BinSTD 进制数据，API数据云服务平台 
                 </Typography>
 
                 <Button

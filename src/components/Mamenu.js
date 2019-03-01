@@ -117,7 +117,7 @@ const ButtonAppBar = observer(class ButtonAppBar extends React.Component{
        
     }
 
-    //新登陆
+    //新登录
     login() {
         if (typeof window.ethereum !== 'undefined') { /* deal with it */ 
             window.ethereum.enable().then( (accounts) => {
@@ -230,11 +230,11 @@ const ButtonAppBar = observer(class ButtonAppBar extends React.Component{
         const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
         let user_label;
 
-        //未登陆
+        //未登录
         if (JSON.stringify(userinfo) === '{}') {
-            user_label = <Button color="inherit"  onClick={() => this.payToken()} > 登陆 </Button>          
+            user_label = <Button color="inherit"  onClick={() => this.payToken()} > 登录 </Button>          
         } else {
-            //已登陆
+            //已登录
             user_label =  
             <div>
             {/* <Button color="inherit"  onClick={() => navigate(`/dapp/${userinfo.address}`)} > dapp </Button> */}
@@ -333,12 +333,12 @@ const ButtonAppBar = observer(class ButtonAppBar extends React.Component{
                 <AppBar position="fixed"  className={classes.appBar} >
                     <Toolbar>
                         <div className={classes.sectionDesktop} >
-                        <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+                        {/* <IconButton className={classes.menuButton} color="inherit" aria-label="Menu"> */}
                             <img
                                 src='https://programmerinnfile.b0.upaiyun.com/community/10001/20180814/yzdXjjAI4g.png'
                                 style={{ height: 30, width: 108, margin: '0 35px 5px 0' }}
                             />
-                        </IconButton>
+                        {/* </IconButton> */}
                         </div>
                         <Typography variant="h6" color="inherit" className={classes.grow}>
                             <Button color="inherit"  onClick={() => navigate(`/`)} >首页</Button>

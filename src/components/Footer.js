@@ -103,7 +103,7 @@ function AppFooter(props) {
             <ul className={classes.list}>
               <li className={classes.listItem}>
                 <Link 
-                    href="/premium-themes/onepirate/terms"
+                    href="https://github.com/binstd"
                     style={{color:'#ffffff '}}
                 >
                 github
@@ -111,7 +111,7 @@ function AppFooter(props) {
               </li>
               <li className={classes.listItem}>
                 <Link 
-                    href="/premium-themes/onepirate/privacy"
+                    href="/about"
                     style={{color:'#ffffff '}}
                 >关于我们
                 </Link>
@@ -119,14 +119,14 @@ function AppFooter(props) {
             </ul>
           </Grid>
 
-          <Grid item xs={6} sm={4} md={2}>
+          <Grid item xs={6} sm={8} md={4}>
             <Typography variant="h6" marked="left" gutterBottom style={{color:'#ffffff '}}>
               产品
             </Typography>
             <ul className={classes.list}>
               <li className={classes.listItem}>
                 <Link 
-                    href="/premium-themes/onepirate/terms"
+                    href="/dapp/index"
                     style={{color:'#ffffff '}}
                 >
                     区块链云平台
@@ -134,7 +134,7 @@ function AppFooter(props) {
               </li>
               <li className={classes.listItem}>
                 <Link 
-                    href="/premium-themes/onepirate/privacy"
+                    href="/imbit"
                     style={{color:'#ffffff '}}
                 >imbit数字身份
                 </Link>
@@ -142,7 +142,7 @@ function AppFooter(props) {
             </ul>
           </Grid>
           
-          <Grid item xs={6} sm={8} md={4}>
+          {/* <Grid item xs={6} sm={8} md={4}>
             <Typography variant="h6" marked="left" gutterBottom  style={{color:'#ffffff '}} >
               Language
             </Typography>
@@ -159,7 +159,8 @@ function AppFooter(props) {
                 </option>
               ))}
             </TextField>
-          </Grid>
+          </Grid> */}
+
           <Grid item>
             <Typography variant="caption" style={{color:'#ffffff '}}>
               {/* {'BinSTD进制   '} */}
