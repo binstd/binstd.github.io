@@ -73,7 +73,7 @@ function ProductHowItWorks(props) {
           我们提供
         </Typography>
         <div>
-          <Grid container spacing={20}>
+          <Grid container spacing={16}>
             <Grid item xs={12} md={4}>
               <div className={classes.item}>
                 <div className={classes.number}>API数据云</div>

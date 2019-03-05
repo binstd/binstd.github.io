@@ -219,7 +219,7 @@ const ButtonAppBar = observer(class ButtonAppBar extends React.Component{
             headers: {
                 'Content-Type': 'application/json'
             },
-            method: 'POST'
+            method: 'post'
     }).then(response => response.json());
 
     render() {
