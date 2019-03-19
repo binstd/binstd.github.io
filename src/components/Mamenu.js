@@ -217,7 +217,8 @@ const ButtonAppBar = observer(class ButtonAppBar extends React.Component{
         fetch(`${server_url}/api/users`, {
             body: JSON.stringify({ publicAddress }),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin':'*'
             },
             method: 'post'
     }).then(response => response.json());

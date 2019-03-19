@@ -7,7 +7,7 @@ import Typography from '../common/Typography';
 import ProductHeroLayout from './ProductHeroLayout';
 
 const backgroundImage =
-    'https://blockluz-1253389096.cos.ap-beijing.myqcloud.com/blockman/walletconnect.png';
+    'http://xihumuseum.oss-cn-zhangjiakou.aliyuncs.com/banner.png';
 
 const styles = theme => ({
     background: {
