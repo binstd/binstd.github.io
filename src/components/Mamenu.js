@@ -20,7 +20,7 @@ import { eth } from '../lib/eth';
 import user_model from '../model/user_model';
 import { observer } from 'mobx-react';
 import { server_url } from '../lib/config';
-
+import Link from '@material-ui/core/Link';
 const styles = theme => ({
 
   root: {
@@ -343,7 +343,17 @@ const ButtonAppBar = observer(class ButtonAppBar extends React.Component{
                         </div>
                         <Typography variant="h6" color="inherit" className={classes.grow}>
                             <Button color="inherit"  onClick={() => navigate(`/`)} >首页</Button>
-                            <Button color="inherit"  onClick={() => navigate(`/imbit`)} >IMbit</Button>
+                            <Link href="https://www.imbit.cn/" 
+                                target="_blank"
+                                rel ="noopener"
+                                style={{
+                                    color: `white`,
+                                    textDecoration: `none`,
+                                }}
+                             >
+                                <Button color="inherit"   >IMbit</Button>
+                            </Link>
+                       
                             <Button color="inherit"  onClick={() => navigate(`/dapp/index/`)} >Dapp部署</Button>
                             <Button color="inherit"  onClick={() => navigate(`/docs/getting-started/info`)} >API</Button>
                         </Typography>
