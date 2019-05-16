@@ -83,15 +83,12 @@ function AppFooter(props) {
             >
               <Grid item className={classes.icons}>
                 <a href="https://material-ui.com/" className={classes.icon}>
-                  <img 
-                    src="https://programmerinnfile.b0.upaiyun.com/community/10001/20180814/69sDk199wJ.png" 
-                    alt="binstd" 
-                    className={classes.footerIcon}
-                  />
+                    <img 
+                        src="https://programmerinnfile.b0.upaiyun.com/community/10001/20180814/69sDk199wJ.png" 
+                        alt="binstd" 
+                        className={classes.footerIcon}
+                    />
                 </a>
-                {/* <a href="https://twitter.com/MaterialUI" className={classes.icon}>
-                  <img src="/static/themes/onepirate/appFooterTwitter.png" alt="Twitter" />
-                </a> */}
               </Grid>
               <Grid item style={{color:'#ffffff '}} > </Grid>
             </Grid>
@@ -106,14 +103,15 @@ function AppFooter(props) {
                     href="https://github.com/binstd"
                     style={{color:'#ffffff '}}
                 >
-                github
+                    github
                 </Link>
               </li>
               <li className={classes.listItem}>
                 <Link 
                     href="/about"
                     style={{color:'#ffffff '}}
-                >关于我们
+                >
+                    关于我们
                 </Link>
               </li>
             </ul>
@@ -121,12 +119,12 @@ function AppFooter(props) {
 
           <Grid item xs={6} sm={8} md={4}>
             <Typography variant="h6" marked="left" gutterBottom style={{color:'#ffffff '}}>
-              产品
+                产品
             </Typography>
             <ul className={classes.list}>
               <li className={classes.listItem}>
                 <Link 
-                    href="/dapp/index"
+                    href="/"
                     style={{color:'#ffffff '}}
                 >
                     区块链云平台
@@ -136,7 +134,8 @@ function AppFooter(props) {
                 <Link 
                     href="/imbit"
                     style={{color:'#ffffff '}}
-                >imbit数字身份
+                >
+                    imbit数字身份
                 </Link>
               </li>
             </ul>
@@ -172,15 +171,7 @@ function AppFooter(props) {
                 www.binstd.com
               </Link>
               {' All Rights Reserved.'}
-              {/* <Link
-                href="http://creativecommons.org/licenses/by/3.0/"
-                title="Creative Commons BY 3.0"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{color:'#ffffff '}}
-              >
-                CC 3.0 BY
-              </Link> */}
+            
             </Typography>
           </Grid>
         </Grid>

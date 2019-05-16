@@ -94,7 +94,7 @@ const ButtonAppBar = observer(class ButtonAppBar extends React.Component{
     componentDidMount(){
         // Reactotron.log('hello rendering world')
         if(typeof window.ethereum !== `undefined`) {
-            this.login();
+            // this.login();
             eth.net_version().then((networkId) => {
                 this.setState({
                     networkId
@@ -290,8 +290,7 @@ const ButtonAppBar = observer(class ButtonAppBar extends React.Component{
               </MenuItem>
              
               <MenuItem onClick={() => this.handleLoggedOut()}>
-              
-                <p>退出</p>
+                    <p>退出</p>
               </MenuItem>
             </Menu>
           );
@@ -354,13 +353,13 @@ const ButtonAppBar = observer(class ButtonAppBar extends React.Component{
                                 <Button color="inherit"   >IMbit</Button>
                             </Link>
                        
-                            <Button color="inherit"  onClick={() => navigate(`/dapp/index/`)} >Dapp部署</Button>
-                            <Button color="inherit"  onClick={() => navigate(`/docs/getting-started/info`)} >API</Button>
+                            {/* <Button color="inherit"  onClick={() => navigate(`/dapp/index/`)} >Dapp部署</Button>
+                            <Button color="inherit"  onClick={() => navigate(`/docs/getting-started/info`)} >API</Button> */}
                         </Typography>
                         <div className={classes.sectionDesktop} >
                         {viewNetwork}
                         </div>
-                        {user_label}
+                        {/* {user_label} */}
                     </Toolbar>
 
                     {renderMenu}
