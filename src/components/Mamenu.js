@@ -350,7 +350,17 @@ const ButtonAppBar = observer(class ButtonAppBar extends React.Component{
                                     textDecoration: `none`,
                                 }}
                              >
-                                <Button color="inherit"   >IMbit</Button>
+                                <Button color="inherit" >IMbit </Button>
+                            </Link>
+                            <Link href="https://www.binstd.com/" 
+                                target="_blank"
+                                rel ="noopener"
+                                style={{
+                                    color: `white`,
+                                    textDecoration: `none`,
+                                }}
+                             >
+                                <Button color="inherit" >进制数据</Button>
                             </Link>
                        
                             {/* <Button color="inherit"  onClick={() => navigate(`/dapp/index/`)} >Dapp部署</Button>
