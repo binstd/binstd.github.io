@@ -335,7 +335,7 @@ const ButtonAppBar = observer(class ButtonAppBar extends React.Component{
                         <div className={classes.sectionDesktop} >
                         {/* <IconButton className={classes.menuButton} color="inherit" aria-label="Menu"> */}
                             <img
-                                src='https://programmerinnfile.b0.upaiyun.com/community/10001/20180814/yzdXjjAI4g.png'
+                                src='https://filescdn.proginn.com/community/10001/20180814/yzdXjjAI4g.png'
                                 style={{ height: 30, width: 108, margin: '0 35px 5px 0' }}
                             />
                         {/* </IconButton> */}
